@@ -1,66 +1,31 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Hero from "./components/landing/Hero";
-import AboutUs from "./components/landing/AboutUs";
-import Reviews from "./components/landing/Reviews";
-import ProductSection from "./components/landing/ProductSection";
-import Contact from "./components/landing/Contact";
-import dynamic from "next/dynamic";
-import Advantages from "./components/landing/Advantages";
-
-const ExclusiveOfferPopup = dynamic(
-  () => import('./components/ui/ExclusiveOfferPopup'),
-  { ssr: false }
-);
-
 export default function Page() {
-  const [showPopup, setShowPopup] = useState(false);
-
-  useEffect(() => {
-    const popupShown = sessionStorage.getItem("popupShown");
-
-    if (!popupShown) {
-      const timer = setTimeout(() => {
-        setShowPopup(true);
-      }, 2000);
-
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
-  const handleClosePopup = () => {
-    console.log("Fermeture de la popup");
-    setShowPopup(false);
-  };
-  
   return (
-    <div className="min-h-screen">
-      {showPopup && (
-        <ExclusiveOfferPopup onClose={handleClosePopup} />
-      )}
-      <section id="hero" className="scroll-mt-24">
-        <Hero />
+    <div className="mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-4xl flex-col gap-12 px-6 py-12">
+      <section className="space-y-4">
+        <h1 className="text-3xl font-semibold">Bienvenue sur votre future boutique</h1>
+        <p className="text-base leading-relaxed text-gray-700">
+          Cette page d&apos;accueil est volontairement minimaliste afin de servir de point de
+          départ à votre prochain projet e-commerce. Conservez l&apos;en-tête existant et
+          construisez votre propre expérience en remplaçant progressivement ces sections.
+        </p>
       </section>
 
-      <section id="about" className="scroll-mt-24">
-        <AboutUs />
+      <section className="space-y-3">
+        <h2 className="text-2xl font-semibold">Produits à venir</h2>
+        <p className="text-base leading-relaxed text-gray-700">
+          Ajoutez ici vos catégories, vos fiches produit ou toute autre présentation que
+          vous souhaitez proposer à vos clients. Cette zone est libre et n&apos;attend plus que
+          vos idées.
+        </p>
       </section>
 
-      <section id="reviews" className="scroll-mt-24">
-        <Reviews />
-      </section>
-
-      <section id="products" className="scroll-mt-24">
-        <ProductSection />
-      </section>
-
-      <section id="advantages" className="scroll-mt-24">
-        <Advantages />
-      </section>
-
-      <section id="contact" className="scroll-mt-24">
-        <Contact />
+      <section id="contact" className="space-y-3">
+        <h2 className="text-2xl font-semibold">Contact</h2>
+        <p className="text-base leading-relaxed text-gray-700">
+          Précisez vos informations de contact ou intégrez un formulaire pour rester en
+          relation avec vos visiteurs. Pour l&apos;instant, ce simple texte sert de repère en
+          attendant votre propre intégration.
+        </p>
       </section>
     </div>
   );

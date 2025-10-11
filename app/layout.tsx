@@ -2,9 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/landing/Footer";
 import Header from "./components/landing/Header";
-import CookieBanner from "./components/ui/CookieBanner";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
@@ -35,15 +33,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="fr" data-theme="emerald">
+    <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col bg-white text-gray-900`}
       >
         <Providers>
           <Header />
           <main className="flex-1">{children}</main>
-          <Footer />
-          <CookieBanner />
         </Providers>
       </body>
     </html>
