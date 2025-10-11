@@ -57,12 +57,6 @@ export default function Header() {
               Accueil
             </Link>
             <Link
-              href="/solar-solution"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-            >
-              Solution Solaire
-            </Link>
-            <Link
               href="/shop"
               className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
             >
@@ -171,13 +165,6 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Accueil
-            </Link>
-            <Link
-              href="/solar-solution"
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Solution Solaire
             </Link>
             <Link
               href="/shop"

@@ -460,15 +460,6 @@ export default function OrdersPage() {
                 <ShoppingBag className="h-5 w-5 mr-2 -ml-1" />
                 Explorer la boutique
               </Link>
-              <Link
-                href="/solar-solution"
-                className="inline-flex items-center justify-center px-6 py-3.5 border border-stone-300 text-base font-medium rounded-lg shadow-sm text-stone-700 bg-white hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                <svg className="h-5 w-5 mr-2 -ml-1 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-                Solution solaire
-              </Link>
             </div>
           </motion.div>
         ) : (
