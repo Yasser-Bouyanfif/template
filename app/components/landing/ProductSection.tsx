@@ -115,23 +115,26 @@ export default function ProductCarouselSimple() {
   }, []);
 
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-slate-800 mb-2">
-            Nos solutions recommandées
+    <section className="bg-white py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-10 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-sm font-semibold text-emerald-600">
+            Collection Signature
+          </div>
+          <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">
+            Coffrets & accessoires ChajaratMariam
           </h2>
-          <p className="text-slate-600">
-            Découvrez notre sélection de bornes adaptées à tous vos besoins.
+          <p className="mt-3 text-slate-600">
+            Sélectionnez la rose idéale pour vos rituels de bien-être, accompagnée de nos essentiels du désert.
           </p>
         </div>
 
         <div className="relative">
           {loading ? (
-            <p className="py-10 text-center text-slate-500">Chargement…</p>
+            <p className="py-10 text-center text-slate-500">Chargement de nos trésors…</p>
           ) : products.length === 0 ? (
             <p className="py-10 text-center text-slate-500">
-              Aucun produit disponible pour le moment.
+              Les coffrets reviennent très vite : inscrivez-vous à notre newsletter pour être prévenu(e).
             </p>
           ) : (
             <Carousel
@@ -171,26 +174,27 @@ export default function ProductCarouselSimple() {
                       />
                     </div>
 
-                    {price && (
-                      <p className="text-base md:text-lg font-semibold text-slate-900 mt-4">
-                        {price} <span className="text-xs text-slate-500">TTC</span>
-                      </p>
-                    )}
-                    <h3 className="text-slate-800 font-medium md:font-semibold text-[15px] md:text-base">
-                      {title}
-                    </h3>
-                    {description && (
-                      <p className="text-sm text-slate-500 mt-1 line-clamp-2">{description}</p>
-                    )}
+                    <div className="mt-4 space-y-2">
+                      {price && (
+                        <p className="text-base md:text-lg font-semibold text-emerald-600">
+                          {price} <span className="text-xs text-slate-500">TTC</span>
+                        </p>
+                      )}
+                      <h3 className="text-slate-900 font-semibold text-[15px] md:text-lg">
+                        {title}
+                      </h3>
+                      {description && (
+                        <p className="text-sm text-slate-500 line-clamp-2">{description}</p>
+                      )}
+                    </div>
 
-                    {/* Bouton DaisyUI */}
-                    <div className="mt-auto pt-3">
+                    <div className="mt-auto pt-4">
                       <Link
                         href={`/product/${product.id}`}
-                        className="btn btn-soft md:btn-md"
+                        className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-amber-500 px-5 py-3 text-sm font-semibold text-white shadow-md transition-transform hover:scale-[1.02]"
                         aria-label={`Voir le produit ${title}`}
                       >
-                        Voir le produit
+                        Voir le coffret
                       </Link>
                     </div>
                   </div>

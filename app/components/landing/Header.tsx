@@ -14,6 +14,13 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cart } = useContext(CartContext) as CartContextType;
 
+  const navLinks = [
+    { href: "/", label: "Accueil" },
+    { href: "/#about", label: "Rose de Jéricho" },
+    { href: "/#benefits", label: "Bienfaits" },
+    { href: "/shop", label: "Boutique" },
+  ];
+
   const renderUserButton = () => (
     <UserButton afterSignOutUrl="/">
       <UserButton.MenuItems>
@@ -27,48 +34,45 @@ export default function Header() {
   );
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white/90 backdrop-blur shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo cliquable */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
               src="/logo.png"
-              alt="ELEC’CONNECT"
+              alt="ChajaratMariam"
               width={48}
               height={48}
               className="w-12 h-12 object-contain"
               priority
             />
             <div className="hidden md:block">
-              <h1 className="text-2xl font-bold text-gray-900">ELEC’CONNECT</h1>
+              <h1 className="text-2xl font-bold text-slate-900 tracking-tight">ChajaratMariam</h1>
               <p className="text-sm text-emerald-600 font-medium">
-              Explorez la mobilité durable
+                Roses de Jéricho authentiques
               </p>
             </div>
           </Link>
 
           {/* Navigation desktop - visible à partir de lg */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link
-              href="/"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-            >
-              Accueil
-            </Link>
-            <Link
-              href="/shop"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-            >
-              Boutique
-            </Link>
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-slate-700 hover:text-emerald-600 transition-colors font-medium"
+              >
+                {label}
+              </Link>
+            ))}
 
-            {/* Bouton Contact (inchangé) */}
+            {/* Bouton Contact */}
             <Link
               href="/#contact"
-              className="btn btn-success btn text-white flex items-center gap-2"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 via-emerald-600 to-amber-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-200/60 transition-transform hover:scale-[1.03]"
             >
-              <span>Contact</span>
+              <span>Parler à un expert</span>
               <span className="relative flex items-center justify-center">
                 <span
                   className="absolute inset-0 rounded-full border border-white/60 animate-ping"
@@ -102,7 +106,7 @@ export default function Header() {
                 <Link
                   href="/account"
                   aria-label="Se connecter"
-                  className="inline-flex items-center justify-center rounded-md p-1.5 hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center justify-center rounded-md p-1.5 hover:bg-emerald-50 transition-colors"
                 >
                   <LogIn className="w-6 h-6 text-gray-800" />
                 </Link>
@@ -157,25 +161,21 @@ export default function Header() {
 
       {/* Menu mobile et tablette */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200">
+        <div className="lg:hidden bg-white/95 backdrop-blur border-t border-emerald-100">
           <nav className="px-4 py-3 space-y-3">
-            <Link
-              href="/"
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Accueil
-            </Link>
-            <Link
-              href="/shop"
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Boutique
-            </Link>
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="block px-3 py-2 text-slate-700 hover:bg-emerald-50 rounded-md"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {label}
+              </Link>
+            ))}
             <Link
               href="/#contact"
-              className="block px-3 py-2 text-emerald-600 hover:bg-gray-50 rounded-md font-medium"
+              className="block px-3 py-2 text-emerald-600 font-semibold rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact

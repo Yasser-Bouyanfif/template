@@ -72,15 +72,15 @@ export default function Reviews() {
     <section className="py-20 bg-gradient-to-b from-amber-50/30 via-white to-amber-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-800 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
             <Star className="w-4 h-4 fill-amber-600" />
-            <span>{averageRating} / 5 étoiles</span>
+            <span>{averageRating} / 5 • Communauté ChajaratMariam</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Ce que disent nos clients
+            Elles racontent leur renaissance
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Plus de 500 clients satisfaits ont déjà adopté la Rose de Jéricho
+            Plus de 500 clientes et familles ont intégré nos roses à leurs rituels de bien-être et de spiritualité.
           </p>
         </div>
 
@@ -122,7 +122,7 @@ export default function Reviews() {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 shadow-md border border-amber-200">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-emerald-50 to-amber-50 rounded-2xl p-6 shadow-md border border-emerald-200">
             <div className="flex items-center gap-2">
               <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
               <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
@@ -131,7 +131,7 @@ export default function Reviews() {
               <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
             </div>
             <p className="text-slate-700 font-medium">
-              <span className="font-bold text-slate-900">98% de satisfaction</span> sur plus de 500 commandes
+              <span className="font-bold text-slate-900">98% de satisfaction</span> sur les commandes de Roses de Jéricho premium
             </p>
           </div>
         </div>

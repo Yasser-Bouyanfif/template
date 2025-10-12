@@ -6,13 +6,13 @@ import Header from "./components/landing/Header";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "Rose de Jéricho - Plante de Résurrection | Symbole de Renouveau",
+  title: "ChajaratMariam | Roses de Jéricho Authentiques",
   description:
-    "Découvrez la Rose de Jéricho, plante millénaire symbole de résurrection et de prospérité. Livraison rapide, qualité premium garantie.",
+    "ChajaratMariam révèle la magie de la Rose de Jéricho : plantes authentiques, rituels bien-être et coffrets inspirés du désert.",
   openGraph: {
-    title: "Rose de Jéricho - Plante de Résurrection",
+    title: "ChajaratMariam — L'art de la Rose de Jéricho",
     description:
-      "Découvrez la Rose de Jéricho, plante millénaire symbole de résurrection et de prospérité.",
+      "Découvrez l'univers ChajaratMariam : roses de Jéricho premium, conseils d'utilisation et rituels de renaissance.",
   },
   icons: {
     icon: "/logo.png",

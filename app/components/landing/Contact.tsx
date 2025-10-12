@@ -124,22 +124,24 @@ export default function Contact() {
     <section id="contact" className="py-20 bg-gradient-to-b from-white via-amber-50/20 to-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Contactez-nous
+          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1 text-sm font-semibold text-emerald-600">
+            Service client ChajaratMariam
+          </div>
+          <h2 className="mt-4 text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Parlons de votre rituel
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Une question ? Besoin d&apos;informations ? Notre équipe est là pour vous aider.
+            Besoin d&apos;un conseil personnalisé sur la Rose de Jéricho, une commande ou un cadeau ? Nous répondons en moins de 24 heures.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div>
             <h3 className="text-2xl font-bold text-slate-900 mb-6">
-              Restons en contact
+              Restons connectés au désert
             </h3>
             <p className="text-slate-600 mb-8 leading-relaxed">
-              Nous sommes à votre écoute pour toute question concernant nos Roses de Jéricho,
-              les commandes, la livraison ou l&apos;utilisation de nos produits.
+              Notre équipe, basée à Paris et à Marrakech, vous accompagne pour faire de chaque Rose de Jéricho un moment d&apos;exception : rituels féminins, cérémonies familiales ou décoration sacrée.
             </p>
 
             <div className="space-y-6">
@@ -150,12 +152,12 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-slate-900 mb-1">Téléphone</p>
                   <a
-                    href="tel:+33123456789"
-                    className="text-slate-600 hover:text-amber-600 transition-colors"
+                    href="tel:+33612345678"
+                    className="text-slate-600 hover:text-emerald-600 transition-colors"
                   >
-                    +33 1 23 45 67 89
+                    +33 6 12 34 56 78
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Lun - Ven : 9h - 18h</p>
+                  <p className="text-sm text-slate-500 mt-1">Lun - Ven : 9h - 19h • Samedi : 10h - 14h</p>
                 </div>
               </div>
 
@@ -166,12 +168,12 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-slate-900 mb-1">Email</p>
                   <a
-                    href="mailto:contact@rosedejericho.fr"
-                    className="text-slate-600 hover:text-amber-600 transition-colors"
+                    href="mailto:bonjour@chajaratmariam.com"
+                    className="text-slate-600 hover:text-emerald-600 transition-colors"
                   >
-                    contact@rosedejericho.fr
+                    bonjour@chajaratmariam.com
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Réponse sous 24h</p>
+                  <p className="text-sm text-slate-500 mt-1">Réponse sous 24h, conseils personnalisés inclus</p>
                 </div>
               </div>
 
@@ -182,9 +184,12 @@ export default function Contact() {
                 <div>
                   <p className="font-semibold text-slate-900 mb-1">Adresse</p>
                   <p className="text-slate-600">
-                    123 Rue de la Nature
+                    Atelier ChajaratMariam — 12 rue des Fleurs
                     <br />
-                    75001 Paris, France
+                    75003 Paris, France
+                  </p>
+                  <p className="text-sm text-slate-500 mt-2">
+                    Rendez-vous privés sur demande &nbsp;•&nbsp; Showroom éphémère à Marrakech chaque printemps
                   </p>
                 </div>
               </div>
