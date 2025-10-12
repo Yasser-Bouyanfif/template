@@ -115,23 +115,26 @@ export default function ProductCarouselSimple() {
   }, []);
 
   return (
-    <section className="py-12 bg-white">
+    <section className="bg-gradient-to-b from-white via-amber-50/30 to-white py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-slate-800 mb-2">
-            Nos solutions recommandées
+        <div className="mb-12 text-center">
+          <p className="inline-flex items-center rounded-full bg-rose-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-rose-600">
+            Boutique
+          </p>
+          <h2 className="mt-6 text-3xl font-bold text-slate-900 sm:text-4xl">
+            Nos coffrets signatures
           </h2>
-          <p className="text-slate-600">
-            Découvrez notre sélection de bornes adaptées à tous vos besoins.
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
+            Commandez une Rose de Jéricho prête à fleurir : emballage protecteur, fiche rituelle et intention personnalisée pour faire vibrer votre intérieur.
           </p>
         </div>
 
         <div className="relative">
           {loading ? (
-            <p className="py-10 text-center text-slate-500">Chargement…</p>
+            <p className="py-10 text-center text-slate-500">Chargement de nos roses…</p>
           ) : products.length === 0 ? (
             <p className="py-10 text-center text-slate-500">
-              Aucun produit disponible pour le moment.
+              Les roses se préparent en atelier. Revenez très vite pour découvrir nos nouveautés.
             </p>
           ) : (
             <Carousel
@@ -159,35 +162,39 @@ export default function ProductCarouselSimple() {
                 const key = attributes?.id ?? product.id ?? index;
 
                 return (
-                  <div key={String(key)} className="m-0 h-full min-h-[560px] flex flex-col">
-                    <div className="relative h-[400px]">
+                  <div
+                    key={String(key)}
+                    className="group m-0 flex h-full min-h-[540px] flex-col overflow-hidden rounded-[28px] border border-amber-100 bg-white/80 p-6 shadow-lg shadow-amber-100/60 transition hover:-translate-y-1 hover:border-amber-200 hover:shadow-xl"
+                  >
+                    <div className="relative h-[360px] overflow-hidden rounded-3xl">
                       <Image
                         src={imageSrc}
                         alt={imageAlt}
                         fill
                         unoptimized
                         sizes="(max-width: 1324px) 90vw, 20vw"
-                        className="object-cover rounded-xl"
+                        className="object-cover transition duration-500 group-hover:scale-105"
                       />
                     </div>
 
                     {price && (
-                      <p className="text-base md:text-lg font-semibold text-slate-900 mt-4">
+                      <p className="mt-5 text-base font-semibold text-amber-600">
                         {price} <span className="text-xs text-slate-500">TTC</span>
                       </p>
                     )}
-                    <h3 className="text-slate-800 font-medium md:font-semibold text-[15px] md:text-base">
+                    <h3 className="text-lg font-semibold text-slate-900">
                       {title}
                     </h3>
                     {description && (
-                      <p className="text-sm text-slate-500 mt-1 line-clamp-2">{description}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600 line-clamp-3">
+                        {description}
+                      </p>
                     )}
 
-                    {/* Bouton DaisyUI */}
-                    <div className="mt-auto pt-3">
+                    <div className="mt-auto pt-5">
                       <Link
                         href={`/product/${product.id}`}
-                        className="btn btn-soft md:btn-md"
+                        className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-amber-200/60 transition hover:shadow-lg"
                         aria-label={`Voir le produit ${title}`}
                       >
                         Voir le produit
