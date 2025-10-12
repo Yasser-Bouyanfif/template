@@ -3,7 +3,7 @@
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { PhoneCall, Menu, ShoppingCart, LogIn } from "lucide-react";
+import { Menu, PhoneCall, ShoppingCart, LogIn } from "lucide-react";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { CartContext, CartContextType } from "../../contexts/CartContext";
 import Cart from "../ui/Cart";
@@ -27,23 +27,25 @@ export default function Header() {
   );
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo cliquable */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
               src="/logo.png"
-              alt="ELEC’CONNECT"
+              alt="ChajaratMariam"
               width={48}
               height={48}
               className="w-12 h-12 object-contain"
               priority
             />
             <div className="hidden md:block">
-              <h1 className="text-2xl font-bold text-gray-900">ELEC’CONNECT</h1>
+              <h1 className="text-2xl font-bold text-emerald-900 tracking-tight">
+                ChajaratMariam
+              </h1>
               <p className="text-sm text-emerald-600 font-medium">
-              Explorez la mobilité durable
+                Roses de Jéricho authentiques
               </p>
             </div>
           </Link>
@@ -52,21 +54,33 @@ export default function Header() {
           <nav className="hidden lg:flex items-center space-x-8">
             <Link
               href="/"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              className="text-gray-700 hover:text-emerald-700 transition-colors font-medium"
             >
               Accueil
             </Link>
             <Link
-              href="/shop"
-              className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
+              href="/#bienfaits"
+              className="text-gray-700 hover:text-emerald-700 transition-colors font-medium"
             >
-              Boutique
+              Bienfaits
+            </Link>
+            <Link
+              href="/#histoire"
+              className="text-gray-700 hover:text-emerald-700 transition-colors font-medium"
+            >
+              Notre histoire
+            </Link>
+            <Link
+              href="/#rituel"
+              className="text-gray-700 hover:text-emerald-700 transition-colors font-medium"
+            >
+              Rituel
             </Link>
 
             {/* Bouton Contact (inchangé) */}
             <Link
               href="/#contact"
-              className="btn btn-success btn text-white flex items-center gap-2"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-white font-semibold shadow-sm hover:bg-emerald-700 transition-colors"
             >
               <span>Contact</span>
               <span className="relative flex items-center justify-center">
@@ -87,7 +101,7 @@ export default function Header() {
                 onClick={() => setOpenCart((v) => !v)}
                 aria-label="Ouvrir le panier"
               >
-                <ShoppingCart className="w-6 h-6 text-gray-800" />
+                <ShoppingCart className="w-6 h-6 text-emerald-800" />
                 {cart.length > 0 && (
                   <span className="absolute -top-2 -right-2 rounded-full bg-emerald-600 px-2 text-xs text-white">
                     {cart.length}
@@ -102,9 +116,9 @@ export default function Header() {
                 <Link
                   href="/account"
                   aria-label="Se connecter"
-                  className="inline-flex items-center justify-center rounded-md p-1.5 hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center justify-center rounded-md p-1.5 text-emerald-800 hover:bg-emerald-50 transition-colors"
                 >
-                  <LogIn className="w-6 h-6 text-gray-800" />
+                  <LogIn className="w-6 h-6" />
                 </Link>
               )}
             </div>
@@ -119,7 +133,7 @@ export default function Header() {
               onClick={() => setOpenCart((v) => !v)}
               aria-label="Ouvrir le panier"
             >
-              <ShoppingCart className="w-6 h-6 text-gray-800" />
+              <ShoppingCart className="w-6 h-6 text-emerald-800" />
               {cart.length > 0 && (
                 <span className="absolute -top-1 -right-1 rounded-full bg-emerald-600 w-5 h-5 flex items-center justify-center text-xs text-white">
                   {cart.length}
@@ -135,15 +149,15 @@ export default function Header() {
                 <Link
                   href="/account"
                   aria-label="Se connecter"
-                  className="p-2 block"
+                  className="p-2 block text-emerald-800"
                 >
-                  <LogIn className="w-6 h-6 text-gray-800" />
+                  <LogIn className="w-6 h-6" />
                 </Link>
               )}
             </div>
 
             {/* Bouton menu hamburger */}
-            <button 
+            <button
               className="p-2" 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Ouvrir le menu"
@@ -161,21 +175,35 @@ export default function Header() {
           <nav className="px-4 py-3 space-y-3">
             <Link
               href="/"
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
+              className="block px-3 py-2 text-gray-700 hover:bg-emerald-50 rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
               Accueil
             </Link>
             <Link
-              href="/shop"
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-50 rounded-md"
+              href="/#bienfaits"
+              className="block px-3 py-2 text-gray-700 hover:bg-emerald-50 rounded-md"
               onClick={() => setIsMenuOpen(false)}
             >
-              Boutique
+              Bienfaits
+            </Link>
+            <Link
+              href="/#histoire"
+              className="block px-3 py-2 text-gray-700 hover:bg-emerald-50 rounded-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Notre histoire
+            </Link>
+            <Link
+              href="/#rituel"
+              className="block px-3 py-2 text-gray-700 hover:bg-emerald-50 rounded-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Rituel
             </Link>
             <Link
               href="/#contact"
-              className="block px-3 py-2 text-emerald-600 hover:bg-gray-50 rounded-md font-medium"
+              className="block px-3 py-2 text-emerald-700 hover:bg-emerald-50 rounded-md font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact

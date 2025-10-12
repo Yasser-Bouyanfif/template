@@ -1,107 +1,105 @@
 "use client";
 
-import { Droplets, Package, Award, Clock } from "lucide-react";
+import { Droplets, HeartPulse, Lotus, Sparkles } from "lucide-react";
 
 export default function Advantages() {
   return (
-    <section id="benefits" className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white">
+    <section id="bienfaits" className="py-24 bg-gradient-to-b from-emerald-50 via-white to-emerald-50/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Pourquoi choisir notre Rose de Jéricho ?
+        <div className="text-center max-w-3xl mx-auto">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-500">Bienfaits naturels</p>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-emerald-950">
+            Une alliée précieuse pour l&apos;équilibre du corps et de l&apos;esprit
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Qualité premium et service exceptionnel
+          <p className="mt-4 text-lg text-emerald-900/80">
+            Les roses de Jéricho ChajaratMariam sont choyées pour préserver leurs actifs. Utilisées en infusion, en rituel
+            énergétique ou simplement comme objet sacré, elles offrent un soutien holistique au quotidien.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="text-center group">
-            <div className="w-20 h-20 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-amber-200 group-hover:to-orange-200 transition-all shadow-md">
-              <Droplets className="w-10 h-10 text-amber-600" />
+        <div className="mt-16 grid gap-8 sm:grid-cols-2">
+          <div className="rounded-3xl border border-emerald-100 bg-white/80 p-8 shadow-lg backdrop-blur">
+            <div className="flex items-center gap-4">
+              <Sparkles className="h-12 w-12 text-emerald-500" />
+              <div>
+                <h3 className="text-xl font-semibold text-emerald-900">Régulation hormonale</h3>
+                <p className="mt-1 text-sm text-emerald-900/70">Un soutien doux pour retrouver un rythme naturel.</p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
-              100% Naturelle
-            </h3>
-            <p className="text-slate-600 leading-relaxed">
-              Plantes authentiques récoltées et préservées naturellement, sans produits chimiques.
+            <p className="mt-6 text-base text-emerald-900/80 leading-relaxed">
+              Aide à équilibrer les cycles féminins et à apaiser les inconforts menstruels. Les infusions de rose de Jéricho
+              sont traditionnellement utilisées pour revitaliser le corps après la grossesse ou lors de périodes de fatigue.
             </p>
           </div>
 
-          <div className="text-center group">
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-orange-200 group-hover:to-rose-200 transition-all shadow-md">
-              <Package className="w-10 h-10 text-orange-600" />
+          <div className="rounded-3xl border border-emerald-100 bg-white/80 p-8 shadow-lg backdrop-blur">
+            <div className="flex items-center gap-4">
+              <HeartPulse className="h-12 w-12 text-emerald-500" />
+              <div>
+                <h3 className="text-xl font-semibold text-emerald-900">Renforcement de la fertilité</h3>
+                <p className="mt-1 text-sm text-emerald-900/70">Ancrage, douceur et ouverture à la création.</p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
-              Emballage Soigné
-            </h3>
-            <p className="text-slate-600 leading-relaxed">
-              Chaque rose est emballée avec soin pour garantir son arrivée en parfait état.
+            <p className="mt-6 text-base text-emerald-900/80 leading-relaxed">
+              Notre rose de Jéricho accompagne les femmes et les couples dans leurs démarches de conception. Son rituel invite
+              à l&apos;apaisement du système nerveux et à la confiance, éléments essentiels pour accueillir la vie.
             </p>
           </div>
 
-          <div className="text-center group">
-            <div className="w-20 h-20 bg-gradient-to-br from-rose-100 to-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-rose-200 group-hover:to-amber-200 transition-all shadow-md">
-              <Award className="w-10 h-10 text-rose-600" />
+          <div className="rounded-3xl border border-emerald-100 bg-white/80 p-8 shadow-lg backdrop-blur">
+            <div className="flex items-center gap-4">
+              <Droplets className="h-12 w-12 text-emerald-500" />
+              <div>
+                <h3 className="text-xl font-semibold text-emerald-900">Purification énergétique</h3>
+                <p className="mt-1 text-sm text-emerald-900/70">Une eau chargée de lumière pour la maison et le corps.</p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
-              Qualité Certifiée
-            </h3>
-            <p className="text-slate-600 leading-relaxed">
-              Sélection rigoureuse et contrôle qualité pour vous garantir les meilleures roses.
+            <p className="mt-6 text-base text-emerald-900/80 leading-relaxed">
+              L&apos;eau de renaissance libérée par la rose est utilisée pour nettoyer les espaces, bénir un nouveau départ ou
+              accompagner un rituel spirituel. Elle peut également être pulvérisée sur le visage pour un effet tonifiant.
             </p>
           </div>
 
-          <div className="text-center group">
-            <div className="w-20 h-20 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-amber-200 group-hover:to-orange-200 transition-all shadow-md">
-              <Clock className="w-10 h-10 text-amber-700" />
+          <div className="rounded-3xl border border-emerald-100 bg-white/80 p-8 shadow-lg backdrop-blur">
+            <div className="flex items-center gap-4">
+              <Lotus className="h-12 w-12 text-emerald-500" />
+              <div>
+                <h3 className="text-xl font-semibold text-emerald-900">Harmonie intérieure</h3>
+                <p className="mt-1 text-sm text-emerald-900/70">Un compagnon sacré pour vos pratiques méditatives.</p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
-              Livraison Rapide
-            </h3>
-            <p className="text-slate-600 leading-relaxed">
-              Expédition sous 24h pour que vous receviez votre rose dans les meilleurs délais.
+            <p className="mt-6 text-base text-emerald-900/80 leading-relaxed">
+              Placez votre rose dans votre espace sacré pour renforcer vos affirmations, vos prières ou vos séances de yoga.
+              Elle symbolise la résilience et rappelle que chaque fermeture prépare une renaissance.
             </p>
           </div>
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-amber-50 via-orange-50 to-rose-50 rounded-3xl p-8 md:p-12 shadow-lg">
-          <div className="text-center max-w-3xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-              Comment utiliser votre Rose de Jéricho ?
-            </h3>
-            <div className="space-y-4 text-left">
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
-                  1
-                </div>
-                <p className="text-slate-700 leading-relaxed">
-                  <strong>Placez</strong> la rose dans un récipient peu profond avec de l&apos;eau à température ambiante.
+        <div id="rituel" className="mt-20 rounded-[32px] bg-gradient-to-br from-emerald-700 via-emerald-600 to-lime-500 p-[1px]">
+          <div className="rounded-[30px] bg-white/95 px-6 py-12 sm:px-12">
+            <div className="grid lg:grid-cols-[1fr_0.9fr] gap-12 items-center">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-500">Rituel guidé</p>
+                <h3 className="mt-4 text-3xl font-bold text-emerald-950">Quatre étapes pour réveiller votre rose</h3>
+                <p className="mt-4 text-base text-emerald-900/80">
+                  Recevez un kit complet et suivez ces étapes simples pour assister à la métamorphose de votre rose de Jéricho.
+                  Chaque coffret inclut un QR code vers notre vidéo immersive.
                 </p>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
-                  2
-                </div>
-                <p className="text-slate-700 leading-relaxed">
-                  <strong>Observez</strong> la magie opérer : en 3 à 4 heures, la rose s&apos;ouvre et revit.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
-                  3
-                </div>
-                <p className="text-slate-700 leading-relaxed">
-                  <strong>Changez</strong> l&apos;eau tous les 2-3 jours. La rose peut rester vivante plusieurs semaines.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-amber-700 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
-                  4
-                </div>
-                <p className="text-slate-700 leading-relaxed">
-                  <strong>Laissez sécher</strong> complètement pour la ranger et réutilisez-la à l&apos;infini !
-                </p>
+              <div className="grid gap-6">
+                {["Purifiez votre bol et placez-y la rose en spirale.", "Versez de l'eau tiède jusqu'à recouvrir la base.", "Déposez votre intention et laissez la rose s'ouvrir.", "Changez l'eau tous les deux jours, puis laissez sécher pour recommencer."].map(
+                  (step, index) => (
+                    <div
+                      key={step}
+                      className="flex gap-4 rounded-2xl border border-emerald-100 bg-emerald-50/70 px-4 py-5 text-emerald-900/80"
+                    >
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg font-semibold text-emerald-600 shadow">
+                        {index + 1}
+                      </span>
+                      <p className="leading-relaxed">{step}</p>
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           </div>
