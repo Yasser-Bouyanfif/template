@@ -1,203 +1,91 @@
 "use client";
 
-import "react-multi-carousel/lib/styles.css";
-import Carousel from "react-multi-carousel";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { CheckCircle2, Gift, ShieldCheck } from "lucide-react";
 
-import { SERVER_URL } from "@/app/lib/constants";
-import { ensureImageUrl, getBannerImageSource } from "@/app/lib/images";
-import type { BannerImage } from "@/app/lib/images";
-
-const responsive = {
-  desktop: { breakpoint: { max: 3000, min: 1324 }, items: 3, slidesToSlide: 1 },
-  tablet: { breakpoint: { max: 1324, min: 764 }, items: 2, slidesToSlide: 1 },
-  mobile: { breakpoint: { max: 764, min: 0 }, items: 1, slidesToSlide: 1 },
-};
-
-type BannerImageWithFormats = BannerImage & {
-  formats?: Record<string, { url?: string | null } | undefined> | null;
-};
-
-type ProductAttributes = {
-  id?: number | string;
-  title?: string;
-  price?: number;
-  description?: string;
-  banner?: BannerImageWithFormats[] | BannerImageWithFormats | null;
-};
-
-type Product = ProductAttributes & {
-  attributes?: ProductAttributes | null;
-};
-
-function resolveProductImage(product: Product) {
-  const { src, alt, isFallback } = getBannerImageSource(product);
-  const imageSrc = isFallback ? src : ensureImageUrl(src, SERVER_URL);
-  return { src: imageSrc, alt };
-}
-
-function Arrow({
-  onClick,
-  direction,
-}: {
-  onClick?: () => void;
-  direction: "left" | "right";
-}) {
-  const common =
-    "absolute top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/90 hover:bg-black transition-colors flex items-center justify-center shadow-sm";
-  const side = direction === "left" ? "left-3" : "right-3";
+export default function ProductSection() {
   return (
-    <button
-      aria-label={direction === "left" ? "Précédent" : "Suivant"}
-      onClick={onClick}
-      className={`${common} ${side}`}
-    >
-      {direction === "left" ? (
-        <ChevronLeft className="w-5 h-5 text-white" />
-      ) : (
-        <ChevronRight className="w-5 h-5 text-white" />
-      )}
-    </button>
-  );
-}
-
-export default function ProductCarouselSimple() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let alive = true;
-    const controller = new AbortController();
-
-    const loadProducts = async () => {
-      try {
-        const response = await fetch("/api/products", {
-          headers: { "Content-Type": "application/json" },
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error(`Statut ${response.status}`);
-        }
-
-        const payload: { data?: unknown } = await response.json();
-        if (!alive) return;
-
-        const data = Array.isArray(payload?.data)
-          ? payload.data
-          : payload?.data
-            ? [payload.data]
-            : [];
-
-        setProducts(data as Product[]);
-      } catch (error) {
-        if (!alive || (error as Error).name === "AbortError") {
-          return;
-        }
-        console.error("Erreur lors du chargement des produits", error);
-        setProducts([]);
-      } finally {
-        if (alive) {
-          setLoading(false);
-        }
-      }
-    };
-
-    loadProducts();
-
-    return () => {
-      alive = false;
-      controller.abort();
-    };
-  }, []);
-
-  return (
-    <section className="py-12 bg-white">
+    <section className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-slate-800 mb-2">
-            Nos solutions recommandées
-          </h2>
-          <p className="text-slate-600">
-            Découvrez notre sélection de bornes adaptées à tous vos besoins.
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 items-center">
+          <div className="relative order-2 lg:order-1">
+            <div className="absolute -top-6 -left-6 h-32 w-32 rounded-full bg-emerald-100 blur-3xl" aria-hidden />
+            <div className="absolute -bottom-10 -right-10 h-48 w-48 rounded-full bg-amber-100 blur-3xl" aria-hidden />
+            <div className="relative rounded-3xl border border-emerald-100 bg-gradient-to-br from-white via-emerald-50/70 to-white p-10 shadow-xl">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-500">Coffret Signature</p>
+                <ShieldCheck className="h-8 w-8 text-emerald-500" />
+              </div>
+              <h3 className="mt-4 text-3xl font-bold text-emerald-950">Rose de Jéricho Premium</h3>
+              <p className="mt-3 text-base text-emerald-900/80">
+                Une rose sélectionnée pour sa taille généreuse et sa capacité à s&apos;ouvrir parfaitement. Présentée dans un sachet
+                en kraft recyclable accompagné d&apos;un guide illustré.
+              </p>
 
-        <div className="relative">
-          {loading ? (
-            <p className="py-10 text-center text-slate-500">Chargement…</p>
-          ) : products.length === 0 ? (
-            <p className="py-10 text-center text-slate-500">
-              Aucun produit disponible pour le moment.
+              <div className="mt-8 grid gap-4 text-sm text-emerald-900/80">
+                {["Rose de Jéricho séchée naturellement", "Bol rituel en terre cuite vernissée", "Eau de rose artisanale 30 ml", "Carte d'intention dorée à chaud"].map(
+                  (item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-emerald-500" />
+                      <p>{item}</p>
+                    </div>
+                  ),
+                )}
+              </div>
+
+              <div className="relative mt-10 h-64 w-full overflow-hidden rounded-2xl bg-emerald-900/5">
+                <Image
+                  src="/logo.png"
+                  alt="Coffret Rose de Jéricho ChajaratMariam"
+                  fill
+                  className="object-contain p-12"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-500">Offre du moment</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-emerald-950">
+              Un coffret complet pour célébrer la renaissance
+            </h2>
+            <p className="mt-6 text-lg text-emerald-900/80 leading-relaxed">
+              Chaque coffret ChajaratMariam est préparé à la commande dans notre atelier français. Nous emballons votre rose avec
+              des fibres naturelles et ajoutons un pochon de sable du désert pour stabiliser la plante pendant son rituel.
             </p>
-          ) : (
-            <Carousel
-              responsive={responsive}
-              infinite
-              autoPlay
-              autoPlaySpeed={5000}
-              keyBoardControl
-              customLeftArrow={<Arrow direction="left" />}
-              customRightArrow={<Arrow direction="right" />}
-              containerClass="pb-6"
-              itemClass="px-6"
-              draggable
-            >
-              {products.map((product, index) => {
-                const attributes = product.attributes ?? product;
-                const title = attributes?.title || "Produit";
-                const description =
-                  attributes?.description || "Description non disponible";
-                const price =
-                  typeof attributes?.price === "number"
-                    ? `${attributes.price} €`
-                    : "Prix non défini";
-                const { src: imageSrc, alt: imageAlt } = resolveProductImage(product);
-                const key = attributes?.id ?? product.id ?? index;
 
-                return (
-                  <div key={String(key)} className="m-0 h-full min-h-[560px] flex flex-col">
-                    <div className="relative h-[400px]">
-                      <Image
-                        src={imageSrc}
-                        alt={imageAlt}
-                        fill
-                        unoptimized
-                        sizes="(max-width: 1324px) 90vw, 20vw"
-                        className="object-cover rounded-xl"
-                      />
-                    </div>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-6">
+                <Gift className="h-8 w-8 text-emerald-500" />
+                <p className="mt-3 text-base font-semibold text-emerald-900">Idée cadeau chargée de sens</p>
+                <p className="mt-2 text-sm text-emerald-900/70">
+                  Livré avec un mot personnalisé et un ruban en coton biologique. Parfait pour une naissance, un mariage ou un nouveau départ.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-6">
+                <ShieldCheck className="h-8 w-8 text-emerald-500" />
+                <p className="mt-3 text-base font-semibold text-emerald-900">Satisfaction garantie</p>
+                <p className="mt-2 text-sm text-emerald-900/70">
+                  Si votre rose ne s&apos;ouvre pas totalement, nous vous renvoyons une nouvelle plante sans frais supplémentaires.
+                </p>
+              </div>
+            </div>
 
-                    {price && (
-                      <p className="text-base md:text-lg font-semibold text-slate-900 mt-4">
-                        {price} <span className="text-xs text-slate-500">TTC</span>
-                      </p>
-                    )}
-                    <h3 className="text-slate-800 font-medium md:font-semibold text-[15px] md:text-base">
-                      {title}
-                    </h3>
-                    {description && (
-                      <p className="text-sm text-slate-500 mt-1 line-clamp-2">{description}</p>
-                    )}
-
-                    {/* Bouton DaisyUI */}
-                    <div className="mt-auto pt-3">
-                      <Link
-                        href={`/product/${product.id}`}
-                        className="btn btn-soft md:btn-md"
-                        aria-label={`Voir le produit ${title}`}
-                      >
-                        Voir le produit
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
-            </Carousel>
-          )}
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <div className="text-emerald-900">
+                <p className="text-sm uppercase tracking-[0.35em] text-emerald-500">Lancement</p>
+                <p className="text-4xl font-bold">39€</p>
+                <p className="text-sm text-emerald-900/70">Livraison offerte dès 2 coffrets</p>
+              </div>
+              <Link
+                href="/shop"
+                className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-emerald-200 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700"
+              >
+                Ajouter au panier
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

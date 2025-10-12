@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { useState } from "react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -121,78 +121,81 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-white via-amber-50/20 to-white">
+    <section id="contact" className="py-24 bg-gradient-to-b from-emerald-50/40 via-white to-emerald-50/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Contactez-nous
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-500">Nous écrire</p>
+          <h2 className="mt-4 text-3xl md:text-4xl font-bold text-emerald-950">
+            Parlons de votre rituel avec la Rose de Jéricho
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Une question ? Besoin d&apos;informations ? Notre équipe est là pour vous aider.
+          <p className="mt-4 text-lg text-emerald-900/80">
+            Notre équipe ChajaratMariam vous conseille pour choisir votre coffret, comprendre le rituel ou préparer un cadeau
+            chargé de sens.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">
-              Restons en contact
-            </h3>
-            <p className="text-slate-600 mb-8 leading-relaxed">
-              Nous sommes à votre écoute pour toute question concernant nos Roses de Jéricho,
-              les commandes, la livraison ou l&apos;utilisation de nos produits.
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div className="rounded-3xl border border-emerald-100 bg-white/90 p-10 shadow-xl">
+            <h3 className="text-2xl font-bold text-emerald-950">Restons en lien</h3>
+            <p className="mt-4 text-base leading-relaxed text-emerald-900/80">
+              Nous répondons à vos questions sur la préparation de la rose, le suivi des commandes ou l&apos;organisation d&apos;ateliers
+              collectifs.
             </p>
 
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-amber-600" />
+            <div className="mt-8 space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
+                  <Phone className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900 mb-1">Téléphone</p>
-                  <a
-                    href="tel:+33123456789"
-                    className="text-slate-600 hover:text-amber-600 transition-colors"
-                  >
-                    +33 1 23 45 67 89
+                  <p className="font-semibold text-emerald-900">Téléphone</p>
+                  <a href="tel:+33612345678" className="text-emerald-900/70 transition-colors hover:text-emerald-700">
+                    +33 6 12 34 56 78
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Lun - Ven : 9h - 18h</p>
+                  <p className="text-sm text-emerald-900/60">Du lundi au vendredi, 9h – 18h</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-rose-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail className="w-6 h-6 text-orange-600" />
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
+                  <Mail className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900 mb-1">Email</p>
+                  <p className="font-semibold text-emerald-900">Email</p>
                   <a
-                    href="mailto:contact@rosedejericho.fr"
-                    className="text-slate-600 hover:text-amber-600 transition-colors"
+                    href="mailto:bonjour@chajaratmariam.com"
+                    className="text-emerald-900/70 transition-colors hover:text-emerald-700"
                   >
-                    contact@rosedejericho.fr
+                    bonjour@chajaratmariam.com
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">Réponse sous 24h</p>
+                  <p className="text-sm text-emerald-900/60">Nous répondons sous 24h</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-rose-100 to-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-rose-600" />
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
+                  <MapPin className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900 mb-1">Adresse</p>
-                  <p className="text-slate-600">
-                    123 Rue de la Nature
+                  <p className="font-semibold text-emerald-900">Atelier</p>
+                  <p className="text-emerald-900/70">
+                    12 rue des Jardiniers
                     <br />
-                    75001 Paris, France
+                    75011 Paris, France
                   </p>
                 </div>
               </div>
             </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3 rounded-2xl border border-dashed border-emerald-200 bg-emerald-50/70 px-5 py-4 text-sm text-emerald-900/70">
+              <span className="rounded-full bg-white px-4 py-1 font-semibold text-emerald-600">WhatsApp disponible</span>
+              <span>Visio-rituel sur demande</span>
+              <span>Réponse sous 24h</span>
+            </div>
           </div>
 
-          <div className="rounded-2xl border-2 border-amber-100 bg-white p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Envoyez-nous un message</h3>
+          <div className="rounded-3xl border border-emerald-100 bg-white/95 p-10 shadow-xl">
+            <h3 className="mb-6 text-2xl font-bold text-emerald-950">Envoyez-nous un message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <input
@@ -204,16 +207,16 @@ export default function Contact() {
                   onChange={handleChange}
                   aria-invalid={Boolean(fieldErrors.name)}
                   aria-describedby={fieldErrors.name ? "name-error" : undefined}
-                  className="w-full rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-emerald-900 transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
                 />
                 {fieldErrors.name && (
-                  <p id="name-error" className="text-sm text-red-500 mt-2">
+                  <p id="name-error" className="mt-2 text-sm text-red-500">
                     {fieldErrors.name}
                   </p>
                 )}
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-5">
+              <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <input
                     type="email"
@@ -224,10 +227,10 @@ export default function Contact() {
                     onChange={handleChange}
                     aria-invalid={Boolean(fieldErrors.email)}
                     aria-describedby={fieldErrors.email ? "email-error" : undefined}
-                    className="w-full rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-emerald-900 transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
                   />
                   {fieldErrors.email && (
-                    <p id="email-error" className="text-sm text-red-500 mt-2">
+                    <p id="email-error" className="mt-2 text-sm text-red-500">
                       {fieldErrors.email}
                     </p>
                   )}
@@ -241,10 +244,10 @@ export default function Contact() {
                     onChange={handleChange}
                     aria-invalid={Boolean(fieldErrors.phone)}
                     aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
-                    className="w-full rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                    className="w-full rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-emerald-900 transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
                   />
                   {fieldErrors.phone && (
-                    <p id="phone-error" className="text-sm text-red-500 mt-2">
+                    <p id="phone-error" className="mt-2 text-sm text-red-500">
                       {fieldErrors.phone}
                     </p>
                   )}
@@ -261,10 +264,10 @@ export default function Contact() {
                   onChange={handleChange}
                   aria-invalid={Boolean(fieldErrors.message)}
                   aria-describedby={fieldErrors.message ? "message-error" : undefined}
-                  className="w-full resize-none rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  className="w-full resize-none rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-emerald-900 transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
                 ></textarea>
                 {fieldErrors.message && (
-                  <p id="message-error" className="text-sm text-red-500 mt-2">
+                  <p id="message-error" className="mt-2 text-sm text-red-500">
                     {fieldErrors.message}
                   </p>
                 )}
@@ -272,22 +275,20 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-600 to-orange-600 px-8 py-4 font-semibold text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-emerald-600 px-8 py-4 font-semibold text-white shadow-lg shadow-emerald-200 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
                 disabled={status === "loading"}
               >
                 <span>{status === "loading" ? "Envoi en cours..." : "Envoyer le message"}</span>
-                <Send className="w-5 h-5" />
+                <Send className="h-5 w-5" />
               </button>
 
               {status === "success" && (
-                <p className="text-sm text-emerald-600 text-center bg-emerald-50 rounded-lg p-3">
+                <p className="rounded-lg bg-emerald-50 p-3 text-center text-sm text-emerald-600">
                   Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.
                 </p>
               )}
               {status === "error" && (
-                <p className="text-sm text-red-600 text-center bg-red-50 rounded-lg p-3">
-                  {errorMessage}
-                </p>
+                <p className="rounded-lg bg-red-50 p-3 text-center text-sm text-red-600">{errorMessage}</p>
               )}
             </form>
           </div>

@@ -1,55 +1,60 @@
 "use client";
 
-import React from "react";
-import { Star, Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 const testimonials = [
   {
     id: 1,
-    name: "Marie Laurent",
-    location: "Paris",
+    name: "Lina",
+    location: "Casablanca",
     rating: 5,
-    comment: "Ma Rose de Jéricho est magnifique ! C'est incroyable de la voir revivre à chaque fois que je la mets dans l'eau. Un véritable spectacle de la nature. Je la recommande à tous !",
+    comment:
+      "Ce coffret est devenu mon rituel du dimanche. L'ouverture de la rose apaise mes douleurs menstruelles et je me sens ancrée pour la semaine. Merci pour le guide très clair !",
     date: "Il y a 2 semaines",
   },
   {
     id: 2,
-    name: "Thomas Dubois",
-    location: "Lyon",
+    name: "Sarah",
+    location: "Toulouse",
     rating: 5,
-    comment: "Livraison rapide et soignée. La rose était bien emballée et en parfait état. C'est un cadeau original qui fait toujours son effet. Merci !",
+    comment:
+      "J'ai offert une rose ChajaratMariam à ma sœur pour son mariage. L'équipe a ajouté un mot personnalisé sublime. Elle l'utilise pour bénir son foyer, c'est très émouvant.",
     date: "Il y a 1 mois",
   },
   {
     id: 3,
-    name: "Sophie Martin",
-    location: "Marseille",
+    name: "Inès",
+    location: "Bruxelles",
     rating: 5,
-    comment: "Je suis émerveillée par cette plante ! Elle apporte une énergie positive à ma maison. Le processus de résurrection est fascinant à observer. Produit de qualité !",
+    comment:
+      "Je pratique le yoga et la respiration consciente. Depuis que j'allume une bougie à côté de ma rose de Jéricho, mes séances sont plus profondes. L'énergie est incroyable.",
     date: "Il y a 3 semaines",
   },
   {
     id: 4,
-    name: "Lucas Bernard",
-    location: "Toulouse",
+    name: "Nora",
+    location: "Paris",
     rating: 5,
-    comment: "Excellente qualité et service client très réactif. Ma rose est déjà passée par plusieurs cycles et elle est toujours aussi belle. Un achat que je ne regrette pas !",
+    comment:
+      "Ma rose s'est ouverte en moins de quatre heures ! Les instructions audio accessibles via le QR code sont apaisantes. Je l'ai déjà recommandée à mes clientes.",
     date: "Il y a 1 semaine",
   },
   {
     id: 5,
-    name: "Emma Petit",
-    location: "Nantes",
+    name: "Amina",
+    location: "Marseille",
     rating: 5,
-    comment: "Un cadeau original et symbolique. La rose est arrivée rapidement et bien protégée. Je l'utilise pour mes rituels de méditation. Parfaite !",
+    comment:
+      "Le service client a été d'une douceur incroyable. Ma première rose n'avait pas bien repris et j'en ai reçu une nouvelle aussitôt. Depuis, je la fais revivre à chaque pleine lune.",
     date: "Il y a 2 mois",
   },
   {
     id: 6,
-    name: "Alexandre Roux",
-    location: "Bordeaux",
+    name: "Camille",
+    location: "Genève",
     rating: 5,
-    comment: "Produit authentique et de belle taille. Les instructions d'utilisation sont claires. C'est ma troisième commande, je les offre à mes proches !",
+    comment:
+      "Les cartes d'intention sont magnifiques. Je sens une vraie vibration lorsque la rose touche l'eau. C'est mon moment sacré du matin.",
     date: "Il y a 3 jours",
   },
 ];
@@ -57,10 +62,7 @@ const testimonials = [
 export default function Reviews() {
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }).map((_, i) => (
-      <Star
-        key={i}
-        className={`w-5 h-5 ${i < rating ? "text-amber-500 fill-amber-500" : "text-slate-300"}`}
-      />
+      <Star key={i} className={`h-5 w-5 ${i < rating ? "fill-emerald-500 text-emerald-500" : "text-emerald-100"}`} />
     ));
   };
 
@@ -69,71 +71,59 @@ export default function Reviews() {
   ).toFixed(1);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-amber-50/30 via-white to-amber-50/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-800 text-sm font-medium mb-4">
-            <Star className="w-4 h-4 fill-amber-600" />
-            <span>{averageRating} / 5 étoiles</span>
+    <section className="py-24 bg-gradient-to-b from-emerald-50 via-white to-emerald-50/40">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 text-sm font-medium text-emerald-700 shadow-sm">
+            <Star className="h-4 w-4 fill-emerald-500" />
+            <span>{averageRating} / 5 • communauté en éveil</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Ce que disent nos clients
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-emerald-950">
+            Elles témoignent de leur renaissance
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Plus de 500 clients satisfaits ont déjà adopté la Rose de Jéricho
+          <p className="mt-4 text-lg text-emerald-900/80">
+            Plus de 10 000 rituels guidés par ChajaratMariam. Nos roses accompagnent les femmes dans leurs moments forts : maternité,
+            célébrations, guérison intérieure.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <div
+            <article
               key={testimonial.id}
-              className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-amber-100/50 relative"
+              className="relative rounded-3xl border border-emerald-100 bg-white/90 p-8 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="absolute top-6 right-6 text-amber-200 opacity-50">
-                <Quote className="w-10 h-10" />
+              <div className="absolute top-6 right-6 text-emerald-100">
+                <Quote className="h-10 w-10" aria-hidden />
               </div>
-
               <div className="relative">
-                <div className="flex items-center gap-1 mb-4">
-                  {renderStars(testimonial.rating)}
-                </div>
-
-                <p className="text-slate-700 leading-relaxed mb-6 min-h-[120px]">
-                  {testimonial.comment}
-                </p>
-
-                <div className="flex items-center gap-3 pt-4 border-t border-amber-100">
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full flex items-center justify-center">
-                    <span className="text-xl font-bold text-amber-700">
-                      {testimonial.name.charAt(0)}
-                    </span>
+                <div className="mb-4 flex items-center gap-1">{renderStars(testimonial.rating)}</div>
+                <p className="min-h-[140px] text-base leading-relaxed text-emerald-900/80">{testimonial.comment}</p>
+                <div className="mt-6 flex items-center gap-3 border-t border-emerald-100 pt-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-100 via-emerald-50 to-white text-lg font-semibold text-emerald-700">
+                    {testimonial.name.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-semibold text-slate-900">{testimonial.name}</p>
-                    <p className="text-sm text-slate-500">
+                    <p className="font-semibold text-emerald-900">{testimonial.name}</p>
+                    <p className="text-sm text-emerald-900/60">
                       {testimonial.location} • {testimonial.date}
                     </p>
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 shadow-md border border-amber-200">
-            <div className="flex items-center gap-2">
-              <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
-              <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
-              <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
-              <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
-              <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
-            </div>
-            <p className="text-slate-700 font-medium">
-              <span className="font-bold text-slate-900">98% de satisfaction</span> sur plus de 500 commandes
-            </p>
+        <div className="mt-16 flex flex-col items-center justify-center gap-4 rounded-3xl border border-emerald-100 bg-white/80 px-8 py-10 text-center shadow-md">
+          <div className="flex items-center gap-1">
+            {Array.from({ length: 5 }).map((_, index) => (
+              <Star key={index} className="h-6 w-6 fill-emerald-500 text-emerald-500" />
+            ))}
           </div>
+          <p className="text-base font-medium text-emerald-900/80">
+            <span className="font-semibold text-emerald-900">98% de satisfaction</span> • accompagnement personnalisé et suivi après achat.
+          </p>
         </div>
       </div>
     </section>
