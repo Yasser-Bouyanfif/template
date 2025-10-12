@@ -69,7 +69,7 @@ export default function Reviews() {
   ).toFixed(1);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-amber-50/30 via-white to-amber-50/30">
+    <section className="bg-gradient-to-b from-white via-rose-50/50 to-amber-50/30 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-800 text-sm font-medium mb-4">
@@ -77,10 +77,11 @@ export default function Reviews() {
             <span>{averageRating} / 5 étoiles</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Ce que disent nos clients
+            Elles et ils témoignent de leur renaissance
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Plus de 500 clients satisfaits ont déjà adopté la Rose de Jéricho
+            Plus de 500 client·es ont adopté la Rose de Jéricho ChajaratMariam et partagent
+            leurs moments suspendus de douceur et de spiritualité.
           </p>
         </div>
 
@@ -88,7 +89,7 @@ export default function Reviews() {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-amber-100/50 relative"
+              className="relative rounded-3xl border border-amber-100/60 bg-white/80 p-8 shadow-lg shadow-amber-100/50 transition hover:-translate-y-1 hover:border-amber-200 hover:shadow-xl"
             >
               <div className="absolute top-6 right-6 text-amber-200 opacity-50">
                 <Quote className="w-10 h-10" />
@@ -99,13 +100,13 @@ export default function Reviews() {
                   {renderStars(testimonial.rating)}
                 </div>
 
-                <p className="text-slate-700 leading-relaxed mb-6 min-h-[120px]">
+                <p className="mb-6 min-h-[120px] text-base leading-relaxed text-slate-700">
                   {testimonial.comment}
                 </p>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-amber-100">
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full flex items-center justify-center">
-                    <span className="text-xl font-bold text-amber-700">
+                <div className="flex items-center gap-3 border-t border-amber-100 pt-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-rose-500 text-white">
+                    <span className="text-xl font-semibold">
                       {testimonial.name.charAt(0)}
                     </span>
                   </div>
@@ -122,8 +123,8 @@ export default function Reviews() {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 shadow-md border border-amber-200">
-            <div className="flex items-center gap-2">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 rounded-3xl border border-amber-200/60 bg-gradient-to-r from-amber-50 via-white to-rose-50 p-6 shadow-lg shadow-amber-100/50">
+            <div className="flex items-center gap-2 text-amber-500">
               <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
               <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
               <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
@@ -131,7 +132,7 @@ export default function Reviews() {
               <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
             </div>
             <p className="text-slate-700 font-medium">
-              <span className="font-bold text-slate-900">98% de satisfaction</span> sur plus de 500 commandes
+              <span className="font-bold text-slate-900">98% de satisfaction</span> sur plus de 500 commandes bénies
             </p>
           </div>
         </div>
