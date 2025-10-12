@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+  <defs>
+    <radialGradient id="bloom" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#ffd7e8" />
+      <stop offset="45%" stop-color="#f174a7" />
+      <stop offset="100%" stop-color="#7d0a58" />
+    </radialGradient>
+    <linearGradient id="petal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb8de" />
+      <stop offset="50%" stop-color="#f34fa0" />
+      <stop offset="100%" stop-color="#8c0d5d" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="480" rx="120" fill="#fff7fb" />
+  <g transform="translate(240 240)">
+    <circle r="160" fill="url(#bloom)" opacity="0.9" />
+    <g fill="none" stroke-linecap="round">
+      <path d="M0 -150 C60 -120 120 -40 110 40 C100 120 20 180 -50 150 C-120 120 -150 40 -110 -40 C-70 -120 -20 -180 0 -150 Z" stroke="url(#petal)" stroke-width="18" />
+      <path d="M-20 -140 C40 -120 100 -40 90 30 C80 100 30 150 -40 140 C-110 130 -140 40 -100 -40 C-60 -120 -20 -170 -20 -140 Z" stroke="url(#petal)" stroke-width="16" opacity="0.8" />
+      <path d="M40 -130 C90 -90 120 -10 90 60 C60 130 -10 180 -80 150 C-150 120 -170 30 -120 -50 C-70 -130 10 -170 40 -130 Z" stroke="url(#petal)" stroke-width="14" opacity="0.6" />
+      <path d="M-70 -110 C-10 -150 80 -150 120 -70 C160 10 110 120 40 170 C-30 220 -110 190 -150 120 C-190 50 -160 -40 -100 -90 C-40 -140 -110 -70 -70 -110 Z" stroke="url(#petal)" stroke-width="12" opacity="0.35" />
+    </g>
+    <circle r="42" fill="#8c0d5d" opacity="0.75" />
+    <circle r="22" fill="#fff5f9" />
+  </g>
+</svg>
