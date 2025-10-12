@@ -1,97 +1,77 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { Zap, Shield, Leaf, Users } from "lucide-react";
+import { Leaf, Heart, Sprout } from "lucide-react";
 
 export default function AboutUs() {
   return (
-    <section className="py-20 bg-white">
+    <section id="about" className="py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Titre */}
-        <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold text-slate-800">
-            Qui sommes-nous ?
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Qu&apos;est-ce que la Rose de Jéricho ?
           </h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Une plante millénaire aux vertus extraordinaires
+          </p>
         </div>
 
-        {/* Bloc texte + image */}
-        <div className="grid lg:grid-cols-2 gap-10 items-center mb-16">
-          {/* Texte à gauche */}
-          <div className="max-w-2xl">
-            <div className="space-y-5 text-lg text-slate-700 leading-relaxed">
-              <p>
-                <strong className="text-emerald-600">ELEC’CONNECT</strong> vous accompagne
-                pour l’installation fiable de bornes de recharge pour véhicules électriques garanties <b>2 ans</b>.
-                Nous concevons des solutions performantes, durables et réellement adaptées à vos usages.
-              </p>
-              <p>
-              Engagés pour la transition énergétique, nous facilitons une mobilité plus propre et accessible.
-              De l’audit à la maintenance, notre démarche certifiée, claire et transparente vous garantit un suivi sans surprise.
-              </p>
-            </div>
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="space-y-6">
+            <p className="text-slate-700 leading-relaxed text-lg">
+              La Rose de Jéricho, également connue sous le nom de <strong>Selaginella lepidophylla</strong>,
+              est une plante du désert originaire du Mexique et d&apos;Amérique centrale. Cette merveille
+              botanique possède une capacité unique : elle peut survivre sans eau pendant des années
+              en se desséchant complètement, puis revivre miraculeusement au contact de l&apos;eau.
+            </p>
+            <p className="text-slate-700 leading-relaxed text-lg">
+              Symbole puissant de résurrection, de renouveau et de renaissance, elle est utilisée
+              dans de nombreuses traditions spirituelles à travers le monde. On lui attribue des
+              propriétés de purification, d&apos;attraction de la prospérité et de protection du foyer.
+            </p>
           </div>
-
-          {/* Image à droite — sans card + hauteur réduite */}
-          <div className="relative w-full h-56 sm:h-64 lg:h-72">
-            <Image
-              src="/borne.png"
-              alt="Borne de recharge ELEC’CONNECT"
-              fill
-              sizes="(max-width: 1024px) 100vw, 600px"
-              className="object-contain"
-              priority
-            />
+          <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-100 via-orange-100 to-rose-100 flex items-center justify-center">
+              <div className="text-center p-8">
+                <Leaf className="w-24 h-24 text-amber-600 mx-auto mb-4" />
+                <p className="text-slate-600 font-medium">Rose de Jéricho</p>
+                <p className="text-sm text-slate-500">Plante de résurrection</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Icônes / valeurs */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="text-center group">
-            <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-200 transition-colors">
-              <Zap className="w-8 h-8 text-emerald-600" />
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+            <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center mb-4">
+              <Sprout className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-2">
-              Solutions diverses
-            </h3>
-            <p className="text-slate-600 text-sm">
-              Technologies de pointe pour une recharge optimale
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Résurrection</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Revient à la vie en quelques heures au contact de l&apos;eau, symbolisant
+              le renouveau et les nouveaux départs.
             </p>
           </div>
 
-          <div className="text-center group">
-            <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-200 transition-colors">
-              <Shield className="w-8 h-8 text-emerald-600" />
+          <div className="bg-gradient-to-br from-orange-50 to-rose-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+            <div className="w-14 h-14 bg-orange-600 rounded-full flex items-center justify-center mb-4">
+              <Heart className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-2">
-              Installation certifiée
-            </h3>
-            <p className="text-slate-600 text-sm">
-              Qualification <b>IRVE</b> et <b>QUALIFELEC</b>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Bien-être</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Apaise l&apos;esprit, purifie l&apos;énergie de votre maison et favorise
+              la paix intérieure et l&apos;harmonie.
             </p>
           </div>
 
-          <div className="text-center group">
-            <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-200 transition-colors">
-              <Leaf className="w-8 h-8 text-emerald-600" />
+          <div className="bg-gradient-to-br from-rose-50 to-amber-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+            <div className="w-14 h-14 bg-rose-600 rounded-full flex items-center justify-center mb-4">
+              <Leaf className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-2">
-              Engagement écologique
-            </h3>
-            <p className="text-slate-600 text-sm">
-              Pour un avenir plus propre et durable
-            </p>
-          </div>
-
-          <div className="text-center group">
-            <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-emerald-200 transition-colors">
-              <Users className="w-8 h-8 text-emerald-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-2">
-              Accompagnement personnalisé
-            </h3>
-            <p className="text-slate-600 text-sm">
-              Solutions adaptées à vos besoins spécifiques
+            <h3 className="text-xl font-bold text-slate-900 mb-3">Prospérité</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Tradition ancestrale d&apos;attraction de l&apos;abondance, de la chance
+              et de la protection du foyer.
             </p>
           </div>
         </div>

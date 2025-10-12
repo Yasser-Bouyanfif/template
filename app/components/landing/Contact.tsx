@@ -1,54 +1,55 @@
-"use client"
-import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send } from 'lucide-react';
-import { z } from 'zod';
+"use client";
+
+import React, { useState } from "react";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { z } from "zod";
 
 const contactSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(2, 'Le nom doit contenir au moins 2 caractères.')
-    .max(100, 'Le nom est trop long.'),
+    .min(2, "Le nom doit contenir au moins 2 caractères.")
+    .max(100, "Le nom est trop long."),
   email: z
     .string()
     .trim()
-    .min(1, "L’adresse e-mail est obligatoire.")
-    .email('Adresse e-mail invalide.')
-    .max(320, "L’adresse e-mail est trop longue."),
+    .min(1, "L'adresse e-mail est obligatoire.")
+    .email("Adresse e-mail invalide.")
+    .max(320, "L'adresse e-mail est trop longue."),
   phone: z
     .string()
     .optional()
-    .transform((value) => (value ?? '').trim())
+    .transform((value) => (value ?? "").trim())
     .refine(
       (value) =>
         value.length === 0 || /^(?:\+33|0)[1-9](?:[ .-]?\d{2}){4}$/.test(value),
-      'Le numéro de téléphone doit être un numéro français valide.'
+      "Le numéro de téléphone doit être un numéro français valide."
     )
-    .refine((value) => value.length <= 30, 'Le numéro de téléphone est trop long.'),
+    .refine((value) => value.length <= 30, "Le numéro de téléphone est trop long."),
   message: z
     .string()
     .trim()
-    .min(10, 'Le message doit contenir au moins 10 caractères.')
-    .max(2000, 'Le message est trop long.'),
+    .min(10, "Le message doit contenir au moins 10 caractères.")
+    .max(2000, "Le message est trop long."),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-    setErrorMessage('');
+    setStatus("loading");
+    setErrorMessage("");
 
     const validation = contactSchema.safeParse(formData);
     if (!validation.success) {
@@ -60,7 +61,7 @@ export default function Contact() {
         }
       });
       setFieldErrors(errors);
-      setStatus('error');
+      setStatus("error");
       setErrorMessage("Veuillez corriger les erreurs du formulaire.");
       return;
     }
@@ -69,10 +70,10 @@ export default function Contact() {
     setFieldErrors({});
 
     try {
-      const response = await fetch('/api/resend/contact', {
-        method: 'POST',
+      const response = await fetch("/api/resend/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           fullName: sanitizedData.name,
@@ -85,20 +86,20 @@ export default function Contact() {
       if (!response.ok) {
         const errorBody = await response.json().catch(() => ({}));
         setErrorMessage(
-          typeof errorBody?.error === 'string'
+          typeof errorBody?.error === "string"
             ? errorBody.error
-            : "Une erreur est survenue lors de l’envoi du message."
+            : "Une erreur est survenue lors de l'envoi du message."
         );
-        setStatus('error');
+        setStatus("error");
         return;
       }
 
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      setStatus('success');
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setStatus("success");
     } catch (error) {
-      console.error('Erreur lors de la soumission du formulaire de contact', error);
-      setErrorMessage("Impossible d’envoyer votre demande pour le moment. Veuillez réessayer plus tard.");
-      setStatus('error');
+      console.error("Erreur lors de la soumission du formulaire de contact", error);
+      setErrorMessage("Impossible d'envoyer votre demande pour le moment. Veuillez réessayer plus tard.");
+      setStatus("error");
     }
   };
 
@@ -108,9 +109,9 @@ export default function Contact() {
       ...formData,
       [name]: value,
     });
-    if (status !== 'idle') {
-      setStatus('idle');
-      setErrorMessage('');
+    if (status !== "idle") {
+      setStatus("idle");
+      setErrorMessage("");
     }
     if (name in fieldErrors) {
       const nextErrors = { ...fieldErrors };
@@ -120,150 +121,171 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-slate-50 via-white to-slate-100">
+    <section id="contact" className="py-20 bg-gradient-to-b from-white via-amber-50/20 to-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Contactez-nous
+          </h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Une question ? Besoin d&apos;informations ? Notre équipe est là pour vous aider.
+          </p>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
           <div>
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">
-              Contactez-nous
-            </h2>
-            <p className="text-slate-600 mb-8">
-              Obtenez votre devis gratuit sous 8h pour votre projet d’installation.
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">
+              Restons en contact
+            </h3>
+            <p className="text-slate-600 mb-8 leading-relaxed">
+              Nous sommes à votre écoute pour toute question concernant nos Roses de Jéricho,
+              les commandes, la livraison ou l&apos;utilisation de nos produits.
             </p>
 
-            <div className="space-y-4">
-              {/* Téléphone */}
-              <div className="flex items-start space-x-3">
-                <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-emerald-600" />
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-amber-600" />
                 </div>
                 <div>
-                  <a href="tel:+33698657780" className="block font-medium text-slate-800 hover:text-emerald-600 transition-colors">
-                    +33 6 98 65 77 80
+                  <p className="font-semibold text-slate-900 mb-1">Téléphone</p>
+                  <a
+                    href="tel:+33123456789"
+                    className="text-slate-600 hover:text-amber-600 transition-colors"
+                  >
+                    +33 1 23 45 67 89
                   </a>
-                  <a href="tel:+33422918291" className="block font-medium text-slate-800 hover:text-emerald-600 transition-colors">
-                    +33 4 22 91 82 91
-                  </a>
-                  <div className="text-sm font-bold text-emerald-500 animate-[heartbeat_2s_ease-in-out_infinite]">
-                    24/24
-                  </div>
+                  <p className="text-sm text-slate-500 mt-1">Lun - Ven : 9h - 18h</p>
                 </div>
               </div>
 
-              {/* Email */}
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-emerald-600" />
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-rose-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-orange-600" />
                 </div>
                 <div>
-                  <a href="mailto:contact@elecconnect.fr" className="block font-medium text-slate-800 hover:text-emerald-600 transition-colors">
-                    contact@elecconnect.fr
+                  <p className="font-semibold text-slate-900 mb-1">Email</p>
+                  <a
+                    href="mailto:contact@rosedejericho.fr"
+                    className="text-slate-600 hover:text-amber-600 transition-colors"
+                  >
+                    contact@rosedejericho.fr
                   </a>
-                  <div className="text-sm text-slate-500">Réponse sous 8h</div>
+                  <p className="text-sm text-slate-500 mt-1">Réponse sous 24h</p>
                 </div>
               </div>
 
-              {/* Localisation */}
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-emerald-600" />
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-rose-100 to-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-rose-600" />
                 </div>
                 <div>
-                  <div className="font-medium text-slate-800">Provence-Alpes-Côte d’Azur</div>
-                  <div className="font-medium text-slate-800 mt-1">Île-de-France</div>
-                  <div className="text-sm text-slate-500">Zones d’intervention</div>
+                  <p className="font-semibold text-slate-900 mb-1">Adresse</p>
+                  <p className="text-slate-600">
+                    123 Rue de la Nature
+                    <br />
+                    75001 Paris, France
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="rounded-2xl border border-emerald-100/70 bg-white/95 p-6 shadow-xl shadow-emerald-100/60">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
+          <div className="rounded-2xl border-2 border-amber-100 bg-white p-8 shadow-xl">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Envoyez-nous un message</h3>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
                 <input
                   type="text"
                   name="name"
-                  placeholder="Nom complet"
+                  placeholder="Nom complet *"
                   required
                   value={formData.name}
                   onChange={handleChange}
                   aria-invalid={Boolean(fieldErrors.name)}
-                  aria-describedby={fieldErrors.name ? 'name-error' : undefined}
-                  className="w-full rounded-lg border border-emerald-100/60 bg-white/95 px-4 py-3 text-slate-800 shadow-sm transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  aria-describedby={fieldErrors.name ? "name-error" : undefined}
+                  className="w-full rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
                 />
                 {fieldErrors.name && (
-                  <p id="name-error" className="text-sm text-red-500 mt-1 sm:col-span-2">
+                  <p id="name-error" className="text-sm text-red-500 mt-2">
                     {fieldErrors.name}
-                  </p>
-                )}
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Téléphone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  aria-invalid={Boolean(fieldErrors.phone)}
-                  aria-describedby={fieldErrors.phone ? 'phone-error' : undefined}
-                  className="w-full rounded-lg border border-emerald-100/60 bg-white/95 px-4 py-3 text-slate-800 shadow-sm transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                />
-                {fieldErrors.phone && (
-                  <p id="phone-error" className="text-sm text-red-500 mt-1 sm:col-span-2">
-                    {fieldErrors.phone}
                   </p>
                 )}
               </div>
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                aria-invalid={Boolean(fieldErrors.email)}
-                aria-describedby={fieldErrors.email ? 'email-error' : undefined}
-                className="w-full rounded-lg border border-emerald-100/60 bg-white/95 px-4 py-3 text-slate-800 shadow-sm transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-              />
-              {fieldErrors.email && (
-                <p id="email-error" className="text-sm text-red-500 mt-1">
-                  {fieldErrors.email}
-                </p>
-              )}
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email *"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(fieldErrors.email)}
+                    aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                    className="w-full rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                  {fieldErrors.email && (
+                    <p id="email-error" className="text-sm text-red-500 mt-2">
+                      {fieldErrors.email}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Téléphone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(fieldErrors.phone)}
+                    aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
+                    className="w-full rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                  {fieldErrors.phone && (
+                    <p id="phone-error" className="text-sm text-red-500 mt-2">
+                      {fieldErrors.phone}
+                    </p>
+                  )}
+                </div>
+              </div>
 
-              <textarea
-                name="message"
-                placeholder="Décrivez votre projet..."
-                required
-                rows={4}
-                value={formData.message}
-                onChange={handleChange}
-                aria-invalid={Boolean(fieldErrors.message)}
-                aria-describedby={fieldErrors.message ? 'message-error' : undefined}
-                className="w-full resize-none rounded-lg border border-emerald-100/60 bg-white/95 px-4 py-3 text-slate-800 shadow-sm transition focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
-              ></textarea>
-              {fieldErrors.message && (
-                <p id="message-error" className="text-sm text-red-500 mt-1">
-                  {fieldErrors.message}
-                </p>
-              )}
+              <div>
+                <textarea
+                  name="message"
+                  placeholder="Votre message *"
+                  required
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  aria-invalid={Boolean(fieldErrors.message)}
+                  aria-describedby={fieldErrors.message ? "message-error" : undefined}
+                  className="w-full resize-none rounded-xl border-2 border-amber-100 bg-white px-4 py-3 text-slate-800 transition focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-400"
+                ></textarea>
+                {fieldErrors.message && (
+                  <p id="message-error" className="text-sm text-red-500 mt-2">
+                    {fieldErrors.message}
+                  </p>
+                )}
+              </div>
 
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 via-emerald-500 to-emerald-600 px-6 py-3 font-semibold text-white shadow-lg shadow-emerald-500/40 transition hover:from-emerald-500 hover:to-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
-                disabled={status === 'loading'}
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-600 to-orange-600 px-8 py-4 font-semibold text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+                disabled={status === "loading"}
               >
-                <span>{status === 'loading' ? 'Envoi en cours...' : 'Envoyer ma demande'}</span>
-                <Send className="w-4 h-4" />
+                <span>{status === "loading" ? "Envoi en cours..." : "Envoyer le message"}</span>
+                <Send className="w-5 h-5" />
               </button>
-              {status === 'success' && (
-                <p className="text-sm text-emerald-600 text-center">
-                  Votre message a bien été envoyé. Nous vous répondrons sous 8h.
+
+              {status === "success" && (
+                <p className="text-sm text-emerald-600 text-center bg-emerald-50 rounded-lg p-3">
+                  Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.
                 </p>
               )}
-              {status === 'error' && (
-                <p className="text-sm text-red-500 text-center">
+              {status === "error" && (
+                <p className="text-sm text-red-600 text-center bg-red-50 rounded-lg p-3">
                   {errorMessage}
                 </p>
               )}
@@ -271,16 +293,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-      {/* Animation heartbeat */}
-      <style jsx>{`
-        @keyframes heartbeat {
-          0%, 100% { transform: scale(1); }
-          25% { transform: scale(1.08); }
-          50% { transform: scale(0.96); }
-          75% { transform: scale(1.05); }
-        }
-      `}</style>
     </section>
   );
 }

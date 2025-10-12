@@ -6,13 +6,13 @@ import Header from "./components/landing/Header";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "ELEC'CONNECT: Explorez la mobilité durable",
+  title: "Rose de Jéricho - Plante de Résurrection | Symbole de Renouveau",
   description:
-    "ELEC'CONNECT vous accompagne vers une mobilité durable avec ses solutions de recharge.",
+    "Découvrez la Rose de Jéricho, plante millénaire symbole de résurrection et de prospérité. Livraison rapide, qualité premium garantie.",
   openGraph: {
-    title: "ELEC'CONNECT: Explorez la mobilité durable",
+    title: "Rose de Jéricho - Plante de Résurrection",
     description:
-      "ELEC'CONNECT vous accompagne vers une mobilité durable avec ses solutions de recharge.",
+      "Découvrez la Rose de Jéricho, plante millénaire symbole de résurrection et de prospérité.",
   },
   icons: {
     icon: "/logo.png",

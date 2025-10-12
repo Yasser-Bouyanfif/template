@@ -1,124 +1,108 @@
 "use client";
 
-import Image from "next/image";
-import { ArrowUpRight, CheckCircle2, HandCoins, PiggyBank } from "lucide-react";
+import { Droplets, Package, Award, Clock } from "lucide-react";
 
-export default function SolarSolution() {
+export default function Advantages() {
   return (
-    <section
-      id="financement"
-      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-slate-100/80 to-white py-20 text-slate-900"
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.16),_transparent_60%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <span className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-1 text-sm font-medium text-emerald-700 ring-1 ring-emerald-200">
-                Financements & aides publiques
-              </span>
-              <h2 className="text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
-                Boostez votre projet de borne de recharge grâce aux aides ADVENIR et au crédit d’impôt
-              </h2>
-              <p className="text-lg text-slate-600">
-                ELEC’CONNECT vous accompagne dans l’obtention des financements disponibles pour réduire considérablement le coût d’installation de votre infrastructure de recharge.
-              </p>
+    <section id="benefits" className="py-20 bg-gradient-to-b from-white via-amber-50/30 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Pourquoi choisir notre Rose de Jéricho ?
+          </h2>
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            Qualité premium et service exceptionnel
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="text-center group">
+            <div className="w-20 h-20 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-amber-200 group-hover:to-orange-200 transition-all shadow-md">
+              <Droplets className="w-10 h-10 text-amber-600" />
             </div>
-
-            <div className="space-y-6">
-              <div className="flex items-start gap-4 rounded-2xl bg-white/95 p-5 shadow-lg shadow-emerald-100/40 ring-1 ring-emerald-100">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                  <PiggyBank className="h-6 w-6" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-xl font-semibold text-slate-900">Subvention ADVENIR</h3>
-                  <p className="text-slate-600">
-                    Bénéficiez d’une prise en charge jusqu’à 50% du coût d’installation et jusqu’à 1 500 € de subvention pour les entreprises et copropriétés.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 rounded-2xl bg-white/95 p-5 shadow-lg shadow-emerald-100/40 ring-1 ring-emerald-100">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                  <HandCoins className="h-6 w-6" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-xl font-semibold text-slate-900">Crédit d’impôt</h3>
-                  <p className="text-slate-600">
-                    Profitez d’un crédit d’impôt pouvant couvrir 75% des dépenses d’acquisition, dans la limite de 500 € par système de charge pour votre résidence principale ou secondaire.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <CheckCircle2 className="mt-1 h-6 w-6 flex-shrink-0 text-emerald-500" />
-                <p className="text-base text-slate-600">
-                  Nous gérons le dossier administratif, le suivi des subventions et la conformité de votre installation pour que
-                  vous puissiez vous concentrer sur votre projet.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="https://advenir.mobi/je-definis-mon-projet/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition hover:-translate-y-0.5 hover:bg-emerald-500"
-              >
-                Vérifiez votre éligibilité ADVENIR
-                <ArrowUpRight className="ml-2 h-5 w-5" />
-              </a>
-            <span className="inline-flex items-center rounded-full bg-white/90 px-5 py-3 text-sm text-slate-600 ring-1 ring-emerald-100">
-                Notre équipe vous accompagne à chaque étape.
-              </span>
-            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">
+              100% Naturelle
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Plantes authentiques récoltées et préservées naturellement, sans produits chimiques.
+            </p>
           </div>
 
-          <div className="space-y-8">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="group relative overflow-hidden rounded-3xl border border-emerald-100/80 bg-white/95 shadow-xl shadow-emerald-100/70">
-                <div className="relative h-56 w-full overflow-hidden rounded-t-3xl sm:h-64">
-                  <Image
-                    src="/advenir.png"
-                    alt="Programme de financement ADVENIR"
-                    fill
-                    className="object-cover object-center transition duration-500 group-hover:scale-110"
-                    sizes="(min-width: 1280px) 360px, (min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
-                    priority
-                  />
-                </div>
-                <div className="space-y-3 p-7">
-                  <h3 className="text-xl font-semibold text-slate-900">Programme ADVENIR</h3>
-                  <p className="text-base text-slate-600">
-                    Une aide dédiée aux infrastructures de recharge pour véhicules électriques, accessible aux copropriétés, entreprises et collectivités.
-                  </p>
-                </div>
-              </div>
-
-              <div className="group relative overflow-hidden rounded-3xl border border-emerald-100/80 bg-white/95 shadow-xl shadow-emerald-100/70">
-                <div className="relative h-56 w-full overflow-hidden rounded-t-3xl sm:h-64">
-                  <Image
-                    src="/credit-impot.png"
-                    alt="Crédit d’impôt pour borne de recharge"
-                    fill
-                    className="object-cover object-center transition duration-500 group-hover:scale-110"
-                    sizes="(min-width: 1280px) 360px, (min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
-                  />
-                </div>
-                <div className="space-y-3 p-7">
-                  <h3 className="text-xl font-semibold text-slate-900">Crédit d’impôt</h3>
-                  <p className="text-base text-slate-600">
-                    Un dispositif fiscal pour encourager l’installation de bornes de recharge à domicile, applicable une fois par résidence principale ou secondaire.
-                  </p>
-                </div>
-              </div>
+          <div className="text-center group">
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-orange-200 group-hover:to-rose-200 transition-all shadow-md">
+              <Package className="w-10 h-10 text-orange-600" />
             </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">
+              Emballage Soigné
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Chaque rose est emballée avec soin pour garantir son arrivée en parfait état.
+            </p>
+          </div>
 
-            <div className="rounded-3xl border border-emerald-200 bg-emerald-50 p-7 text-base text-emerald-700">
-              <p className="leading-relaxed">
-                ELEC’CONNECT se charge d’évaluer votre éligibilité, d’estimer les montants disponibles et de constituer le dossier auprès des organismes compétents. Nous veillons à ce que votre installation respecte les exigences techniques ouvrant droit aux financements.
-              </p>
+          <div className="text-center group">
+            <div className="w-20 h-20 bg-gradient-to-br from-rose-100 to-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-rose-200 group-hover:to-amber-200 transition-all shadow-md">
+              <Award className="w-10 h-10 text-rose-600" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">
+              Qualité Certifiée
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Sélection rigoureuse et contrôle qualité pour vous garantir les meilleures roses.
+            </p>
+          </div>
+
+          <div className="text-center group">
+            <div className="w-20 h-20 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:from-amber-200 group-hover:to-orange-200 transition-all shadow-md">
+              <Clock className="w-10 h-10 text-amber-700" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-3">
+              Livraison Rapide
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Expédition sous 24h pour que vous receviez votre rose dans les meilleurs délais.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16 bg-gradient-to-r from-amber-50 via-orange-50 to-rose-50 rounded-3xl p-8 md:p-12 shadow-lg">
+          <div className="text-center max-w-3xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              Comment utiliser votre Rose de Jéricho ?
+            </h3>
+            <div className="space-y-4 text-left">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                  1
+                </div>
+                <p className="text-slate-700 leading-relaxed">
+                  <strong>Placez</strong> la rose dans un récipient peu profond avec de l&apos;eau à température ambiante.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-orange-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                  2
+                </div>
+                <p className="text-slate-700 leading-relaxed">
+                  <strong>Observez</strong> la magie opérer : en 3 à 4 heures, la rose s&apos;ouvre et revit.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                  3
+                </div>
+                <p className="text-slate-700 leading-relaxed">
+                  <strong>Changez</strong> l&apos;eau tous les 2-3 jours. La rose peut rester vivante plusieurs semaines.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-amber-700 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                  4
+                </div>
+                <p className="text-slate-700 leading-relaxed">
+                  <strong>Laissez sécher</strong> complètement pour la ranger et réutilisez-la à l&apos;infini !
+                </p>
+              </div>
             </div>
           </div>
         </div>
