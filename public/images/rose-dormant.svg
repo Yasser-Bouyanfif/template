@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+  <defs>
+    <radialGradient id="dormant" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#f5e8d0" />
+      <stop offset="45%" stop-color="#cfa977" />
+      <stop offset="100%" stop-color="#8a6232" />
+    </radialGradient>
+    <linearGradient id="stem" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d9b47b" />
+      <stop offset="100%" stop-color="#7a5325" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="480" rx="120" fill="#fff8ed" />
+  <g transform="translate(240 210)">
+    <path d="M-40 190 C-20 120 -10 70 -5 30 C0 -10 0 -60 -10 -100 C-20 -140 -40 -170 -30 -190 C-20 -210 40 -210 50 -190 C60 -170 50 -140 40 -100 C30 -60 30 -10 40 30 C50 70 60 120 80 190" stroke="url(#stem)" stroke-width="18" stroke-linecap="round" fill="none" />
+    <g transform="translate(0 -80) rotate(-6)">
+      <ellipse rx="120" ry="130" fill="url(#dormant)" opacity="0.92" />
+      <g fill="none" stroke="#6e4d27" stroke-width="8" stroke-linecap="round">
+        <path d="M0 -110 C70 -90 110 -40 110 0 C110 40 60 90 0 110 C-60 130 -110 90 -110 40 C-110 -10 -70 -90 0 -110 Z" />
+        <path d="M0 -90 C50 -70 90 -30 90 5 C90 35 55 80 0 95 C-55 110 -90 70 -90 30 C-90 -20 -55 -80 0 -90 Z" opacity="0.7" />
+        <path d="M0 -70 C40 -50 70 -20 70 10 C70 30 40 70 0 80 C-40 90 -70 60 -70 25 C-70 -15 -40 -65 0 -70 Z" opacity="0.45" />
+      </g>
+    </g>
+  </g>
+</svg>

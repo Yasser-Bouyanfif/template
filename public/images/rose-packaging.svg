@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+  <defs>
+    <linearGradient id="pack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f4e6ce" />
+      <stop offset="100%" stop-color="#e3cda3" />
+    </linearGradient>
+    <linearGradient id="rose" x1="10%" y1="0%" x2="90%" y2="90%">
+      <stop offset="0%" stop-color="#c9b37b" />
+      <stop offset="60%" stop-color="#9d8047" />
+      <stop offset="100%" stop-color="#705628" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="480" rx="80" fill="#fffaf0" />
+  <g transform="translate(120 60)">
+    <rect x="40" y="40" width="200" height="320" rx="28" fill="url(#pack)" stroke="#c7aa79" stroke-width="4" />
+    <rect x="60" y="90" width="160" height="80" rx="16" fill="#fdf2e0" stroke="#c7aa79" stroke-width="3" />
+    <text x="140" y="140" text-anchor="middle" font-family="'Playfair Display', serif" font-size="28" fill="#8d6a36">
+      ROSE
+    </text>
+    <text x="140" y="168" text-anchor="middle" font-family="'Playfair Display', serif" font-size="18" fill="#8d6a36">
+      OF JERICHO
+    </text>
+    <rect x="40" y="40" width="200" height="60" rx="24" fill="#f0e0c5" opacity="0.7" />
+    <path d="M260 240 C320 220 340 160 320 120 C300 80 240 70 200 120 C160 170 170 250 220 300 C270 350 340 350 360 300 C380 250 330 200 300 210 C270 220 220 260 260 240 Z"
+      fill="url(#rose)" stroke="#705628" stroke-width="6" stroke-linejoin="round" />
+    <ellipse cx="290" cy="340" rx="110" ry="28" fill="#d9c7a0" opacity="0.55" />
+  </g>
+</svg>

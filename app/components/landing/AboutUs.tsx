@@ -1,78 +1,90 @@
 "use client";
 
-import React from "react";
-import { Leaf, Heart, Sprout } from "lucide-react";
+import Image from "next/image";
+import { BookHeart, Compass, Flower2 } from "lucide-react";
+
+const pillars = [
+  {
+    icon: Compass,
+    title: "Récolte consciente",
+    description: "Nous parcourons les oasis du Moyen-Orient avec des coopératives locales pour sélectionner des roses respectées par leur environnement désertique.",
+  },
+  {
+    icon: Flower2,
+    title: "Préparation sacrée",
+    description: "Chaque rose est purifiée, séchée naturellement et accompagnée d&apos;une carte d&apos;intention écrite à la main dans notre atelier français.",
+  },
+  {
+    icon: BookHeart,
+    title: "Transmission",
+    description: "Un guide illustré, des playlists et des méditations audio pour prolonger l&apos;expérience au-delà du rituel initial.",
+  },
+];
 
 export default function AboutUs() {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Qu&apos;est-ce que la Rose de Jéricho ?
+    <section id="histoire" className="bg-emerald-50/60 py-24">
+      <div id="rituel" className="-mt-24 h-0" aria-hidden />
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 sm:px-6 lg:flex-row lg:items-start lg:px-8">
+        <div className="max-w-xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.4em] text-emerald-600">Notre rituel</p>
+          <h2 className="mt-4 text-3xl font-semibold text-emerald-950 sm:text-4xl">
+            ChajaratMariam, gardienne de la rose de Jéricho
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Une plante millénaire aux vertus extraordinaires
+          <p className="mt-6 text-lg leading-relaxed text-emerald-900/80">
+            Héritiers d&apos;un savoir-faire transmis de mère en fille, nous révélons la magie de la rose de Jéricho à travers un rituel
+            simple et profondément transformateur. Nous préparons chaque coffret comme une offrande destinée à ramener calme, abondance
+            et protection dans votre foyer.
           </p>
+          <div className="mt-10 grid gap-6">
+            {pillars.map(({ icon: Icon, title, description }) => (
+              <div key={title} className="flex gap-4 rounded-3xl border border-emerald-100 bg-white/80 p-6 shadow-sm shadow-emerald-200/40">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-600">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="text-base font-semibold text-emerald-950">{title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-emerald-900/70">{description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
-            <p className="text-slate-700 leading-relaxed text-lg">
-              La Rose de Jéricho, également connue sous le nom de <strong>Selaginella lepidophylla</strong>,
-              est une plante du désert originaire du Mexique et d&apos;Amérique centrale. Cette merveille
-              botanique possède une capacité unique : elle peut survivre sans eau pendant des années
-              en se desséchant complètement, puis revivre miraculeusement au contact de l&apos;eau.
-            </p>
-            <p className="text-slate-700 leading-relaxed text-lg">
-              Symbole puissant de résurrection, de renouveau et de renaissance, elle est utilisée
-              dans de nombreuses traditions spirituelles à travers le monde. On lui attribue des
-              propriétés de purification, d&apos;attraction de la prospérité et de protection du foyer.
-            </p>
-          </div>
-          <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-100 via-orange-100 to-rose-100 flex items-center justify-center">
-              <div className="text-center p-8">
-                <Leaf className="w-24 h-24 text-amber-600 mx-auto mb-4" />
-                <p className="text-slate-600 font-medium">Rose de Jéricho</p>
-                <p className="text-sm text-slate-500">Plante de résurrection</p>
+        <div className="relative flex-1">
+          <div className="absolute inset-0 -z-10 rounded-[3rem] bg-gradient-to-br from-emerald-200 via-emerald-100 to-white blur-2xl" aria-hidden />
+          <div className="relative overflow-hidden rounded-[3rem] border border-emerald-100 bg-white shadow-2xl">
+            <div className="grid gap-10 p-10">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-500">Étapes essentielles</p>
+                <h3 className="mt-3 text-2xl font-semibold text-emerald-950">Activer la mémoire ancestrale de la rose</h3>
+                <p className="mt-4 text-sm leading-relaxed text-emerald-900/80">
+                  Un rituel en trois temps pour réveiller la plante et installer votre intention.
+                </p>
+              </div>
+
+              <ol className="grid gap-8 text-sm text-emerald-900/80">
+                {["Immergez délicatement la rose dans un bol d&apos;eau pure en formulant votre intention.", "Laissez-la s&apos;ouvrir pendant 3 à 6 heures, changez l&apos;eau et placez-la dans son support en terre cuite.", "Lorsque votre intention est ancrée, laissez sécher la rose sur un linge naturel afin de recommencer plus tard."].map(
+                  (step, index) => (
+                    <li key={step} className="relative rounded-2xl border border-emerald-100/70 bg-emerald-50/60 p-6">
+                      <span className="absolute -left-4 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-base font-semibold text-white shadow-lg shadow-emerald-200">
+                        {index + 1}
+                      </span>
+                      <p className="pl-8 text-base font-medium text-emerald-950">{step}</p>
+                    </li>
+                  ),
+                )}
+              </ol>
+
+              <div className="relative overflow-hidden rounded-3xl border border-emerald-100/70 bg-emerald-900/5 p-6">
+                <div className="relative h-40 w-full">
+                  <Image src="/images/rose-packaging.svg" alt="Coffret complet ChajaratMariam" fill className="object-contain" />
+                </div>
+                <p className="mt-4 text-sm text-emerald-900/70">
+                  Chaque coffret inclut une carte de bénédiction, une notice illustrée et un lien vidéo guidé.
+                </p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
-            <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center mb-4">
-              <Sprout className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Résurrection</h3>
-            <p className="text-slate-600 leading-relaxed">
-              Revient à la vie en quelques heures au contact de l&apos;eau, symbolisant
-              le renouveau et les nouveaux départs.
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-orange-50 to-rose-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
-            <div className="w-14 h-14 bg-orange-600 rounded-full flex items-center justify-center mb-4">
-              <Heart className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Bien-être</h3>
-            <p className="text-slate-600 leading-relaxed">
-              Apaise l&apos;esprit, purifie l&apos;énergie de votre maison et favorise
-              la paix intérieure et l&apos;harmonie.
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-rose-50 to-amber-50 p-8 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
-            <div className="w-14 h-14 bg-rose-600 rounded-full flex items-center justify-center mb-4">
-              <Leaf className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Prospérité</h3>
-            <p className="text-slate-600 leading-relaxed">
-              Tradition ancestrale d&apos;attraction de l&apos;abondance, de la chance
-              et de la protection du foyer.
-            </p>
           </div>
         </div>
       </div>
