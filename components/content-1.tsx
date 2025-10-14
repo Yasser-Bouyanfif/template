@@ -44,19 +44,19 @@ export default function ContentSection() {
               <blockquote className="border-l-4 pl-4">
                 <p>
                   Using TailsUI has been like unlocking a secret design
-                  superpower. It's the perfect fusion of simplicity and
+                  superpower. It’s the perfect fusion of simplicity and
                   versatility, enabling us to create UIs that are as stunning as
                   they are user-friendly.
                 </p>
 
                 <div className="mt-6 space-y-3">
                   <cite className="block font-medium">John Doe, CEO</cite>
-                  <img
+                  <Image
                     className="h-5 w-fit dark:invert"
                     src="https://html.tailus.io/blocks/customers/nvidia.svg"
                     alt="Nvidia Logo"
-                    height="20"
-                    width="auto"
+                    height={20}
+                    width={120}
                   />
                 </div>
               </blockquote>
