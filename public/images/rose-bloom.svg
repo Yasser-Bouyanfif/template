@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <radialGradient id="bloom-bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#fef9f1" />
+      <stop offset="1" stop-color="#f2e4d1" />
+    </radialGradient>
+    <linearGradient id="petal-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0" stop-color="#e0c39f" />
+      <stop offset="1" stop-color="#c19463" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bloom-bg)" />
+  <g transform="translate(140 120)">
+    <circle cx="260" cy="260" r="260" fill="rgba(205, 167, 123, 0.18)" />
+    <g fill="url(#petal-grad)" stroke="#8a6745" stroke-width="6" stroke-linejoin="round">
+      <path d="M260 40c-70 50-112 126-120 206c-8 76 20 156 120 212c100-56 128-136 120-212c-8-80-50-156-120-206z" />
+      <path d="M120 154c-36 50-54 118-40 174c16 72 82 142 180 176c98-34 164-104 180-176c14-56-4-124-40-174c-34 42-78 74-140 74s-106-32-140-74z" />
+      <path d="M72 294c18 80 84 158 188 190c104-32 170-110 188-190c-46 28-120 60-188 60s-142-32-188-60z" />
+    </g>
+    <circle cx="260" cy="260" r="80" fill="#8a6745" />
+    <circle cx="260" cy="260" r="42" fill="#f6ede1" />
+  </g>
+  <ellipse cx="400" cy="660" rx="220" ry="70" fill="#cfa976" opacity="0.28" />
+</svg>

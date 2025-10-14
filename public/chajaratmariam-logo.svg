@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="petal" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0" stop-color="#1d1411" />
+      <stop offset="1" stop-color="#3d2a20" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="32" fill="#f5ede1" />
+  <g fill="none" stroke="url(#petal)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 30c-24 12-40 32-40 56c0 28 24 50 40 50s40-22 40-50c0-22-12-38-28-48" />
+    <path d="M56 76c4-14 16-22 24-22c8 0 18 6 20 18c2 12-8 26-20 26c-10 0-20-8-22-20" />
+    <path d="M74 118c-12-8-18-18-18-28c0-10 6-18 16-20" />
+    <path d="M94 52c-6-12-2-24 6-30" />
+    <path d="M110 96c-2 10-10 22-22 30" />
+    <path d="M70 46c-12 4-24-2-28-12" />
+  </g>
+  <circle cx="80" cy="80" r="8" fill="url(#petal)" />
+</svg>
