@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -35,25 +34,44 @@ const buttonVariants = cva(
   }
 )
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
+type ButtonProps = React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : "button"
+  }
 
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
-}
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    { className, variant, size, asChild = false, children, type, ...props },
+    ref,
+  ) => {
+    const composedClassName = cn(buttonVariants({ variant, size }), className)
+
+    if (asChild) {
+      const child = React.Children.only(children) as React.ReactElement
+
+      return React.cloneElement(child, {
+        ...props,
+        ...(type ? { type } : {}),
+        className: cn(composedClassName, child.props?.className),
+        ref,
+        "data-slot": child.props?.["data-slot"] ?? "button",
+      })
+    }
+
+    return (
+      <button
+        data-slot="button"
+        type={type ?? "button"}
+        className={composedClassName}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </button>
+    )
+  },
+)
+
+Button.displayName = "Button"
 
 export { Button, buttonVariants }
