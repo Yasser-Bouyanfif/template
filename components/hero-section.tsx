@@ -6,6 +6,57 @@ import { HeroHeader } from "@/components/hero8-header";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
+const customerLogos = [
+  {
+    src: "https://html.tailus.io/blocks/customers/nvidia.svg",
+    alt: "Nvidia Logo",
+    height: 20,
+    width: 120,
+  },
+  {
+    src: "https://html.tailus.io/blocks/customers/column.svg",
+    alt: "Column Logo",
+    height: 16,
+    width: 120,
+  },
+  {
+    src: "https://html.tailus.io/blocks/customers/github.svg",
+    alt: "GitHub Logo",
+    height: 16,
+    width: 120,
+  },
+  {
+    src: "https://html.tailus.io/blocks/customers/nike.svg",
+    alt: "Nike Logo",
+    height: 20,
+    width: 120,
+  },
+  {
+    src: "https://html.tailus.io/blocks/customers/lemonsqueezy.svg",
+    alt: "Lemon Squeezy Logo",
+    height: 20,
+    width: 120,
+  },
+  {
+    src: "https://html.tailus.io/blocks/customers/laravel.svg",
+    alt: "Laravel Logo",
+    height: 16,
+    width: 120,
+  },
+  {
+    src: "https://html.tailus.io/blocks/customers/lilly.svg",
+    alt: "Lilly Logo",
+    height: 28,
+    width: 120,
+  },
+  {
+    src: "https://html.tailus.io/blocks/customers/openai.svg",
+    alt: "OpenAI Logo",
+    height: 24,
+    width: 120,
+  },
+];
+
 export default function HeroSection() {
   return (
     <>
@@ -46,8 +97,9 @@ export default function HeroSection() {
                 className="-z-10 order-first ml-auto h-56 w-full object-cover invert sm:h-96 lg:absolute lg:inset-0 lg:-right-20 lg:-top-96 lg:order-last lg:h-max lg:w-2/3 lg:object-contain dark:mix-blend-lighten dark:invert-0"
                 src="https://res.cloudinary.com/dg4jhba5c/image/upload/v1741605150/abstract-bg_wq4f8w.jpg"
                 alt="Abstract Object"
-                height="4000"
-                width="3000"
+                height={4000}
+                width={3000}
+                priority
               />
             </div>
           </div>
@@ -60,80 +112,18 @@ export default function HeroSection() {
               </div>
               <div className="relative py-6 md:w-[calc(100%-11rem)]">
                 <InfiniteSlider speedOnHover={20} speed={40} gap={112}>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-5 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                      alt="Nvidia Logo"
-                      height="20"
-                      width="auto"
-                    />
-                  </div>
-
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-4 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/column.svg"
-                      alt="Column Logo"
-                      height="16"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-4 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/github.svg"
-                      alt="GitHub Logo"
-                      height="16"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-5 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/nike.svg"
-                      alt="Nike Logo"
-                      height="20"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-5 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                      alt="Lemon Squeezy Logo"
-                      height="20"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-4 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/laravel.svg"
-                      alt="Laravel Logo"
-                      height="16"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-7 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/lilly.svg"
-                      alt="Lilly Logo"
-                      height="28"
-                      width="auto"
-                    />
-                  </div>
-
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-6 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/openai.svg"
-                      alt="OpenAI Logo"
-                      height="24"
-                      width="auto"
-                    />
-                  </div>
+                  {customerLogos.map((logo) => (
+                    <div className="flex" key={logo.alt}>
+                      <Image
+                        className="mx-auto w-fit dark:invert"
+                        src={logo.src}
+                        alt={logo.alt}
+                        height={logo.height}
+                        width={logo.width}
+                        sizes="120px"
+                      />
+                    </div>
+                  ))}
                 </InfiniteSlider>
 
                 <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>
