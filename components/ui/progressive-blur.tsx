@@ -1,6 +1,7 @@
 "use client";
+
 import { cn } from "@/lib/utils";
-import { HTMLMotionProps, motion } from "motion/react";
+import { motion, type HTMLMotionProps } from "framer-motion";
 
 export const GRADIENT_ANGLES = {
   top: 0,
@@ -24,7 +25,7 @@ export function ProgressiveBlur({
   ...props
 }: ProgressiveBlurProps) {
   const layers = Math.max(blurLayers, 2);
-  const segmentSize = 1 / (blurLayers + 1);
+  const segmentSize = 1 / (layers + 1);
 
   return (
     <div className={cn("relative", className)}>
@@ -42,9 +43,7 @@ export function ProgressiveBlur({
             }%`
         );
 
-        const gradient = `linear-gradient(${angle}deg, ${gradientStops.join(
-          ", "
-        )})`;
+        const gradient = `linear-gradient(${angle}deg, ${gradientStops.join(", ")})`;
 
         return (
           <motion.div

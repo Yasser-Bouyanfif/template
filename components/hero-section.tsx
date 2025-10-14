@@ -4,151 +4,93 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { HeroHeader } from "@/components/hero8-header";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
-import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+
+const sliderHighlights = [
+  "Réveil en quelques minutes",
+  "Rituel apaisant",
+  "Hydratation naturelle",
+  "Purification douce",
+  "Énergie renouvelée",
+  "Beauté intemporelle",
+];
 
 export default function HeroSection() {
   return (
     <>
       <HeroHeader />
-      <main className="overflow-x-hidden">
-        <section>
-          <div className="pb-24 pt-12 md:pb-32 lg:pb-56 lg:pt-44">
-            <div className="relative mx-auto flex max-w-6xl flex-col px-6 lg:block">
-              <div className="mx-auto max-w-lg text-center lg:ml-0 lg:w-1/2 lg:text-left">
-                <h1 className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 xl:text-7xl">
-                  Ship 10x Faster with NS
-                </h1>
-                <p className="mt-8 max-w-2xl text-pretty text-lg">
-                  Highly customizable components for building modern websites
-                  and applications that look and feel the way you mean it.
-                </p>
-
-                <div className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row lg:justify-start">
-                  <Button asChild size="lg" className="px-5 text-base">
-                    <Link href="#link">
-                      <span className="text-nowrap">Start Building</span>
-                    </Link>
-                  </Button>
-                  <Button
-                    key={2}
-                    asChild
-                    size="lg"
-                    variant="ghost"
-                    className="px-5 text-base"
-                  >
-                    <Link href="#link">
-                      <span className="text-nowrap">Request a demo</span>
-                    </Link>
-                  </Button>
-                </div>
+      <main className="overflow-x-hidden bg-[#f9f3eb] text-[#2f2015] dark:bg-[#150d08] dark:text-[#f5ece1]">
+        <section
+          id="rituels"
+          className="relative isolate overflow-hidden bg-gradient-to-b from-[#faf5ef] via-[#f3e8db] to-[#efe0cf] pb-24 pt-32 md:pb-40 lg:pt-48"
+        >
+          <div className="absolute inset-x-0 top-16 -z-10 h-[480px] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.6),_transparent_65%)]" aria-hidden />
+          <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-center">
+            <div className="relative max-w-xl space-y-10 lg:max-w-none">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#d8c6b5] bg-white/70 px-4 py-1 text-xs tracking-[0.3em] text-[#6f533c] shadow-sm dark:border-[#463122] dark:bg-[#1c120c]/80 dark:text-[#f0dfcd]">
+                Rituel botanique
+              </span>
+              <h1 className="font-serif text-4xl leading-tight text-[#2f2015] md:text-5xl lg:text-6xl dark:text-[#f5ecdf]">
+                La renaissance de la Rose de Jericho chez CHAJARATMARIAM
+              </h1>
+              <p className="max-w-xl text-base leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
+                Offrez à vos espaces et à votre esprit un moment de grâce. Nos rituels sur mesure réveillent la plante sacrée avec une eau filtrée et des gestes lents pour révéler sa symbolique de protection et de renouveau.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button asChild size="lg" className="bg-[#b98c5f] px-8 py-6 text-base font-medium tracking-[0.2em] uppercase text-white hover:bg-[#a6784d]">
+                  <Link href="#contact">Réserver mon rituel</Link>
+                </Button>
+                <Button asChild size="lg" variant="ghost" className="px-8 py-6 text-base font-medium text-[#6f533c] hover:text-[#2f2015] dark:text-[#f0dfcd]">
+                  <Link href="#origines">Découvrir l&apos;histoire</Link>
+                </Button>
               </div>
-              <Image
-                className="-z-10 order-first ml-auto h-56 w-full object-cover invert sm:h-96 lg:absolute lg:inset-0 lg:-right-20 lg:-top-96 lg:order-last lg:h-max lg:w-2/3 lg:object-contain dark:mix-blend-lighten dark:invert-0"
-                src="https://res.cloudinary.com/dg4jhba5c/image/upload/v1741605150/abstract-bg_wq4f8w.jpg"
-                alt="Abstract Object"
-                height="4000"
-                width="3000"
-              />
+              <div className="grid grid-cols-3 gap-4 pt-8 text-sm">
+                {["Eau filtrée", "Encens de myrrhe", "Musique méditative"].map((item) => (
+                  <div key={item} className="rounded-2xl border border-[#ead8c8] bg-white/60 p-4 text-center shadow-sm dark:border-[#3b281b] dark:bg-[#21140d]/80">
+                    <span className="font-medium tracking-[0.2em] text-[#6f533c] dark:text-[#f0dfcd]">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="relative isolate mx-auto w-full max-w-xl">
+              <div className="relative overflow-hidden rounded-[3rem] border border-[#e2d2c2] bg-white/70 shadow-[0_40px_120px_rgba(107,77,51,0.18)] backdrop-blur-sm dark:border-[#3e2a1b] dark:bg-[#1a100a]/80">
+                <Image
+                  src="/images/rose-packaging.svg"
+                  alt="Packaging artisanal de la Rose de Jericho"
+                  width={640}
+                  height={640}
+                  priority
+                  className="w-full"
+                />
+              </div>
+              <div className="absolute -bottom-12 -left-8 hidden w-40 -rotate-3 rounded-3xl border border-[#e8d7c7] bg-white/90 p-3 shadow-xl shadow-[#d1b498]/30 sm:block dark:border-[#3b291d] dark:bg-[#21140d]">
+                <Image
+                  src="/images/rose-dormant.svg"
+                  alt="Rose de Jericho en dormance"
+                  width={220}
+                  height={220}
+                />
+              </div>
+              <div className="absolute -top-10 -right-12 hidden w-48 rotate-6 rounded-3xl border border-[#e8d7c7] bg-white/90 p-4 shadow-xl shadow-[#d1b498]/30 sm:block dark:border-[#3b291d] dark:bg-[#21140d]">
+                <Image
+                  src="/images/rose-awakened.svg"
+                  alt="Rose de Jericho éveillée"
+                  width={260}
+                  height={260}
+                />
+              </div>
             </div>
           </div>
-        </section>
-        <section className="bg-background pb-16 md:pb-32">
-          <div className="group relative m-auto max-w-6xl px-6">
-            <div className="flex flex-col items-center md:flex-row">
-              <div className="md:max-w-44 md:border-r md:pr-6">
-                <p className="text-end text-sm">Powering the best teams</p>
-              </div>
-              <div className="relative py-6 md:w-[calc(100%-11rem)]">
-                <InfiniteSlider speedOnHover={20} speed={40} gap={112}>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-5 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                      alt="Nvidia Logo"
-                      height="20"
-                      width="auto"
-                    />
+          <div className="mt-24">
+            <div className="relative mx-auto max-w-5xl overflow-hidden rounded-full border border-[#e5d3c0] bg-white/50 py-6 shadow-inner shadow-[#d1b498]/20 dark:border-[#3b291d] dark:bg-[#1c120b]/80">
+              <InfiniteSlider speedOnHover={16} speed={28} gap={96}>
+                {sliderHighlights.map((item) => (
+                  <div key={item} className="flex min-w-[14rem] items-center justify-center px-6">
+                    <span className="text-sm tracking-[0.3em] uppercase text-[#6f533c] dark:text-[#f0dfcd]">
+                      {item}
+                    </span>
                   </div>
-
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-4 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/column.svg"
-                      alt="Column Logo"
-                      height="16"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-4 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/github.svg"
-                      alt="GitHub Logo"
-                      height="16"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-5 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/nike.svg"
-                      alt="Nike Logo"
-                      height="20"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-5 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                      alt="Lemon Squeezy Logo"
-                      height="20"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-4 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/laravel.svg"
-                      alt="Laravel Logo"
-                      height="16"
-                      width="auto"
-                    />
-                  </div>
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-7 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/lilly.svg"
-                      alt="Lilly Logo"
-                      height="28"
-                      width="auto"
-                    />
-                  </div>
-
-                  <div className="flex">
-                    <img
-                      className="mx-auto h-6 w-fit dark:invert"
-                      src="https://html.tailus.io/blocks/customers/openai.svg"
-                      alt="OpenAI Logo"
-                      height="24"
-                      width="auto"
-                    />
-                  </div>
-                </InfiniteSlider>
-
-                <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>
-                <div className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"></div>
-                <ProgressiveBlur
-                  className="pointer-events-none absolute left-0 top-0 h-full w-20"
-                  direction="left"
-                  blurIntensity={1}
-                />
-                <ProgressiveBlur
-                  className="pointer-events-none absolute right-0 top-0 h-full w-20"
-                  direction="right"
-                  blurIntensity={1}
-                />
-              </div>
+                ))}
+              </InfiniteSlider>
             </div>
           </div>
         </section>
