@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <defs>
+    <radialGradient id="petals" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#fdf7f1" />
+      <stop offset="100%" stop-color="#f3e3d2" />
+    </radialGradient>
+    <linearGradient id="fronds" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b38455" />
+      <stop offset="100%" stop-color="#7a5638" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="34" fill="url(#petals)" />
+  <g transform="translate(34 32)">
+    <circle cx="126" cy="128" r="104" fill="#ead6c3" opacity="0.35" />
+    <g stroke="url(#fronds)" stroke-width="9" stroke-linecap="round" fill="none">
+      <path d="M126 24c-12 42-12 82 0 120" />
+      <path d="M82 38c18 38 30 78 34 114" />
+      <path d="M48 70c30 30 56 62 68 94" />
+      <path d="M30 116c32 16 64 38 84 70" />
+      <path d="M126 24c12 42 12 82 0 120" transform="scale(-1 1) translate(-252 0)" />
+      <path d="M170 38c-18 38-30 78-34 114" />
+      <path d="M204 70c-30 30-56 62-68 94" />
+      <path d="M222 116c-32 16-64 38-84 70" />
+    </g>
+    <circle cx="126" cy="128" r="34" fill="#5b3a28" opacity="0.85" />
+    <circle cx="126" cy="128" r="22" fill="#f3e3d2" opacity="0.45" />
+  </g>
+</svg>

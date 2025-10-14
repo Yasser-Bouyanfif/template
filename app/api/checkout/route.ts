@@ -8,11 +8,27 @@ import {
 } from "@/app/lib/validation/checkout";
 import productApis from "@/app/strapi/productApis";
 
-const stripe = new Stripe(STRIPE_SECRET_KEY as string);
 const DEFAULT_PRODUCT_NAME = "Produit ElecConnect";
 const MAX_PRICE_IN_CENTS = 50_000_000;
 const EXPRESS_SHIPPING_PRICE_IN_CENTS = 1290;
 const EXPRESS_SHIPPING_LABEL = "Livraison express";
+
+let stripeClient: Stripe | null = null;
+
+const getStripeClient = (): Stripe => {
+  const apiKey = STRIPE_SECRET_KEY?.trim();
+  if (!apiKey) {
+    throw new CheckoutValidationError(
+      "La configuration Stripe est invalide. Veuillez réessayer plus tard.",
+    );
+  }
+
+  if (!stripeClient) {
+    stripeClient = new Stripe(apiKey);
+  }
+
+  return stripeClient;
+};
 
 class CheckoutValidationError extends Error {
   constructor(message: string) {
@@ -190,6 +206,7 @@ export async function POST(request: Request) {
       );
     }
 
+    const stripe = getStripeClient();
     const line_items = await buildLineItems(parsedBody.data);
 
     const session = await stripe.checkout.sessions.create({

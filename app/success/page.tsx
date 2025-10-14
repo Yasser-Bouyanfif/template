@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
-import { useUser } from "@clerk/nextjs";
+import { useSafeUser } from "@/app/lib/clerk";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2, MapPin, PackageCheck, Truck } from "lucide-react";
@@ -46,7 +46,7 @@ function SuccessPage() {
   } = useContext(
     CartContext
   ) as CartContextType;
-  const { user } = useUser();
+  const { user } = useSafeUser();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [order, setOrder] = useState<Order | null>(null);
