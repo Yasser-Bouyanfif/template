@@ -54,7 +54,7 @@ export default function HeroSection() {
             <div className="relative isolate mx-auto w-full max-w-xl">
               <div className="relative overflow-hidden rounded-[3rem] border border-[#e2d2c2] bg-white/70 shadow-[0_40px_120px_rgba(107,77,51,0.18)] backdrop-blur-sm dark:border-[#3e2a1b] dark:bg-[#1a100a]/80">
                 <Image
-                  src="/images/rose-packaging.svg"
+                  src="/package.png"
                   alt="Packaging artisanal de la Rose de Jericho"
                   width={640}
                   height={640}

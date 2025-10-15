@@ -44,7 +44,7 @@ export default function ContentSection() {
           <div className="relative flex flex-col gap-6">
             <div className="relative overflow-hidden rounded-[2.5rem] border border-[#e4d2c0] bg-white/80 p-6 shadow-[0_30px_80px_rgba(153,118,82,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
               <Image
-                src="/images/rose-awakened.svg"
+                src="/rose.png"
                 alt="Rose de Jericho ouverte"
                 width={540}
                 height={540}
@@ -56,7 +56,7 @@ export default function ContentSection() {
             </div>
             <div className="ml-auto w-3/4 overflow-hidden rounded-[2rem] border border-[#e6d6c6] bg-white/80 p-4 shadow-[0_20px_60px_rgba(140,104,70,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
               <Image
-                src="/images/rose-dormant.svg"
+                src="/rose.png"
                 alt="Rose de Jericho dormante"
                 width={420}
                 height={420}
