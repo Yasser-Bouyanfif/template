@@ -19,7 +19,7 @@ export const HeroHeader = () => {
     <header>
       <nav
         data-state={menuState && "active"}
-        className="bg-[#f8f1e7]/80 fixed z-20 w-full border-b border-[#e4d6c5]/60 backdrop-blur-2xl transition-colors dark:bg-[#20160f]/80 dark:border-[#4c3a2b]"
+        className="fixed z-20 w-full border-b border-[#efe6d9] bg-white/80 text-[#2f2418] backdrop-blur-xl transition-colors"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-4 lg:gap-0">
@@ -39,12 +39,12 @@ export const HeroHeader = () => {
               </button>
 
               <div className="hidden lg:block">
-                <ul className="flex gap-8 text-sm text-[#6f533c]">
+                <ul className="flex gap-8 text-sm text-[#6b5947]">
                   {menuItems.map((item, index) => (
                     <li key={index}>
                       <Link
                         href={item.href}
-                        className="hover:text-[#2f2015] transition-colors"
+                        className="transition-colors hover:text-[#2f2418]"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -56,7 +56,7 @@ export const HeroHeader = () => {
 
             <div
               data-state={menuState ? "active" : "inactive"}
-              className="bg-[#f8f1e7] text-[#5a3f2c] in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end gap-4 rounded-3xl border border-[#eadccd] p-6 shadow-xl shadow-[#d9c2a9]/20 transition lg:m-0 lg:flex lg:w-fit lg:gap-5 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:bg-[#1e120b] dark:text-[#f4e9dd] dark:border-[#3d2a1d] dark:lg:bg-transparent"
+              className="in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end gap-4 rounded-3xl border border-[#efe6d9] bg-white/90 p-6 text-[#5f4d3c] shadow-xl shadow-[rgba(81,60,40,0.12)] transition lg:m-0 lg:flex lg:w-fit lg:gap-5 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none"
             >
               <div className="lg:hidden">
                 <ul className="space-y-6 text-base">
@@ -64,7 +64,7 @@ export const HeroHeader = () => {
                     <li key={index}>
                       <Link
                         href={item.href}
-                        className="text-[#6f533c] transition-colors hover:text-[#2f2015] dark:text-[#f0dfcd] dark:hover:text-white"
+                        className="text-[#5f4d3c] transition-colors hover:text-[#2f2418]"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -73,12 +73,12 @@ export const HeroHeader = () => {
                 </ul>
               </div>
               <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-end sm:gap-3 md:w-fit">
-                <Button asChild variant="ghost" size="sm" className="text-sm text-[#6f533c] hover:text-[#2f2015] dark:text-[#f4e9dd]">
+                <Button asChild variant="ghost" size="sm" className="text-sm text-[#5f4d3c] hover:text-[#2f2418]">
                   <Link href="#contact">
                     <span>Nous écrire</span>
                   </Link>
                 </Button>
-                <Button asChild size="sm" className="bg-[#b98c5f] text-white hover:bg-[#a6784d]">
+                <Button asChild size="sm" className="rounded-full bg-[#2f2418] px-6 text-white hover:bg-[#433426]">
                   <Link href="#rituels">
                     <span>Commander</span>
                   </Link>
