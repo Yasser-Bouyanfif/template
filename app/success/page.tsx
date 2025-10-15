@@ -388,11 +388,11 @@ function SuccessPage() {
             <p className="text-sm text-gray-500 mb-4">
               Un problème avec votre commande ?
               <Link
-                href="/#contact"
+                href="mailto:contact@chajaratmariam.com"
                 className="font-medium text-emerald-600 hover:text-emerald-500"
               >
                 {" "}
-                Contactez-nous
+                Écrivez-nous
               </Link>
             </p>
           </div>
