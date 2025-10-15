@@ -11,8 +11,8 @@ export const Logo = ({ className }: { className?: string }) => {
     >
       <span className="relative flex size-10 items-center justify-center overflow-hidden rounded-full border border-[#d6c4b0] bg-[#f9f3eb] shadow-sm">
         <Image
-          src="/branding/chajaratmariam-mark.svg"
-          alt="Emblème Chajaratmariam"
+          src="/logo.png"
+          alt="Logo Chajaratmariam"
           width={40}
           height={40}
           priority

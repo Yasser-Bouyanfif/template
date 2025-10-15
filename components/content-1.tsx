@@ -44,7 +44,7 @@ export default function ContentSection() {
           <div className="relative flex flex-col gap-6">
             <div className="relative overflow-hidden rounded-[2.5rem] border border-[#e4d2c0] bg-white/80 p-6 shadow-[0_30px_80px_rgba(153,118,82,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
               <Image
-                src="/images/rose-awakened.svg"
+                src="/rose.png"
                 alt="Rose de Jericho ouverte"
                 width={540}
                 height={540}
