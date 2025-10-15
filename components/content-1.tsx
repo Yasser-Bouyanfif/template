@@ -1,67 +1,62 @@
 import Image from "next/image";
 
-const timeline = [
+const highlights = [
   {
-    title: "Dormance protectrice",
-    description:
-      "Conservée au sec, la Rose de Jericho se replie en sphère et garde son énergie latente, prête à se déployer lorsque l&apos;eau la touche.",
+    metric: "100% botanic",
+    detail: "Sélection de plantes préservées sans traitements chimiques.",
   },
   {
-    title: "Renaissance aquatique",
-    description:
-      "Immergée dans une eau tiédie et purifiée, elle s&apos;ouvre lentement en éventail, libérant une fragrance végétale légère.",
+    metric: "48h",
+    detail: "Préparation et expédition depuis notre atelier lumineux de Casablanca.",
   },
   {
-    title: "Transmission symbolique",
-    description:
-      "Nous accompagnons le rituel de récits ancestraux et de gestes guidés pour ancrer vos intentions dans le quotidien.",
+    metric: "103K",
+    detail: "Plantes accompagnées dans leur renaissance partout dans le monde.",
   },
 ];
 
 export default function ContentSection() {
   return (
-    <section id="origines" className="bg-[#fbf6f0] py-20 text-[#2f2015] dark:bg-[#130b06] dark:text-[#f5ecdf]">
-      <div className="mx-auto max-w-6xl space-y-12 px-6 md:space-y-16">
-        <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <div className="space-y-6">
-            <h2 className="font-serif text-4xl font-semibold text-[#3c281b] lg:text-5xl dark:text-[#f6ecde]">
-              L&apos;histoire sacrée de la Rose de Jericho
+    <section id="origines" className="bg-[#f7f1e6] py-24 text-[#2d241c] dark:bg-[#130b06] dark:text-[#f5ecdf]">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="flex flex-col gap-16 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="space-y-8">
+            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-[#8a7a67]">
+              Atelier CHAJARATMARIAM
+            </span>
+            <h2 className="font-serif text-4xl font-semibold text-[#1f1a15] lg:text-5xl dark:text-[#f6ecde]">
+              Une histoire claire de transmission végétale
             </h2>
-            <p className="text-lg leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-              Plante nomade des terres désertiques, elle traverse les époques comme un talisman de chance et de protection. Chez CHAJARATMARIAM, nous honorons ce patrimoine en associant matières naturelles, gestes précis et écriture contemporaine.
+            <p className="text-lg leading-relaxed text-[#5c5247] dark:text-[#f0dfcd]/80">
+              De la dormance à l&apos;éclosion, nous accompagnons chaque Rose de Jéricho avec une palette écrémée, des matières naturelles et un récit qui invite au calme. Notre équipe imagine des rituels à vivre simplement, sans superflu.
             </p>
-            <div className="grid gap-6 sm:grid-cols-2">
-              {timeline.map((item) => (
-                <div key={item.title} className="rounded-3xl border border-[#e6d6c6] bg-white/80 p-6 shadow-sm shadow-[#d4bfa7]/25 dark:border-[#352216] dark:bg-[#1d130c]/80">
-                  <h3 className="font-medium uppercase tracking-[0.25em] text-[#6f533c] dark:text-[#f5e5d4]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-[#5a3f2c] dark:text-[#f0dfcd]/80">{item.description}</p>
+            <div className="grid gap-6 md:grid-cols-3">
+              {highlights.map((item) => (
+                <div key={item.metric} className="rounded-3xl border border-[#eee4d6] bg-white p-6 shadow-sm shadow-[#e4d9c6]/40 dark:border-[#352216] dark:bg-[#1d130c]">
+                  <p className="text-sm uppercase tracking-[0.28em] text-[#8a7a67]">{item.metric}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#5c5247] dark:text-[#f0dfcd]/80">{item.detail}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative flex flex-col gap-6">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-[#e4d2c0] bg-white/80 p-6 shadow-[0_30px_80px_rgba(153,118,82,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
+          <div className="relative overflow-hidden rounded-[2.75rem] border border-[#efe5d7] bg-white p-8 shadow-[0_32px_90px_rgba(220,202,173,0.45)] dark:border-[#3a271a] dark:bg-[#1d120b]">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
               <Image
-                src="/images/rose-awakened.svg"
-                alt="Rose de Jericho ouverte"
-                width={540}
-                height={540}
+                src="/images/rose-packaging.svg"
+                alt="Packaging neutre de la Rose de Jericho"
+                width={520}
+                height={520}
                 className="w-full"
               />
-              <div className="absolute bottom-6 left-6 rounded-full bg-[#b98c5f] px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-white shadow-lg">
-                Renaissance
+              <div className="flex flex-col items-start gap-4 rounded-3xl border border-[#f3eadc] bg-[#fdfaf4] p-6 text-left shadow-sm shadow-[#eadcc7]/60 dark:border-[#3b291d] dark:bg-[#21140d]">
+                <Image
+                  src="/images/rose-awakened.svg"
+                  alt="Rose de Jericho ouverte"
+                  width={180}
+                  height={180}
+                />
+                <p className="text-xs uppercase tracking-[0.28em] text-[#8a7a67]">Renaissance guidée</p>
               </div>
-            </div>
-            <div className="ml-auto w-3/4 overflow-hidden rounded-[2rem] border border-[#e6d6c6] bg-white/80 p-4 shadow-[0_20px_60px_rgba(140,104,70,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
-              <Image
-                src="/images/rose-dormant.svg"
-                alt="Rose de Jericho dormante"
-                width={420}
-                height={420}
-                className="w-full"
-              />
             </div>
           </div>
         </div>

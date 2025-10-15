@@ -1,67 +1,57 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Droplets, Leaf, Sparkles } from "lucide-react";
-import { ReactNode } from "react";
 
 const features = [
   {
-    icon: <Sparkles className="size-6" aria-hidden />,
-    title: "Rituels personnalisés",
+    icon: Sparkles,
+    title: "Intentions lumineuses",
     description:
-      "Chaque cérémonie est préparée sur mesure avec des intentions choisies, des infusions délicates et un cadre sensoriel apaisant.",
+      "Chaque rituel est conçu pour apaiser l&apos;esprit et ouvrir un espace de renouveau au cœur de votre maison.",
   },
   {
-    icon: <Droplets className="size-6" aria-hidden />,
-    title: "Eau de renaissance",
+    icon: Droplets,
+    title: "Réveil minimaliste",
     description:
-      "Une eau purifiée enrichie en minéraux naturels accompagne la réhydratation lente de la plante pour révéler toute sa symbolique.",
+      "Une eau filtrée et des gestes précis suffisent pour réveiller la Rose de Jéricho et révéler sa transformation.",
   },
   {
-    icon: <Leaf className="size-6" aria-hidden />,
-    title: "Artisanat végétal",
+    icon: Leaf,
+    title: "Palette écrémée",
     description:
-      "Nos arrangements s&apos;accordent aux intérieurs modernes : matières nobles, palette beige écrémée et lignes épurées.",
+      "Textures naturelles, lignes épurées et blancs chauffés pour s&apos;accorder aux intérieurs contemporains.",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="bienfaits" className="bg-[#f6ede1] py-20 text-[#2f2015] dark:bg-[#1a120c] dark:text-[#f5ecdf]">
-      <div className="@container mx-auto max-w-5xl px-6">
+    <section id="bienfaits" className="bg-white py-24 text-[#2d241c] dark:bg-[#1a120c] dark:text-[#f5ecdf]">
+      <div className="mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <h2 className="font-serif text-4xl font-semibold tracking-[0.1em] text-[#3c281b] lg:text-5xl dark:text-[#f5ecdf]">
-            Les bienfaits de CHAJARATMARIAM
+          <h2 className="font-serif text-4xl font-semibold text-[#1f1a15] lg:text-5xl dark:text-[#f5ecdf]">
+            Les bienfaits essentiels
           </h2>
-          <p className="mt-4 text-[#6f533c] dark:text-[#f0dfcd]/80">
-            Une expérience sensorielle complète pour ralentir, respirer et laisser la Rose de Jericho offrir son énergie de protection.
+          <p className="mt-4 text-[#5c5247] dark:text-[#f0dfcd]/80">
+            Trois piliers pour accueillir la Rose de Jéricho dans une atmosphère claire et apaisée.
           </p>
         </div>
-        <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-12 grid max-w-sm gap-6 md:mt-16">
+        <div className="mx-auto mt-16 grid max-w-3xl gap-10 md:grid-cols-3">
           {features.map((feature) => (
-            <Card key={feature.title} className="group border-[#e4d2c0] bg-[#fbf6f0]/70 text-center shadow-[#d5bfa6]/20 dark:border-[#3b291d] dark:bg-[#24160e]/80">
-              <CardHeader className="pb-3">
-                <CardDecorator>{feature.icon}</CardDecorator>
-                <h3 className="mt-6 font-medium tracking-[0.2em] text-[#3c281b] uppercase dark:text-[#f5ecdf]">
+            <article
+              key={feature.title}
+              className="group flex flex-col items-start gap-5 rounded-3xl border border-[#efe7da] bg-[#fefcf8] p-8 text-left shadow-[0_20px_60px_rgba(222,206,181,0.25)] transition hover:shadow-[0_24px_70px_rgba(210,191,163,0.35)] dark:border-[#3b291d] dark:bg-[#22140d]"
+            >
+              <span className="flex size-12 items-center justify-center rounded-full border border-[#ebdfcc] bg-white text-[#b89263] shadow-sm dark:border-[#3b291d] dark:bg-[#1a120c] dark:text-[#d7b994]">
+                <feature.icon className="size-5" aria-hidden />
+              </span>
+              <div className="space-y-3">
+                <h3 className="font-medium uppercase tracking-[0.22em] text-[#3c3329] dark:text-[#f5ecdf]">
                   {feature.title}
                 </h3>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-relaxed text-[#6f533c] dark:text-[#f0dfcd]/80">
-                  {feature.description}
-                </p>
-              </CardContent>
-            </Card>
+                <p className="text-sm leading-relaxed text-[#5c5247] dark:text-[#f0dfcd]/80">{feature.description}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
-const CardDecorator = ({ children }: { children: ReactNode }) => (
-  <div className="relative mx-auto size-32 rounded-full border border-[#e4d2c0] bg-[#fdf8f1]/80 duration-200 shadow-[inset_0_0_0_1px_rgba(217,194,165,0.4)] group-hover:shadow-[0_20px_60px_rgba(153,118,82,0.18)] dark:border-[#3b291d] dark:bg-[#1d120b]/80 dark:group-hover:shadow-[0_20px_60px_rgba(33,19,9,0.6)]">
-    <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.9)_0%,_transparent_70%)]" aria-hidden />
-    <div className="bg-[#ead7c4] absolute left-1/2 top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#d8c1a8] text-[#4a3322] shadow-sm dark:bg-[#3b291d] dark:border-[#2a1b12] dark:text-[#f5ecdf]">
-      {children}
-    </div>
-  </div>
-);

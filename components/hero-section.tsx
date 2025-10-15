@@ -3,66 +3,78 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { HeroHeader } from "@/components/hero8-header";
-import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
-const sliderHighlights = [
-  "Réveil en quelques minutes",
-  "Rituel apaisant",
-  "Hydratation naturelle",
-  "Purification douce",
-  "Énergie renouvelée",
-  "Beauté intemporelle",
+const ritualNotes = [
+  "Hydratation douce",
+  "Énergie féminine",
+  "Harmonie naturelle",
 ];
 
 export default function HeroSection() {
   return (
     <>
       <HeroHeader />
-      <main className="overflow-x-hidden bg-[#f9f3eb] text-[#2f2015] dark:bg-[#150d08] dark:text-[#f5ece1]">
+      <main className="overflow-x-hidden bg-[#fdfbf7] text-[#2d241c] dark:bg-[#150d08] dark:text-[#f5ece1]">
         <section
           id="rituels"
-          className="relative isolate overflow-hidden bg-gradient-to-b from-[#faf5ef] via-[#f3e8db] to-[#efe0cf] pb-24 pt-32 md:pb-40 lg:pt-48"
+          className="relative isolate overflow-hidden pb-24 pt-32 md:pb-36 lg:pt-44"
         >
-          <div className="absolute inset-x-0 top-16 -z-10 h-[480px] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.6),_transparent_65%)]" aria-hidden />
-          <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-center">
-            <div className="relative max-w-xl space-y-10 lg:max-w-none">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#d8c6b5] bg-white/70 px-4 py-1 text-xs tracking-[0.3em] text-[#6f533c] shadow-sm dark:border-[#463122] dark:bg-[#1c120c]/80 dark:text-[#f0dfcd]">
-                Rituel botanique
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9)_0%,_rgba(245,238,227,0.6)_45%,_transparent_80%)]"
+            aria-hidden
+          />
+          <div className="mx-auto flex max-w-6xl flex-col gap-20 px-6 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div className="space-y-10">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#e7ded0] bg-white/80 px-4 py-1 text-xs uppercase tracking-[0.32em] text-[#6b5a4a] shadow-sm">
+                Rose de Jéricho
               </span>
-              <h1 className="font-serif text-4xl leading-tight text-[#2f2015] md:text-5xl lg:text-6xl dark:text-[#f5ecdf]">
-                La renaissance de la Rose de Jericho chez CHAJARATMARIAM
+              <h1 className="font-serif text-4xl leading-tight text-[#1f1a15] md:text-5xl lg:text-6xl dark:text-[#f5ecdf]">
+                Les rituels épurés pour révéler la plante des renaissances
               </h1>
-              <p className="max-w-xl text-base leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-                Offrez à vos espaces et à votre esprit un moment de grâce. Nos rituels sur mesure réveillent la plante sacrée avec une eau filtrée et des gestes lents pour révéler sa symbolique de protection et de renouveau.
+              <p className="max-w-xl text-base leading-relaxed text-[#5c5247] dark:text-[#f0dfcd]/80">
+                Nous imaginons des cérémonies lumineuses, minimalistes et profondément sensorielles pour laisser la Rose de Jéricho déployer sa symbolique de protection et de renouveau au cœur de votre intérieur.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button asChild size="lg" className="bg-[#b98c5f] px-8 py-6 text-base font-medium tracking-[0.2em] uppercase text-white hover:bg-[#a6784d]">
-                  <Link href="#contact">Réserver mon rituel</Link>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[#e0c9a6] px-8 py-6 text-base font-medium uppercase tracking-[0.2em] text-[#2d241c] shadow-sm hover:bg-[#d7bc90]"
+                >
+                  <Link href="#contact">Réserver un rituel</Link>
                 </Button>
-                <Button asChild size="lg" variant="ghost" className="px-8 py-6 text-base font-medium text-[#6f533c] hover:text-[#2f2015] dark:text-[#f0dfcd]">
-                  <Link href="#origines">Découvrir l&apos;histoire</Link>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="ghost"
+                  className="px-8 py-6 text-base font-medium text-[#5c5247] hover:text-[#1f1a15] dark:text-[#f0dfcd]"
+                >
+                  <Link href="#origines">Voir la symbolique</Link>
                 </Button>
               </div>
-              <div className="grid grid-cols-3 gap-4 pt-8 text-sm">
-                {["Eau filtrée", "Encens de myrrhe", "Musique méditative"].map((item) => (
-                  <div key={item} className="rounded-2xl border border-[#ead8c8] bg-white/60 p-4 text-center shadow-sm dark:border-[#3b281b] dark:bg-[#21140d]/80">
-                    <span className="font-medium tracking-[0.2em] text-[#6f533c] dark:text-[#f0dfcd]">{item}</span>
+              <div className="flex flex-wrap gap-3 pt-6 text-sm">
+                {ritualNotes.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-2 rounded-full border border-[#ede5d8] bg-white px-4 py-2 text-[#5c5247] shadow-sm"
+                  >
+                    <span className="size-1.5 rounded-full bg-[#d6b485]" aria-hidden />
+                    <span className="tracking-[0.18em] uppercase">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div className="relative isolate mx-auto w-full max-w-xl">
-              <div className="relative overflow-hidden rounded-[3rem] border border-[#e2d2c2] bg-white/70 shadow-[0_40px_120px_rgba(107,77,51,0.18)] backdrop-blur-sm dark:border-[#3e2a1b] dark:bg-[#1a100a]/80">
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-[#ede5d8] bg-white shadow-[0_30px_80px_rgba(196,171,134,0.28)]">
                 <Image
                   src="/images/rose-packaging.svg"
-                  alt="Packaging artisanal de la Rose de Jericho"
-                  width={640}
-                  height={640}
+                  alt="Packaging minimaliste de la Rose de Jericho"
+                  width={620}
+                  height={620}
                   priority
                   className="w-full"
                 />
               </div>
-              <div className="absolute -bottom-12 -left-8 hidden w-40 -rotate-3 rounded-3xl border border-[#e8d7c7] bg-white/90 p-3 shadow-xl shadow-[#d1b498]/30 sm:block dark:border-[#3b291d] dark:bg-[#21140d]">
+              <div className="absolute -bottom-12 right-6 hidden max-w-[220px] rounded-3xl border border-[#f0e8dd] bg-white/90 p-4 shadow-[0_18px_40px_rgba(214,181,133,0.2)] sm:block">
                 <Image
                   src="/images/rose-dormant.svg"
                   alt="Rose de Jericho en dormance"
@@ -70,27 +82,14 @@ export default function HeroSection() {
                   height={220}
                 />
               </div>
-              <div className="absolute -top-10 -right-12 hidden w-48 rotate-6 rounded-3xl border border-[#e8d7c7] bg-white/90 p-4 shadow-xl shadow-[#d1b498]/30 sm:block dark:border-[#3b291d] dark:bg-[#21140d]">
+              <div className="absolute -top-12 -left-8 hidden max-w-[240px] rounded-3xl border border-[#f0e8dd] bg-white/90 p-4 shadow-[0_18px_40px_rgba(214,181,133,0.2)] sm:block">
                 <Image
                   src="/images/rose-awakened.svg"
-                  alt="Rose de Jericho éveillée"
-                  width={260}
-                  height={260}
+                  alt="Rose de Jericho éclose"
+                  width={240}
+                  height={240}
                 />
               </div>
-            </div>
-          </div>
-          <div className="mt-24">
-            <div className="relative mx-auto max-w-5xl overflow-hidden rounded-full border border-[#e5d3c0] bg-white/50 py-6 shadow-inner shadow-[#d1b498]/20 dark:border-[#3b291d] dark:bg-[#1c120b]/80">
-              <InfiniteSlider speedOnHover={16} speed={28} gap={96}>
-                {sliderHighlights.map((item) => (
-                  <div key={item} className="flex min-w-[14rem] items-center justify-center px-6">
-                    <span className="text-sm tracking-[0.3em] uppercase text-[#6f533c] dark:text-[#f0dfcd]">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </InfiniteSlider>
             </div>
           </div>
         </section>
