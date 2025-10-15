@@ -1,16 +1,14 @@
 import HeroSection from "@/components/hero-section";
-import Features from "@/components/features-1";
-import ContentSection from "@/components/content-1";
-import CallToAction from "@/components/call-to-action";
+import HighlightSection from "@/components/highlight-section";
+import StorySection from "@/components/story-section";
 import FooterSection from "@/components/footer";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <Features />
-      <ContentSection />
-      <CallToAction />
+      <HighlightSection />
+      <StorySection />
       <FooterSection />
     </>
   );
