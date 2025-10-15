@@ -2,47 +2,50 @@ import Image from "next/image";
 
 const timeline = [
   {
-    title: "Dormance protectrice",
+    title: "Dormance",
     description:
-      "Conservée au sec, la Rose de Jericho se replie en sphère et garde son énergie latente, prête à se déployer lorsque l&apos;eau la touche.",
+      "À sec, la plante se replie et préserve une énergie discrète prête à renaître.",
   },
   {
-    title: "Renaissance aquatique",
+    title: "Éclosion",
     description:
-      "Immergée dans une eau tiédie et purifiée, elle s&apos;ouvre lentement en éventail, libérant une fragrance végétale légère.",
+      "Sous l&apos;effet d&apos;une eau claire, la Rose se déploie lentement et diffuse une douceur végétale.",
   },
   {
-    title: "Transmission symbolique",
+    title: "Intention",
     description:
-      "Nous accompagnons le rituel de récits ancestraux et de gestes guidés pour ancrer vos intentions dans le quotidien.",
+      "Nous guidons chaque rituel avec des gestes lents pour ancrer vos souhaits dans le quotidien.",
   },
 ];
 
 export default function ContentSection() {
   return (
-    <section id="origines" className="bg-[#fbf6f0] py-20 text-[#2f2015] dark:bg-[#130b06] dark:text-[#f5ecdf]">
+    <section id="origines" className="bg-[#f8f6ef] py-20 text-[#2d2924]">
       <div className="mx-auto max-w-6xl space-y-12 px-6 md:space-y-16">
-        <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+        <div className="flex flex-col gap-12 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="space-y-6">
-            <h2 className="font-serif text-4xl font-semibold text-[#3c281b] lg:text-5xl dark:text-[#f6ecde]">
-              L&apos;histoire sacrée de la Rose de Jericho
+            <h2 className="font-serif text-4xl font-semibold text-[#1f1d19] lg:text-5xl">
+              Une histoire sobre et lumineuse
             </h2>
-            <p className="text-lg leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-              Plante nomade des terres désertiques, elle traverse les époques comme un talisman de chance et de protection. Chez CHAJARATMARIAM, nous honorons ce patrimoine en associant matières naturelles, gestes précis et écriture contemporaine.
+            <p className="text-lg leading-relaxed text-[#4c4a43]">
+              Nomade des déserts, la Rose de Jericho s&apos;adapte à chaque intérieur. Nous l&apos;accompagnons avec une direction artistique blanche et crème, inspirée des textures minérales et des lignes graphiques que vous aimez.
             </p>
             <div className="grid gap-6 sm:grid-cols-2">
               {timeline.map((item) => (
-                <div key={item.title} className="rounded-3xl border border-[#e6d6c6] bg-white/80 p-6 shadow-sm shadow-[#d4bfa7]/25 dark:border-[#352216] dark:bg-[#1d130c]/80">
-                  <h3 className="font-medium uppercase tracking-[0.25em] text-[#6f533c] dark:text-[#f5e5d4]">
+                <div
+                  key={item.title}
+                  className="rounded-3xl border border-[#ede8dc] bg-white/90 p-6 shadow-[0_18px_50px_rgba(217,217,203,0.35)]"
+                >
+                  <h3 className="font-medium uppercase tracking-[0.25em] text-[#6f8a6a]">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm text-[#5a3f2c] dark:text-[#f0dfcd]/80">{item.description}</p>
+                  <p className="mt-3 text-sm text-[#4c4a43]">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
           <div className="relative flex flex-col gap-6">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-[#e4d2c0] bg-white/80 p-6 shadow-[0_30px_80px_rgba(153,118,82,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-[#ebe4d8] bg-white/95 p-6 shadow-[0_35px_90px_rgba(205,205,191,0.45)]">
               <Image
                 src="/images/rose-awakened.svg"
                 alt="Rose de Jericho ouverte"
@@ -50,11 +53,8 @@ export default function ContentSection() {
                 height={540}
                 className="w-full"
               />
-              <div className="absolute bottom-6 left-6 rounded-full bg-[#b98c5f] px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-white shadow-lg">
-                Renaissance
-              </div>
             </div>
-            <div className="ml-auto w-3/4 overflow-hidden rounded-[2rem] border border-[#e6d6c6] bg-white/80 p-4 shadow-[0_20px_60px_rgba(140,104,70,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
+            <div className="ml-auto w-3/4 overflow-hidden rounded-[2rem] border border-[#f0ebe0] bg-white/95 p-4 shadow-[0_24px_70px_rgba(215,215,200,0.4)]">
               <Image
                 src="/images/rose-dormant.svg"
                 alt="Rose de Jericho dormante"

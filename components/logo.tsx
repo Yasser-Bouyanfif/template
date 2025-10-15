@@ -9,7 +9,7 @@ export const Logo = ({ className }: { className?: string }) => {
         className,
       )}
     >
-      <span className="relative flex size-10 items-center justify-center overflow-hidden rounded-full border border-[#d6c4b0] bg-[#f9f3eb] shadow-sm">
+      <span className="relative flex size-10 items-center justify-center overflow-hidden rounded-full border border-[#e1dbd0] bg-[#fdfbf7] shadow-sm">
         <Image
           src="/branding/chajaratmariam-mark.svg"
           alt="Emblème Chajaratmariam"
