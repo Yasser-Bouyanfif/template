@@ -19,7 +19,7 @@ export const HeroHeader = () => {
     <header>
       <nav
         data-state={menuState && "active"}
-        className="bg-[#f8f1e7]/80 fixed z-20 w-full border-b border-[#e4d6c5]/60 backdrop-blur-2xl transition-colors dark:bg-[#20160f]/80 dark:border-[#4c3a2b]"
+        className="fixed z-20 w-full border-b border-[#e5e1d8] bg-white/80 backdrop-blur-xl transition-colors dark:border-[#37413a] dark:bg-[#1a241e]/80"
       >
         <div className="mx-auto max-w-6xl px-6">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-4 lg:gap-0">
@@ -32,19 +32,19 @@ export const HeroHeader = () => {
                 onClick={() => setMenuState(!menuState)}
                 aria-label={menuState ? "Fermer le menu" : "Ouvrir le menu"}
                 data-state={menuState ? "active" : "inactive"}
-                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer rounded-full p-2.5 text-[#5a3f2c] transition hover:bg-[#eadccb] lg:hidden"
+                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer rounded-full p-2.5 text-[#4c5a51] transition hover:bg-[#e9f1ed] lg:hidden"
               >
                 <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 transition duration-200" />
                 <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 transition duration-200" />
               </button>
 
               <div className="hidden lg:block">
-                <ul className="flex gap-8 text-sm text-[#6f533c]">
+                <ul className="flex gap-8 text-sm text-[#6f7b6f]">
                   {menuItems.map((item, index) => (
                     <li key={index}>
                       <Link
                         href={item.href}
-                        className="hover:text-[#2f2015] transition-colors"
+                        className="transition-colors hover:text-[#1f1b16]"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -56,7 +56,7 @@ export const HeroHeader = () => {
 
             <div
               data-state={menuState ? "active" : "inactive"}
-              className="bg-[#f8f1e7] text-[#5a3f2c] in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end gap-4 rounded-3xl border border-[#eadccd] p-6 shadow-xl shadow-[#d9c2a9]/20 transition lg:m-0 lg:flex lg:w-fit lg:gap-5 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:bg-[#1e120b] dark:text-[#f4e9dd] dark:border-[#3d2a1d] dark:lg:bg-transparent"
+              className="in-data-[state=active]:block lg:in-data-[state=active]:flex hidden w-full flex-wrap items-center justify-end gap-4 rounded-3xl border border-[#e5e1d8] bg-white p-6 text-[#4c5a51] shadow-xl shadow-[#cfd7cf]/30 transition lg:m-0 lg:flex lg:w-fit lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:border-[#344039] dark:bg-[#1a241e] dark:text-[#e0f0ea] dark:lg:bg-transparent"
             >
               <div className="lg:hidden">
                 <ul className="space-y-6 text-base">
@@ -64,7 +64,7 @@ export const HeroHeader = () => {
                     <li key={index}>
                       <Link
                         href={item.href}
-                        className="text-[#6f533c] transition-colors hover:text-[#2f2015] dark:text-[#f0dfcd] dark:hover:text-white"
+                        className="text-[#4c5a51] transition-colors hover:text-[#1f1b16] dark:text-[#e0f0ea] dark:hover:text-white"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -73,12 +73,12 @@ export const HeroHeader = () => {
                 </ul>
               </div>
               <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-end sm:gap-3 md:w-fit">
-                <Button asChild variant="ghost" size="sm" className="text-sm text-[#6f533c] hover:text-[#2f2015] dark:text-[#f4e9dd]">
+                <Button asChild variant="ghost" size="sm" className="text-sm text-[#2f6d5c] hover:bg-[#e9f1ed] hover:text-[#1f1b16] dark:text-[#e0f0ea]">
                   <Link href="#contact">
                     <span>Nous écrire</span>
                   </Link>
                 </Button>
-                <Button asChild size="sm" className="bg-[#b98c5f] text-white hover:bg-[#a6784d]">
+                <Button asChild size="sm" className="bg-[#2f6d5c] text-white hover:bg-[#275a4c]">
                   <Link href="#rituels">
                     <span>Commander</span>
                   </Link>
