@@ -1,68 +1,54 @@
 import Image from "next/image";
 
-const timeline = [
-  {
-    title: "Dormance protectrice",
-    description:
-      "Conservée au sec, la Rose de Jericho se replie en sphère et garde son énergie latente, prête à se déployer lorsque l&apos;eau la touche.",
-  },
-  {
-    title: "Renaissance aquatique",
-    description:
-      "Immergée dans une eau tiédie et purifiée, elle s&apos;ouvre lentement en éventail, libérant une fragrance végétale légère.",
-  },
-  {
-    title: "Transmission symbolique",
-    description:
-      "Nous accompagnons le rituel de récits ancestraux et de gestes guidés pour ancrer vos intentions dans le quotidien.",
-  },
-];
-
 export default function ContentSection() {
   return (
-    <section id="origines" className="bg-[#fbf6f0] py-20 text-[#2f2015] dark:bg-[#130b06] dark:text-[#f5ecdf]">
-      <div className="mx-auto max-w-6xl space-y-12 px-6 md:space-y-16">
-        <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <div className="space-y-6">
-            <h2 className="font-serif text-4xl font-semibold text-[#3c281b] lg:text-5xl dark:text-[#f6ecde]">
-              L&apos;histoire sacrée de la Rose de Jericho
-            </h2>
-            <p className="text-lg leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-              Plante nomade des terres désertiques, elle traverse les époques comme un talisman de chance et de protection. Chez CHAJARATMARIAM, nous honorons ce patrimoine en associant matières naturelles, gestes précis et écriture contemporaine.
-            </p>
-            <div className="grid gap-6 sm:grid-cols-2">
-              {timeline.map((item) => (
-                <div key={item.title} className="rounded-3xl border border-[#e6d6c6] bg-white/80 p-6 shadow-sm shadow-[#d4bfa7]/25 dark:border-[#352216] dark:bg-[#1d130c]/80">
-                  <h3 className="font-medium uppercase tracking-[0.25em] text-[#6f533c] dark:text-[#f5e5d4]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-[#5a3f2c] dark:text-[#f0dfcd]/80">{item.description}</p>
-                </div>
-              ))}
+    <section id="origines" className="bg-white py-24 text-[#1f140d]">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="relative overflow-hidden rounded-[3rem] border border-[#efe6d9] bg-[#fffbf4] p-10 shadow-[0_40px_90px_rgba(81,60,40,0.12)]">
+            <Image
+              src="/images/rose-dormant.svg"
+              alt="Rose de Jericho en dormance"
+              width={540}
+              height={540}
+              className="w-full"
+            />
+            <div className="absolute left-8 top-8 rounded-full bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.3em] text-[#8c7763] ring-1 ring-[#efe6d9]">
+              Rituel saharien
             </div>
           </div>
-          <div className="relative flex flex-col gap-6">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-[#e4d2c0] bg-white/80 p-6 shadow-[0_30px_80px_rgba(153,118,82,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
-              <Image
-                src="/images/rose-awakened.svg"
-                alt="Rose de Jericho ouverte"
-                width={540}
-                height={540}
-                className="w-full"
-              />
-              <div className="absolute bottom-6 left-6 rounded-full bg-[#b98c5f] px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-white shadow-lg">
-                Renaissance
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <span className="inline-flex items-center rounded-full bg-[#f5ede1] px-4 py-1 text-xs uppercase tracking-[0.3em] text-[#8c7763]">
+                Origines
+              </span>
+              <h2 className="font-serif text-3xl tracking-[0.1em] text-[#2c1f16] md:text-4xl">
+                Une plante nomade, gardienne de vos intentions
+              </h2>
+              <p className="text-base leading-relaxed text-[#5f4d3c]">
+                Née dans le désert, la Rose de Jericho se replie pour survivre aux tempêtes puis renaît au contact de l&apos;eau. Nous honorons ce cycle en vous offrant des rituels sobres, pensés pour embellir vos espaces blancs et apaiser vos journées.
+              </p>
+            </div>
+            <dl className="grid gap-6 sm:grid-cols-3">
+              <div className="rounded-[2rem] border border-[#efe6d9] bg-[#fffbf4] p-6 text-center">
+                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8c7763]">Temps de réveil</dt>
+                <dd className="mt-2 text-3xl font-serif text-[#2c1f16]">3 h</dd>
+                <p className="mt-1 text-xs text-[#5f4d3c]">Pour un déploiement complet</p>
               </div>
-            </div>
-            <div className="ml-auto w-3/4 overflow-hidden rounded-[2rem] border border-[#e6d6c6] bg-white/80 p-4 shadow-[0_20px_60px_rgba(140,104,70,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
-              <Image
-                src="/images/rose-dormant.svg"
-                alt="Rose de Jericho dormante"
-                width={420}
-                height={420}
-                className="w-full"
-              />
-            </div>
+              <div className="rounded-[2rem] border border-[#efe6d9] bg-[#fffbf4] p-6 text-center">
+                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8c7763]">Origine</dt>
+                <dd className="mt-2 text-3xl font-serif text-[#2c1f16]">100% bio</dd>
+                <p className="mt-1 text-xs text-[#5f4d3c]">Récoltée dans les plaines sahariennes</p>
+              </div>
+              <div className="rounded-[2rem] border border-[#efe6d9] bg-[#fffbf4] p-6 text-center">
+                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[#8c7763]">Plantes soignées</dt>
+                <dd className="mt-2 text-3xl font-serif text-[#2c1f16]">103k</dd>
+                <p className="mt-1 text-xs text-[#5f4d3c]">Depuis la création du studio</p>
+              </div>
+            </dl>
+            <p className="text-sm uppercase tracking-[0.3em] text-[#8c7763]">
+              Disponible en coffret minimaliste ou en rituel guidé à domicile.
+            </p>
           </div>
         </div>
       </div>
