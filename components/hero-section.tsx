@@ -5,6 +5,7 @@ import Link from "next/link";
 import { HeroHeader } from "@/components/hero8-header";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { Crown, Gem, Rocket } from "lucide-react";
 
 const sliderHighlights = [
   "Symbole de résilience",
@@ -16,6 +17,30 @@ const sliderHighlights = [
 ];
 
 export default function HeroSection() {
+  const highlightBenefits = [
+    {
+      title: "Livraison éclair",
+      description: "Commandez avant 17h et recevez votre Rose de Jéricho dès le lendemain.",
+      icon: Rocket,
+      gradient: "from-[#ffb347] via-[#ff6b6b] to-[#845ec2]",
+      glow: "bg-[#ff9a76]/70",
+    },
+    {
+      title: "Origine certifiée Sahara",
+      description: "Chaque plante est récoltée de manière responsable auprès d'artisans sahariens.",
+      icon: Gem,
+      gradient: "from-[#3acfd5] via-[#3a4ed5] to-[#9f86ff]",
+      glow: "bg-[#3acfd5]/60",
+    },
+    {
+      title: "Prix légendaire",
+      description: "Profitez d'offres exclusives pour une expérience magique sans compromis.",
+      icon: Crown,
+      gradient: "from-[#f9d423] via-[#ff4e50] to-[#9f44d3]",
+      glow: "bg-[#f9d423]/60",
+    },
+  ];
+
   return (
     <>
       <HeroHeader />
@@ -57,19 +82,28 @@ export default function HeroSection() {
                     <Link href="#bienfaits">Explorer les bienfaits</Link>
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-6 pt-6 text-sm text-[#5a4834] dark:text-[#cbb392] md:grid-cols-3">
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">48h</p>
-                    <p className="mt-1 leading-snug">Rituel de renaissance garanti</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">∞</p>
-                    <p className="mt-1 leading-snug">Réutilisable à l&apos;infini avec soin</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">100%</p>
-                    <p className="mt-1 leading-snug">Issue de cueillette responsable</p>
-                  </div>
+                <div className="grid gap-5 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {highlightBenefits.map(({ title, description, icon: Icon, gradient, glow }) => (
+                    <div
+                      key={title}
+                      className={`group relative overflow-hidden rounded-3xl bg-gradient-to-br ${gradient} p-[1px] shadow-[0_25px_70px_rgba(75,45,19,0.25)]`}
+                    >
+                      <div className="relative h-full rounded-[calc(1.5rem-1px)] bg-white/90 p-6 text-[#382819] backdrop-blur-sm transition duration-500 group-hover:bg-white dark:bg-[#120b06]/90 dark:text-[#f5e2c7]">
+                        <div
+                          className={`absolute -top-10 -right-14 size-40 rounded-full ${glow} blur-3xl transition duration-500 group-hover:scale-110 group-hover:opacity-90`}
+                          aria-hidden
+                        />
+                        <div
+                          className={`inline-flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} text-white shadow-lg shadow-[#1f140a]/30`}
+                        >
+                          <Icon className="size-6" />
+                        </div>
+                        <h3 className="mt-6 text-xl font-semibold tracking-tight">{title}</h3>
+                        <p className="mt-3 text-sm leading-relaxed text-[#5a4834] dark:text-[#e2cda8]">{description}</p>
+                        <div className="pointer-events-none absolute inset-0 rounded-[calc(1.5rem-1px)] border border-white/40 opacity-0 transition duration-500 group-hover:opacity-100 dark:border-white/20" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="relative lg:col-span-6">
