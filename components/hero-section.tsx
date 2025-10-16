@@ -5,6 +5,7 @@ import Link from "next/link";
 import { HeroHeader } from "@/components/hero8-header";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { Crown, Gem, Rocket } from "lucide-react";
 
 const sliderHighlights = [
   "Symbole de résilience",
@@ -16,6 +17,42 @@ const sliderHighlights = [
 ];
 
 export default function HeroSection() {
+  const highlightBenefits = [
+    {
+      title: "Livraison le lendemain (-24h)",
+      description:
+        "Commandez avant 17h pour recevoir votre Rose de Jéricho dès le lendemain, prête à renaître.",
+      detail: "Expédition express & suivi personnalisé",
+      icon: Rocket,
+      accent: {
+        icon: "bg-[#c29a67]/15 text-[#8b5e2e] dark:bg-[#d4a574]/15 dark:text-[#f6e6c9]",
+        halo: "bg-[#c29a67]/18 dark:bg-[#d4a574]/22",
+      },
+    },
+    {
+      title: "Importée directement du Sahara",
+      description:
+        "Récoltée avec respect par nos partenaires sahariens pour préserver la magie de chaque plante.",
+      detail: "Traçabilité complète & cueillette responsable",
+      icon: Gem,
+      accent: {
+        icon: "bg-[#8f6a47]/15 text-[#6b4824] dark:bg-[#b6895d]/15 dark:text-[#f3d7ae]",
+        halo: "bg-[#8f6a47]/18 dark:bg-[#b6895d]/22",
+      },
+    },
+    {
+      title: "Prix imbattable",
+      description:
+        "Un tarif juste toute l'année pour une expérience botanique d'exception, sans compromis.",
+      detail: "Offres exclusives & cadeaux rituel",
+      icon: Crown,
+      accent: {
+        icon: "bg-[#a87a4f]/15 text-[#72502f] dark:bg-[#c49866]/15 dark:text-[#f8e2c1]",
+        halo: "bg-[#a87a4f]/18 dark:bg-[#c49866]/22",
+      },
+    },
+  ];
+
   return (
     <>
       <HeroHeader />
@@ -57,19 +94,38 @@ export default function HeroSection() {
                     <Link href="#bienfaits">Explorer les bienfaits</Link>
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-6 pt-6 text-sm text-[#5a4834] dark:text-[#cbb392] md:grid-cols-3">
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">48h</p>
-                    <p className="mt-1 leading-snug">Rituel de renaissance garanti</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">∞</p>
-                    <p className="mt-1 leading-snug">Réutilisable à l&apos;infini avec soin</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">100%</p>
-                    <p className="mt-1 leading-snug">Issue de cueillette responsable</p>
-                  </div>
+                <div className="grid gap-5 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {highlightBenefits.map(({ title, description, detail, icon: Icon, accent }) => (
+                    <div
+                      key={title}
+                      className="group relative overflow-hidden rounded-3xl border border-[#eadac4]/70 bg-white/80 p-6 shadow-[0_20px_45px_rgba(71,44,21,0.1)] transition duration-300 hover:-translate-y-1 hover:border-[#d6b892] hover:shadow-[0_35px_70px_rgba(71,44,21,0.14)] dark:border-[#25190f] dark:bg-[#0f0804]/80 dark:hover:border-[#3a2514]"
+                    >
+                      <div
+                        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+                        aria-hidden
+                      >
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(194,154,103,0.15),_transparent_65%)] dark:bg-[radial-gradient(circle_at_top,_rgba(212,165,116,0.2),_transparent_65%)]" />
+                        <div className={`absolute -top-16 right-0 h-40 w-36 rounded-full ${accent.halo} blur-3xl`} />
+                      </div>
+                      <div className="relative flex h-full flex-col gap-6">
+                        <div className="flex items-center gap-4">
+                          <div className={`inline-flex size-12 items-center justify-center rounded-2xl ${accent.icon}`}>
+                            <Icon className="size-6" />
+                          </div>
+                          <span className="rounded-full border border-[#e4d2bb] px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-[#8b7355] dark:border-[#2f2115] dark:text-[#d0aa78]">
+                            Avantage clé
+                          </span>
+                        </div>
+                        <div className="space-y-3 text-left">
+                          <h3 className="text-xl font-semibold tracking-tight text-[#2f2015] dark:text-[#f5e2c7]">{title}</h3>
+                          <p className="text-sm leading-relaxed text-[#5a4834] dark:text-[#ddc5a0]">{description}</p>
+                        </div>
+                        <div className="mt-auto pt-2 text-xs font-medium uppercase tracking-[0.2em] text-[#a1835d] dark:text-[#cfa87a]">
+                          {detail}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="relative lg:col-span-6">
