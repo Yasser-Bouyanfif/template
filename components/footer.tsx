@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Bolt } from "lucide-react";
+import { Logo } from "./logo";
 
 const usefulLinks = [
   { label: "Mentions Légales", href: "#" },
@@ -21,15 +21,7 @@ export default function FooterSection() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[#22d3ee] to-[#34d399] text-white shadow-lg shadow-[#22d3ee]/30">
-                <Bolt className="h-6 w-6" strokeWidth={1.8} />
-              </div>
-              <div className="space-y-1">
-                <p className="text-sm font-medium text-[#0f172a]">ELEC&apos;CONNECT</p>
-                <p className="text-lg font-semibold text-[#0b1120]">Solutions de recharge électrique</p>
-              </div>
-            </div>
+            <Logo showTagline className="text-[#0f172a]" />
             <p className="max-w-md text-sm leading-relaxed text-slate-500">
               Votre partenaire de confiance pour l&apos;installation professionnelle de bornes de recharge électrique. Nous
               contribuons à un avenir plus durable grâce à la mobilité électrique.
@@ -70,9 +62,7 @@ export default function FooterSection() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-slate-200 pt-8 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
-          <span>
-            {currentYear} ELEC&apos;CONNECT. Tous droits réservés.
-          </span>
+          <span>{currentYear} Chajaratmariam. Tous droits réservés.</span>
           <span>
             Propulsé par {" "}
             <Link href="https://yasserr.dev" className="font-medium text-[#0b1120] transition-colors hover:text-[#0f172a]">
