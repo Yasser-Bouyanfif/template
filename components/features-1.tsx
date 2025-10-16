@@ -79,14 +79,19 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="group relative overflow-hidden rounded-[28px] border border-white/60 bg-white/80 p-7 shadow-[0_18px_50px_rgba(82,64,43,0.16)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(82,64,43,0.2)] md:col-span-1 lg:col-span-3 dark:border-[#2b2117] dark:bg-[#140d07]/80">
+          <div className="group relative overflow-hidden rounded-[28px] border border-white/60 bg-white/80 p-7 shadow-[0_18px_50px_rgba(82,64,43,0.16)] backdrop-blur-xl transition-all hover:-translate-y-1 hover:shadow-[0_28px_70px_rgba(82,64,43,0.2)] md:col-span-1 lg:col-span-3 lg:row-span-2 dark:border-[#2b2117] dark:bg-[#140d07]/80">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(139,115,85,0.14),_transparent_60%)]" aria-hidden />
-            <div className="relative flex h-full flex-col gap-4">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#8b7355] to-[#6b5644] text-white shadow-lg shadow-[#8b7355]/30">
-                {features[1].icon}
+            <div className="relative flex h-full flex-col justify-between gap-6">
+              <div className="space-y-4">
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#8b7355] to-[#6b5644] text-white shadow-lg shadow-[#8b7355]/30">
+                  {features[1].icon}
+                </div>
+                <h3 className="font-serif text-2xl font-semibold text-[#1a140f] dark:text-white">{features[1].title}</h3>
+                <p className="text-sm leading-relaxed text-[#5a4834] dark:text-[#b8a491]">{features[1].description}</p>
               </div>
-              <h3 className="font-serif text-2xl font-semibold text-[#1a140f] dark:text-white">{features[1].title}</h3>
-              <p className="text-sm leading-relaxed text-[#5a4834] dark:text-[#b8a491]">{features[1].description}</p>
+              <div className="rounded-2xl border border-[#ecdcc7] bg-white/80 px-4 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#8b7355] shadow-sm dark:border-[#2b2117] dark:bg-[#120b06]/60 dark:text-[#d4a574]">
+                {features[1].ecommerceArgument}
+              </div>
             </div>
           </div>
 
