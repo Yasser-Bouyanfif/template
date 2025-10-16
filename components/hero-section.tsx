@@ -5,6 +5,7 @@ import Link from "next/link";
 import { HeroHeader } from "@/components/hero8-header";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { Crown, Gem, Rocket } from "lucide-react";
 
 const sliderHighlights = [
   "Symbole de résilience",
@@ -16,6 +17,36 @@ const sliderHighlights = [
 ];
 
 export default function HeroSection() {
+  const highlightBenefits = [
+    {
+      title: "Livraison le lendemain",
+      description:
+        "Expédiée avant 17h pour une arrivée dès le lendemain, partout en France.",
+      icon: Rocket,
+      accentLight: "rgba(232, 201, 162, 0.45)",
+      accentDark: "rgba(212, 165, 116, 0.3)",
+      iconTint: "text-[#a67845]",
+    },
+    {
+      title: "Import direct du Sahara",
+      description:
+        "Cueillie à la main par nos artisans sahariens partenaires, dans le plus grand respect des cycles.",
+      icon: Gem,
+      accentLight: "rgba(209, 188, 159, 0.45)",
+      accentDark: "rgba(181, 149, 111, 0.3)",
+      iconTint: "text-[#8b6a3f]",
+    },
+    {
+      title: "Prix imbattable",
+      description:
+        "Pack complet artisanal, au tarif le plus juste pour honorer la plante et ses gardiens.",
+      icon: Crown,
+      accentLight: "rgba(241, 213, 176, 0.45)",
+      accentDark: "rgba(196, 153, 103, 0.3)",
+      iconTint: "text-[#b17a3e]",
+    },
+  ];
+
   return (
     <>
       <HeroHeader />
@@ -57,19 +88,27 @@ export default function HeroSection() {
                     <Link href="#bienfaits">Explorer les bienfaits</Link>
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-6 pt-6 text-sm text-[#5a4834] dark:text-[#cbb392] md:grid-cols-3">
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">48h</p>
-                    <p className="mt-1 leading-snug">Rituel de renaissance garanti</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">∞</p>
-                    <p className="mt-1 leading-snug">Réutilisable à l&apos;infini avec soin</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">100%</p>
-                    <p className="mt-1 leading-snug">Issue de cueillette responsable</p>
-                  </div>
+                <div className="grid gap-5 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {highlightBenefits.map(({ title, description, icon: Icon, accentLight, accentDark, iconTint }) => (
+                    <div
+                      key={title}
+                      className="group relative flex aspect-[21/20] flex-col overflow-hidden rounded-3xl border border-[#eadac4] bg-white/90 p-5 text-[#382819] shadow-[0_20px_45px_rgba(78,52,28,0.1)] transition duration-500 dark:border-[#2a2016] dark:bg-[#100905]/90 dark:text-[#f5e2c7]"
+                    >
+                      <div className="absolute inset-0 -z-10 opacity-0 transition duration-500 group-hover:opacity-100 dark:hidden" style={{ background: `radial-gradient(120% 120% at 50% 0%, ${accentLight} 0%, transparent 65%)` }} aria-hidden />
+                      <div className="absolute inset-0 -z-10 hidden opacity-0 transition duration-500 group-hover:opacity-100 dark:block" style={{ background: `radial-gradient(120% 120% at 50% 0%, ${accentDark} 0%, transparent 65%)` }} aria-hidden />
+                      <div className="relative flex h-full flex-col">
+                        <div className={`inline-flex size-11 items-center justify-center rounded-2xl bg-[#f4e6d3]/80 shadow-inner shadow-[#caa87c]/20 ${iconTint}`}>
+                          <Icon className="size-6" />
+                        </div>
+                        <h3 className="mt-4 text-lg font-semibold tracking-tight text-[#2b1b0f] dark:text-inherit">{title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#5a4834] dark:text-[#e2cda8]">{description}</p>
+                        <div className="mt-auto pt-4">
+                          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#d8c1a4] to-transparent opacity-0 transition duration-500 group-hover:opacity-100 dark:via-[#8a6539]" />
+                        </div>
+                      </div>
+                      <div className="pointer-events-none absolute inset-0 rounded-3xl border border-white/40 opacity-0 transition duration-500 group-hover:opacity-100 dark:border-white/10" />
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="relative lg:col-span-6">
