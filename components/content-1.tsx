@@ -2,33 +2,36 @@ import Image from "next/image";
 
 const timeline = [
   {
-    title: "Dormance protectrice",
+    title: "Réhydratation",
     description:
-      "Conservée au sec, la Rose de Jericho se replie en sphère et garde son énergie latente, prête à se déployer lorsque l&apos;eau la touche.",
+      "Plongez la plante ou quelques brins dans un bol d&apos;eau froide ou tiède et regardez-la s&apos;ouvrir en quelques heures.",
   },
   {
-    title: "Renaissance aquatique",
+    title: "Infusion bienfaisante",
     description:
-      "Immergée dans une eau tiédie et purifiée, elle s&apos;ouvre lentement en éventail, libérant une fragrance végétale légère.",
+      "Récupérez l&apos;eau réhydratée et savourez-la chaude ou froide, nature ou avec une touche de miel selon vos envies.",
   },
   {
-    title: "Transmission symbolique",
+    title: "Sécher & recommencer",
     description:
-      "Nous accompagnons le rituel de récits ancestraux et de gestes guidés pour ancrer vos intentions dans le quotidien.",
+      "Retirez la Rose de Jéricho, laissez-la sécher pendant environ 15 jours et répétez le rituel aussi souvent que souhaité.",
   },
 ];
 
 export default function ContentSection() {
   return (
-    <section id="origines" className="bg-[#fbf6f0] py-20 text-[#2f2015] dark:bg-[#130b06] dark:text-[#f5ecdf]">
+    <section id="rituel" className="bg-[#fbf6f0] py-20 text-[#2f2015] dark:bg-[#130b06] dark:text-[#f5ecdf]">
       <div className="mx-auto max-w-6xl space-y-12 px-6 md:space-y-16">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="space-y-6">
             <h2 className="font-serif text-4xl font-semibold text-[#3c281b] lg:text-5xl dark:text-[#f6ecde]">
-              L&apos;histoire sacrée de la Rose de Jericho
+              Présentation & rituel de la Rose de Jéricho
             </h2>
             <p className="text-lg leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-              Plante nomade des terres désertiques, elle traverse les époques comme un talisman de chance et de protection. Chez CHAJARATMARIAM, nous honorons ce patrimoine en associant matières naturelles, gestes précis et écriture contemporaine.
+              Surnommée <strong>Chajarat Maryam</strong>, la Rose de Jéricho est un talisman vivant des déserts du Sahara et du Moyen-Orient. Elle se recroqueville en boule sèche pour préserver son énergie puis se déploie majestueusement au contact de l&apos;eau, prête à offrir son eau d&apos;infusion chargée d&apos;histoires et de bienfaits.
+            </p>
+            <p className="text-base leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/75">
+              Cette plante de résilience renaît à l&apos;infini : laissez-la s&apos;ouvrir, récoltez son eau, puis séchez-la pour recommencer le rituel quand vous le souhaitez. Un geste simple pour reconnecter avec votre vitalité et perpétuer un savoir-faire ancestral.
             </p>
             <div className="grid gap-6 sm:grid-cols-2">
               {timeline.map((item) => (

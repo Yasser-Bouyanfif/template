@@ -1,25 +1,42 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Droplets, Leaf, Sparkles } from "lucide-react";
+import { Baby, CalendarDays, Droplets, Heart, LineChart } from "lucide-react";
 import { ReactNode } from "react";
 
 const features = [
   {
-    icon: <Sparkles className="size-6" aria-hidden />,
-    title: "Rituels personnalisés",
+    icon: <Heart className="size-6" aria-hidden />,
+    title: "Soutien à la fertilité",
     description:
-      "Chaque cérémonie est préparée sur mesure avec des intentions choisies, des infusions délicates et un cadre sensoriel apaisant.",
+      "Traditionnellement reconnue pour favoriser l&apos;ovulation et accompagner chaque projet bébé avec une ressource naturelle ancestrale.",
+    ecommerceArgument: "Un remède naturel ancestral pour accompagner votre projet bébé.",
+  },
+  {
+    icon: <Baby className="size-6" aria-hidden />,
+    title: "Facilite l&apos;accouchement",
+    description:
+      "Employée en fin de grossesse pour aider à la dilatation du col et soutenir un travail plus doux et serein.",
+    ecommerceArgument: "Un soutien naturel pour une naissance plus douce.",
+  },
+  {
+    icon: <CalendarDays className="size-6" aria-hidden />,
+    title: "Cycle harmonisé",
+    description:
+      "Appréciée pour réguler le cycle menstruel et apaiser les inconforts prémenstruels comme les crampes ou les tensions.",
+    ecommerceArgument: "Pour un cycle plus harmonieux.",
   },
   {
     icon: <Droplets className="size-6" aria-hidden />,
-    title: "Eau de renaissance",
+    title: "Détox douce",
     description:
-      "Une eau purifiée enrichie en minéraux naturels accompagne la réhydratation lente de la plante pour révéler toute sa symbolique.",
+      "Stimule la fonction rénale, aide à lutter contre la rétention d&apos;eau et protège naturellement le foie.",
+    ecommerceArgument: "Un excellent détoxifiant naturel pour le corps.",
   },
   {
-    icon: <Leaf className="size-6" aria-hidden />,
-    title: "Artisanat végétal",
+    icon: <LineChart className="size-6" aria-hidden />,
+    title: "Équilibre glycémique",
     description:
-      "Nos arrangements s&apos;accordent aux intérieurs modernes : matières nobles, palette beige écrémée et lignes épurées.",
+      "Connue pour ses propriétés hypoglycémiantes qui contribuent à stabiliser le taux de sucre dans le sang.",
+    ecommerceArgument: "Aide à l&apos;équilibre du taux de sucre.",
   },
 ];
 
@@ -29,16 +46,16 @@ export default function Features() {
       <div className="@container mx-auto max-w-5xl px-6">
         <div className="text-center">
           <h2 className="font-serif text-4xl font-semibold tracking-[0.1em] text-[#3c281b] lg:text-5xl dark:text-[#f5ecdf]">
-            Les bienfaits de CHAJARATMARIAM
+            Les bienfaits populaires de la Rose de Jéricho
           </h2>
           <p className="mt-4 text-[#6f533c] dark:text-[#f0dfcd]/80">
-            Une expérience sensorielle complète pour ralentir, respirer et laisser la Rose de Jericho offrir son énergie de protection.
+            Depuis des siècles, Chajarat Maryam accompagne la fertilité, l&apos;équilibre féminin et la détoxification grâce à son eau d&apos;infusion généreuse.
           </p>
         </div>
-        <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-12 grid max-w-sm gap-6 md:mt-16">
+        <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-12 grid max-w-xl gap-6 md:mt-16 md:max-w-none md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <Card key={feature.title} className="group border-[#e4d2c0] bg-[#fbf6f0]/70 text-center shadow-[#d5bfa6]/20 dark:border-[#3b291d] dark:bg-[#24160e]/80">
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-4">
                 <CardDecorator>{feature.icon}</CardDecorator>
                 <h3 className="mt-6 font-medium tracking-[0.2em] text-[#3c281b] uppercase dark:text-[#f5ecdf]">
                   {feature.title}
@@ -47,6 +64,9 @@ export default function Features() {
               <CardContent>
                 <p className="text-sm leading-relaxed text-[#6f533c] dark:text-[#f0dfcd]/80">
                   {feature.description}
+                </p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-[#b98c5f] dark:text-[#f5e5d4]">
+                  {feature.ecommerceArgument}
                 </p>
               </CardContent>
             </Card>
