@@ -6,12 +6,12 @@ import { HeroHeader } from "@/components/hero8-header";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 
 const sliderHighlights = [
-  "Réveil en quelques minutes",
-  "Rituel apaisant",
-  "Hydratation naturelle",
-  "Purification douce",
-  "Énergie renouvelée",
-  "Beauté intemporelle",
+  "Symbole de résilience",
+  "Miracle de la renaissance",
+  "Eau d'infusion bienfaisante",
+  "Origines sahariennes",
+  "Réutilisable à l'infini",
+  "Rituel familial",
 ];
 
 export default function HeroSection() {
@@ -30,21 +30,21 @@ export default function HeroSection() {
                 Rituel botanique
               </span>
               <h1 className="font-serif text-4xl leading-tight text-[#2f2015] md:text-5xl lg:text-6xl dark:text-[#f5ecdf]">
-                La renaissance de la Rose de Jericho chez CHAJARATMARIAM
+                La Rose de Jéricho du Sahara : le miracle de la résurrection à portée de main
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-                Offrez à vos espaces et à votre esprit un moment de grâce. Nos rituels sur mesure réveillent la plante sacrée avec une eau filtrée et des gestes lents pour révéler sa symbolique de protection et de renouveau.
+                Venue des étendues arides du Sahara, la Rose de Jéricho se présente comme une boule de brindilles endormie qui renaît en quelques heures au contact de l&apos;eau. Chez CHAJARATMARIAM, nous célébrons ce trésor botanique pour insuffler renouveau, protection et bien-être à votre quotidien.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button asChild size="lg" className="bg-[#b98c5f] px-8 py-6 text-base font-medium tracking-[0.2em] uppercase text-white hover:bg-[#a6784d]">
-                  <Link href="#contact">Réserver mon rituel</Link>
+                  <Link href="#bienfaits">Explorer les bienfaits</Link>
                 </Button>
                 <Button asChild size="lg" variant="ghost" className="px-8 py-6 text-base font-medium text-[#6f533c] hover:text-[#2f2015] dark:text-[#f0dfcd]">
-                  <Link href="#origines">Découvrir l&apos;histoire</Link>
+                  <Link href="#rituel">Suivre le rituel</Link>
                 </Button>
               </div>
               <div className="grid grid-cols-3 gap-4 pt-8 text-sm">
-                {["Eau filtrée", "Encens de myrrhe", "Musique méditative"].map((item) => (
+                {["Origine saharienne", "Renaissance en 3h", "Infusion bienfaisante"].map((item) => (
                   <div key={item} className="rounded-2xl border border-[#ead8c8] bg-white/60 p-4 text-center shadow-sm dark:border-[#3b281b] dark:bg-[#21140d]/80">
                     <span className="font-medium tracking-[0.2em] text-[#6f533c] dark:text-[#f0dfcd]">{item}</span>
                   </div>
