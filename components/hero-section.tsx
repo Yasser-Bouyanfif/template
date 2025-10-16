@@ -59,16 +59,16 @@ export default function HeroSection() {
                 </div>
                 <div className="grid grid-cols-2 gap-6 pt-6 text-sm text-[#5a4834] dark:text-[#cbb392] md:grid-cols-3">
                   <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">48h</p>
-                    <p className="mt-1 leading-snug">Rituel de renaissance garanti</p>
+                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">24h</p>
+                    <p className="mt-1 leading-snug">Livraison le lendemain (-24h)</p>
                   </div>
                   <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">∞</p>
-                    <p className="mt-1 leading-snug">Réutilisable à l&apos;infini avec soin</p>
+                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">Sahara</p>
+                    <p className="mt-1 leading-snug">Importé directement depuis le Sahara</p>
                   </div>
                   <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">100%</p>
-                    <p className="mt-1 leading-snug">Issue de cueillette responsable</p>
+                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">€</p>
+                    <p className="mt-1 leading-snug">Prix imbattable</p>
                   </div>
                 </div>
               </div>
