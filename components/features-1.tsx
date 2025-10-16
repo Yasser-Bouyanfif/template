@@ -40,119 +40,105 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="bienfaits" className="bg-[#fafafa] py-24 text-[#1a1a1a] dark:bg-[#171717] dark:text-[#f5f5f5]">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-serif text-4xl font-bold text-[#1a1a1a] lg:text-5xl dark:text-white">
+    <section
+      id="bienfaits"
+      className="relative overflow-hidden bg-gradient-to-b from-[#fdf8f3] via-[#faf8f5] to-[#f5f3f0] py-28 text-[#1a1209] dark:from-[#0b0b0b] dark:via-[#101010] dark:to-[#121212] dark:text-[#f5f5f5]"
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-64 w-[min(80%,720px)] rounded-full bg-[#e9d5bc]/40 blur-3xl dark:bg-[#c49b68]/15" />
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto mb-20 max-w-3xl text-center">
+          <span className="inline-flex items-center justify-center rounded-full border border-[#e7d6c1] bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#b98c5f] shadow-sm backdrop-blur dark:border-[#1f1f1f] dark:bg-[#121212]/70 dark:text-[#d4a574]">
+            Les vertus plébiscitées
+          </span>
+          <h2 className="mt-6 font-serif text-[clamp(2.2rem,2.2vw+1.6rem,3.4rem)] font-semibold leading-tight text-[#1a1209] dark:text-white">
             Les Bienfaits Populaires de la Rose de Jéricho pour votre Bien-être
           </h2>
-          <p className="mt-6 text-lg text-[#525252] dark:text-[#a3a3a3]">
-            Utilisée traditionnellement sous forme d&apos;infusion ou de décoction (eau réhydratée), la Rose de Jéricho est très prisée pour ses actions sur la santé et le bien-être, notamment :
+          <p className="mt-6 text-lg leading-relaxed text-[#5d4a38] dark:text-[#a6a6a6]">
+            Utilisée sous forme d&apos;infusion ou de décoction, la Rose de Jéricho accompagne les rituels de bien-être depuis des siècles. Voici les bienfaits les plus recherchés par nos clientes.
           </p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[200px]">
-          {/* Card 1 - Large Top Left */}
-          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-white to-[#fafafa] p-6 transition-all hover:shadow-2xl hover:shadow-[#b98c5f]/10 md:col-span-2 md:row-span-2 dark:border-[#262626] dark:from-[#0a0a0a] dark:to-[#171717]">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#b98c5f]/5 via-transparent to-transparent" />
-            <div className="relative h-full flex flex-col justify-between">
-              <div>
-                <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#b98c5f] to-[#a6784d] text-white shadow-lg shadow-[#b98c5f]/30 mb-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
+          <article className="group relative overflow-hidden rounded-3xl border border-[#f0e2d4] bg-white/80 p-8 shadow-[0_25px_80px_rgba(185,140,95,0.18)] backdrop-blur transition hover:-translate-y-1 hover:border-[#dcbf9b] dark:border-[#1f1f1f] dark:bg-[#151515]/80 dark:shadow-[0_25px_80px_rgba(196,155,104,0.14)] lg:col-span-6">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(185,140,95,0.15),_transparent_55%)]" />
+            <div className="relative flex h-full flex-col justify-between gap-6">
+              <div className="flex items-start gap-4">
+                <div className="flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#b98c5f] to-[#a6784d] text-white shadow-lg shadow-[#b98c5f]/30">
                   {features[0].icon}
                 </div>
-                <h3 className="font-serif text-3xl font-bold text-[#1a1a1a] mb-3 dark:text-white">
-                  {features[0].title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[#525252] dark:text-[#a3a3a3]">
-                  {features[0].description}
-                </p>
+                <div className="space-y-3">
+                  <h3 className="font-serif text-3xl font-semibold text-[#2b190c] dark:text-white">{features[0].title}</h3>
+                  <p className="text-base leading-relaxed text-[#5d4a38] dark:text-[#b0b0b0]">{features[0].description}</p>
+                </div>
               </div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#b98c5f] dark:text-[#d4a574] mt-4">
+              <div className="flex items-center justify-between gap-4 rounded-2xl border border-dashed border-[#e7d6c1] bg-[#fdf7f0]/70 px-4 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#b98c5f] dark:border-[#272727] dark:bg-[#1a120b]/70 dark:text-[#d4a574]">
                 {features[0].ecommerceArgument}
-              </p>
+                <span className="text-[10px] text-[#9a7b57] dark:text-[#f6dec2]/80">Rituel quotidien</span>
+              </div>
             </div>
-          </div>
+          </article>
 
-          {/* Card 2 - Small Top Right */}
-          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-[#fafafa] to-white p-6 transition-all hover:shadow-2xl hover:shadow-[#8b7355]/10 md:col-span-2 lg:col-span-1 dark:border-[#262626] dark:from-[#171717] dark:to-[#0a0a0a]">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#8b7355]/5 to-transparent" />
-            <div className="relative h-full flex flex-col">
-              <div className="flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#8b7355] to-[#6b5644] text-white shadow-lg shadow-[#8b7355]/30 mb-3">
+          <article className="group relative overflow-hidden rounded-3xl border border-[#f0e2d4] bg-white/70 p-6 shadow-[0_18px_45px_rgba(157,126,90,0.14)] backdrop-blur transition hover:-translate-y-1 hover:border-[#dcbf9b] dark:border-[#1a1a1a] dark:bg-[#161616]/70 dark:shadow-[0_18px_45px_rgba(196,155,104,0.12)] lg:col-span-3">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(157,126,90,0.12),_transparent_60%)]" />
+            <div className="relative flex h-full flex-col gap-4">
+              <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#8b7355] to-[#6b5644] text-white shadow-lg shadow-[#8b7355]/30">
                 {features[1].icon}
               </div>
-              <h3 className="font-serif text-xl font-bold text-[#1a1a1a] mb-2 dark:text-white">
-                {features[1].title}
-              </h3>
-              <p className="text-xs text-[#525252] line-clamp-3 dark:text-[#a3a3a3]">
-                {features[1].description}
-              </p>
+              <h3 className="font-serif text-2xl font-semibold text-[#2b190c] dark:text-white">{features[1].title}</h3>
+              <p className="text-sm leading-relaxed text-[#5d4a38] dark:text-[#b0b0b0]">{features[1].description}</p>
+              <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.32em] text-[#8b7355] dark:text-[#e9caa0]">
+                {features[1].ecommerceArgument}
+              </span>
             </div>
-          </div>
+          </article>
 
-          {/* Card 3 - Tall Right */}
-          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-white to-[#f5f5f5] p-6 transition-all hover:shadow-2xl hover:shadow-[#c9a578]/10 md:col-span-2 lg:col-span-1 lg:row-span-2 dark:border-[#262626] dark:from-[#0a0a0a] dark:to-[#1a1a1a]">
-            <div className="absolute -right-8 -top-8 size-32 rounded-full bg-[#c9a578]/10 blur-3xl" />
-            <div className="relative h-full flex flex-col justify-between">
-              <div>
-                <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#c9a578] to-[#a88860] text-white shadow-lg shadow-[#c9a578]/30 mb-4">
-                  {features[2].icon}
-                </div>
-                <h3 className="font-serif text-2xl font-bold text-[#1a1a1a] mb-3 dark:text-white">
-                  {features[2].title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[#525252] dark:text-[#a3a3a3]">
-                  {features[2].description}
-                </p>
+          <article className="group relative overflow-hidden rounded-3xl border border-[#f0e2d4] bg-white/75 p-8 shadow-[0_20px_60px_rgba(201,165,120,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-[#dcbf9b] dark:border-[#1a1a1a] dark:bg-[#161616]/75 dark:shadow-[0_20px_60px_rgba(196,155,104,0.14)] lg:col-span-3">
+            <div className="absolute -right-14 -top-14 h-32 w-32 rounded-full bg-[#c9a578]/20 blur-3xl" />
+            <div className="relative flex h-full flex-col justify-between gap-6">
+              <div className="flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#c9a578] to-[#a88860] text-white shadow-lg shadow-[#c9a578]/30">
+                {features[2].icon}
               </div>
-              <div className="pt-4 border-t border-[#e5e5e5] dark:border-[#262626]">
-                <p className="text-xs font-semibold uppercase tracking-wider text-[#c9a578] dark:text-[#d4a574]">
-                  {features[2].ecommerceArgument}
-                </p>
+              <div className="space-y-3">
+                <h3 className="font-serif text-2xl font-semibold text-[#2b190c] dark:text-white">{features[2].title}</h3>
+                <p className="text-sm leading-relaxed text-[#5d4a38] dark:text-[#b0b0b0]">{features[2].description}</p>
+              </div>
+              <div className="flex items-center gap-3 rounded-2xl border border-[#f0e2d4] bg-[#fdf7f0]/70 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#c9a578] dark:border-[#272727] dark:bg-[#1a120b]/70 dark:text-[#f0d8b8]">
+                {features[2].ecommerceArgument}
               </div>
             </div>
-          </div>
+          </article>
 
-          {/* Card 4 - Wide Bottom */}
-          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-[#fafafa] to-[#f5f5f5] p-6 transition-all hover:shadow-2xl hover:shadow-[#9d7e5a]/10 md:col-span-2 dark:border-[#262626] dark:from-[#171717] dark:to-[#1a1a1a]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(157,126,90,0.08),_transparent_50%)]" />
-            <div className="relative flex items-start gap-4">
-              <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#9d7e5a] to-[#7d6349] text-white shadow-lg shadow-[#9d7e5a]/30">
+          <article className="group relative overflow-hidden rounded-3xl border border-[#f0e2d4] bg-white/75 p-7 shadow-[0_18px_45px_rgba(157,126,90,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-[#dcbf9b] dark:border-[#1a1a1a] dark:bg-[#151515]/75 dark:shadow-[0_18px_45px_rgba(196,155,104,0.14)] lg:col-span-4">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(157,126,90,0.12),_transparent_55%)]" />
+            <div className="relative flex h-full flex-col gap-5">
+              <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#9d7e5a] to-[#7d6349] text-white shadow-lg shadow-[#9d7e5a]/30">
                 {features[3].icon}
               </div>
-              <div className="flex-1">
-                <h3 className="font-serif text-xl font-bold text-[#1a1a1a] mb-2 dark:text-white">
-                  {features[3].title}
-                </h3>
-                <p className="text-sm text-[#525252] dark:text-[#a3a3a3]">
-                  {features[3].description}
-                </p>
+              <div className="space-y-3">
+                <h3 className="font-serif text-2xl font-semibold text-[#2b190c] dark:text-white">{features[3].title}</h3>
+                <p className="text-sm leading-relaxed text-[#5d4a38] dark:text-[#b0b0b0]">{features[3].description}</p>
+              </div>
+              <div className="mt-auto inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-[#9d7e5a] dark:text-[#e9caa0]">
+                Détox naturelle &bull; Drainage doux
               </div>
             </div>
-          </div>
+          </article>
 
-          {/* Card 5 - Medium Bottom Right */}
-          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-tr from-white to-[#fafafa] p-6 transition-all hover:shadow-2xl hover:shadow-[#b8956d]/10 md:col-span-2 lg:col-span-2 dark:border-[#262626] dark:from-[#0a0a0a] dark:to-[#171717]">
-            <div className="absolute -left-8 -bottom-8 size-40 rounded-full bg-[#b8956d]/10 blur-3xl" />
-            <div className="relative h-full flex flex-col justify-between">
-              <div className="flex items-start gap-4">
-                <div className="flex size-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#b8956d] to-[#9a7854] text-white shadow-lg shadow-[#b8956d]/30">
-                  {features[4].icon}
-                </div>
-                <div>
-                  <h3 className="font-serif text-2xl font-bold text-[#1a1a1a] mb-2 dark:text-white">
-                    {features[4].title}
-                  </h3>
-                  <p className="text-sm text-[#525252] dark:text-[#a3a3a3]">
-                    {features[4].description}
-                  </p>
-                </div>
+          <article className="group relative overflow-hidden rounded-3xl border border-[#f0e2d4] bg-white/80 p-8 shadow-[0_20px_60px_rgba(184,149,109,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-[#dcbf9b] dark:border-[#1a1a1a] dark:bg-[#161616]/80 dark:shadow-[0_20px_60px_rgba(196,155,104,0.14)] lg:col-span-8">
+            <div className="absolute -left-16 -bottom-16 h-36 w-36 rounded-full bg-[#b8956d]/18 blur-3xl" />
+            <div className="relative flex h-full flex-col justify-between gap-6 md:flex-row md:items-center">
+              <div className="flex size-16 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#b8956d] to-[#9a7854] text-white shadow-lg shadow-[#b8956d]/30">
+                {features[4].icon}
               </div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#b8956d] mt-4 dark:text-[#d4a574]">
+              <div className="flex-1 space-y-3">
+                <h3 className="font-serif text-3xl font-semibold text-[#2b190c] dark:text-white">{features[4].title}</h3>
+                <p className="text-base leading-relaxed text-[#5d4a38] dark:text-[#b0b0b0]">{features[4].description}</p>
+              </div>
+              <div className="flex items-center gap-2 rounded-full border border-[#e7d6c1] bg-white/70 px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.32em] text-[#b8956d] shadow-sm dark:border-[#272727] dark:bg-[#1a120b]/70 dark:text-[#f0d8b8]">
                 {features[4].ecommerceArgument}
-              </p>
+              </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
