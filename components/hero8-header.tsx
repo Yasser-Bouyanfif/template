@@ -1,14 +1,29 @@
 "use client";
 
+import { useContext, useMemo, useState } from "react";
 import Link from "next/link";
 import { Logo } from "./logo";
 import { LogIn, ShoppingCart } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
+import { CartContext, type CartContextType } from "@/app/contexts/CartContext";
+import { Cart } from "@/lib/ui/Cart";
+
 const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 const isClerkConfigured = typeof clerkPublishableKey === "string" && clerkPublishableKey.length > 0;
 
 export const HeroHeader = () => {
+  const cartContext = useContext(CartContext) as CartContextType | undefined;
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const itemCount = useMemo(() => {
+    if (!cartContext?.cart) {
+      return 0;
+    }
+
+    return cartContext.cart.reduce((total, item) => (item ? total + 1 : total), 0);
+  }, [cartContext?.cart]);
+
   return (
     <header>
       <nav className="fixed z-20 w-full border-b border-[#e5e5e5]/60 bg-white/80 backdrop-blur-2xl transition-colors dark:border-[#262626]/60 dark:bg-[#0a0a0a]/80">
@@ -18,13 +33,20 @@ export const HeroHeader = () => {
           </Link>
 
           <div className="flex items-center gap-3">
-            <Link
-              href="/cart"
+            <button
+              type="button"
               aria-label="Voir le panier"
-              className="flex size-10 items-center justify-center rounded-full border border-transparent bg-white/70 text-[#1a1a1a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#e5e5e5] hover:bg-white dark:bg-[#171717] dark:text-white dark:hover:border-[#262626]"
+              aria-expanded={isCartOpen}
+              onClick={() => setIsCartOpen(true)}
+              className="relative flex size-10 items-center justify-center rounded-full border border-transparent bg-white/70 text-[#1a1a1a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#e5e5e5] hover:bg-white dark:bg-[#171717] dark:text-white dark:hover:border-[#262626]"
             >
               <ShoppingCart className="size-5" />
-            </Link>
+              {itemCount > 0 ? (
+                <span className="absolute -right-1 -top-1 flex size-5 items-center justify-center rounded-full bg-[#1a1a1a] text-[10px] font-semibold text-white dark:bg-white dark:text-[#0a0a0a]">
+                  {itemCount}
+                </span>
+              ) : null}
+            </button>
 
             {isClerkConfigured ? (
               <>
@@ -60,6 +82,7 @@ export const HeroHeader = () => {
           </div>
         </div>
       </nav>
+      <Cart open={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 };
