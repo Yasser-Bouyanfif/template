@@ -1,87 +1,160 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Baby, CalendarDays, Droplets, Heart, LineChart } from "lucide-react";
-import { ReactNode } from "react";
 
 const features = [
   {
     icon: <Heart className="size-6" aria-hidden />,
-    title: "Soutien à la fertilité",
+    title: "Soutien à la Fertilité",
     description:
-      "Traditionnellement reconnue pour favoriser l&apos;ovulation et accompagner chaque projet bébé avec une ressource naturelle ancestrale.",
+      "C'est le bienfait le plus célèbre et le plus recherché. Traditionnellement utilisée pour favoriser l'ovulation chez la femme et stimuler la fertilité de manière générale.",
     ecommerceArgument: "Un remède naturel ancestral pour accompagner votre projet bébé.",
   },
   {
     icon: <Baby className="size-6" aria-hidden />,
-    title: "Facilite l&apos;accouchement",
+    title: "Facilitation de l'Accouchement",
     description:
-      "Employée en fin de grossesse pour aider à la dilatation du col et soutenir un travail plus doux et serein.",
+      "Elle est traditionnellement employée en fin de grossesse pour aider à dilater le col et faciliter le travail.",
     ecommerceArgument: "Un soutien naturel pour une naissance plus douce.",
   },
   {
     icon: <CalendarDays className="size-6" aria-hidden />,
-    title: "Cycle harmonisé",
+    title: "Régulation du Cycle Menstruel",
     description:
-      "Appréciée pour réguler le cycle menstruel et apaiser les inconforts prémenstruels comme les crampes ou les tensions.",
+      "Aide à régulariser le cycle et à apaiser les symptômes prémenstruels (crampes, ballonnements, seins douloureux).",
     ecommerceArgument: "Pour un cycle plus harmonieux.",
   },
   {
     icon: <Droplets className="size-6" aria-hidden />,
-    title: "Détox douce",
+    title: "Action Diurétique et Hépatique",
     description:
-      "Stimule la fonction rénale, aide à lutter contre la rétention d&apos;eau et protège naturellement le foie.",
+      "Elle stimule la fonction rénale, aidant à lutter contre la rétention d'eau. Elle possède des vertus protectrices pour le foie et aide à la détoxification.",
     ecommerceArgument: "Un excellent détoxifiant naturel pour le corps.",
   },
   {
     icon: <LineChart className="size-6" aria-hidden />,
-    title: "Équilibre glycémique",
+    title: "Régulateur de Glycémie",
     description:
-      "Connue pour ses propriétés hypoglycémiantes qui contribuent à stabiliser le taux de sucre dans le sang.",
-    ecommerceArgument: "Aide à l&apos;équilibre du taux de sucre.",
+      "Elle est reconnue pour ses propriétés hypoglycémiantes, aidant à faire baisser le taux de sucre dans le sang, ce qui en fait un allié pour les personnes soucieuses de leur équilibre glycémique.",
+    ecommerceArgument: "Aide à l'équilibre du taux de sucre.",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="bienfaits" className="bg-[#f6ede1] py-20 text-[#2f2015] dark:bg-[#1a120c] dark:text-[#f5ecdf]">
-      <div className="@container mx-auto max-w-5xl px-6">
-        <div className="text-center">
-          <h2 className="font-serif text-4xl font-semibold tracking-[0.1em] text-[#3c281b] lg:text-5xl dark:text-[#f5ecdf]">
-            Les bienfaits populaires de la Rose de Jéricho
+    <section id="bienfaits" className="bg-[#fafafa] py-24 text-[#1a1a1a] dark:bg-[#171717] dark:text-[#f5f5f5]">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="font-serif text-4xl font-bold text-[#1a1a1a] lg:text-5xl dark:text-white">
+            Les Bienfaits Populaires de la Rose de Jéricho pour votre Bien-être
           </h2>
-          <p className="mt-4 text-[#6f533c] dark:text-[#f0dfcd]/80">
-            Depuis des siècles, Chajarat Maryam accompagne la fertilité, l&apos;équilibre féminin et la détoxification grâce à son eau d&apos;infusion généreuse.
+          <p className="mt-6 text-lg text-[#525252] dark:text-[#a3a3a3]">
+            Utilisée traditionnellement sous forme d&apos;infusion ou de décoction (eau réhydratée), la Rose de Jéricho est très prisée pour ses actions sur la santé et le bien-être, notamment :
           </p>
         </div>
-        <div className="@min-4xl:max-w-full @min-4xl:grid-cols-3 mx-auto mt-12 grid max-w-xl gap-6 md:mt-16 md:max-w-none md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <Card key={feature.title} className="group border-[#e4d2c0] bg-[#fbf6f0]/70 text-center shadow-[#d5bfa6]/20 dark:border-[#3b291d] dark:bg-[#24160e]/80">
-              <CardHeader className="pb-4">
-                <CardDecorator>{feature.icon}</CardDecorator>
-                <h3 className="mt-6 font-medium tracking-[0.2em] text-[#3c281b] uppercase dark:text-[#f5ecdf]">
-                  {feature.title}
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+          {/* Card 1 - Large Top Left */}
+          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-white to-[#fafafa] p-6 transition-all hover:shadow-2xl hover:shadow-[#b98c5f]/10 md:col-span-2 md:row-span-2 dark:border-[#262626] dark:from-[#0a0a0a] dark:to-[#171717]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#b98c5f]/5 via-transparent to-transparent" />
+            <div className="relative h-full flex flex-col justify-between">
+              <div>
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#b98c5f] to-[#a6784d] text-white shadow-lg shadow-[#b98c5f]/30 mb-4">
+                  {features[0].icon}
+                </div>
+                <h3 className="font-serif text-3xl font-bold text-[#1a1a1a] mb-3 dark:text-white">
+                  {features[0].title}
                 </h3>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-relaxed text-[#6f533c] dark:text-[#f0dfcd]/80">
-                  {feature.description}
+                <p className="text-sm leading-relaxed text-[#525252] dark:text-[#a3a3a3]">
+                  {features[0].description}
                 </p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.25em] text-[#b98c5f] dark:text-[#f5e5d4]">
-                  {feature.ecommerceArgument}
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#b98c5f] dark:text-[#d4a574] mt-4">
+                {features[0].ecommerceArgument}
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2 - Small Top Right */}
+          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-[#fafafa] to-white p-6 transition-all hover:shadow-2xl hover:shadow-[#8b7355]/10 md:col-span-2 lg:col-span-1 dark:border-[#262626] dark:from-[#171717] dark:to-[#0a0a0a]">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#8b7355]/5 to-transparent" />
+            <div className="relative h-full flex flex-col">
+              <div className="flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#8b7355] to-[#6b5644] text-white shadow-lg shadow-[#8b7355]/30 mb-3">
+                {features[1].icon}
+              </div>
+              <h3 className="font-serif text-xl font-bold text-[#1a1a1a] mb-2 dark:text-white">
+                {features[1].title}
+              </h3>
+              <p className="text-xs text-[#525252] line-clamp-3 dark:text-[#a3a3a3]">
+                {features[1].description}
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 - Tall Right */}
+          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-white to-[#f5f5f5] p-6 transition-all hover:shadow-2xl hover:shadow-[#c9a578]/10 md:col-span-2 lg:col-span-1 lg:row-span-2 dark:border-[#262626] dark:from-[#0a0a0a] dark:to-[#1a1a1a]">
+            <div className="absolute -right-8 -top-8 size-32 rounded-full bg-[#c9a578]/10 blur-3xl" />
+            <div className="relative h-full flex flex-col justify-between">
+              <div>
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#c9a578] to-[#a88860] text-white shadow-lg shadow-[#c9a578]/30 mb-4">
+                  {features[2].icon}
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[#1a1a1a] mb-3 dark:text-white">
+                  {features[2].title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[#525252] dark:text-[#a3a3a3]">
+                  {features[2].description}
                 </p>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+              <div className="pt-4 border-t border-[#e5e5e5] dark:border-[#262626]">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#c9a578] dark:text-[#d4a574]">
+                  {features[2].ecommerceArgument}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4 - Wide Bottom */}
+          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-br from-[#fafafa] to-[#f5f5f5] p-6 transition-all hover:shadow-2xl hover:shadow-[#9d7e5a]/10 md:col-span-2 dark:border-[#262626] dark:from-[#171717] dark:to-[#1a1a1a]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(157,126,90,0.08),_transparent_50%)]" />
+            <div className="relative flex items-start gap-4">
+              <div className="flex size-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#9d7e5a] to-[#7d6349] text-white shadow-lg shadow-[#9d7e5a]/30">
+                {features[3].icon}
+              </div>
+              <div className="flex-1">
+                <h3 className="font-serif text-xl font-bold text-[#1a1a1a] mb-2 dark:text-white">
+                  {features[3].title}
+                </h3>
+                <p className="text-sm text-[#525252] dark:text-[#a3a3a3]">
+                  {features[3].description}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 5 - Medium Bottom Right */}
+          <div className="group relative overflow-hidden rounded-3xl border border-[#e5e5e5] bg-gradient-to-tr from-white to-[#fafafa] p-6 transition-all hover:shadow-2xl hover:shadow-[#b8956d]/10 md:col-span-2 lg:col-span-2 dark:border-[#262626] dark:from-[#0a0a0a] dark:to-[#171717]">
+            <div className="absolute -left-8 -bottom-8 size-40 rounded-full bg-[#b8956d]/10 blur-3xl" />
+            <div className="relative h-full flex flex-col justify-between">
+              <div className="flex items-start gap-4">
+                <div className="flex size-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#b8956d] to-[#9a7854] text-white shadow-lg shadow-[#b8956d]/30">
+                  {features[4].icon}
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl font-bold text-[#1a1a1a] mb-2 dark:text-white">
+                    {features[4].title}
+                  </h3>
+                  <p className="text-sm text-[#525252] dark:text-[#a3a3a3]">
+                    {features[4].description}
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#b8956d] mt-4 dark:text-[#d4a574]">
+                {features[4].ecommerceArgument}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-const CardDecorator = ({ children }: { children: ReactNode }) => (
-  <div className="relative mx-auto size-32 rounded-full border border-[#e4d2c0] bg-[#fdf8f1]/80 duration-200 shadow-[inset_0_0_0_1px_rgba(217,194,165,0.4)] group-hover:shadow-[0_20px_60px_rgba(153,118,82,0.18)] dark:border-[#3b291d] dark:bg-[#1d120b]/80 dark:group-hover:shadow-[0_20px_60px_rgba(33,19,9,0.6)]">
-    <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,_rgba(255,255,255,0.9)_0%,_transparent_70%)]" aria-hidden />
-    <div className="bg-[#ead7c4] absolute left-1/2 top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#d8c1a8] text-[#4a3322] shadow-sm dark:bg-[#3b291d] dark:border-[#2a1b12] dark:text-[#f5ecdf]">
-      {children}
-    </div>
-  </div>
-);

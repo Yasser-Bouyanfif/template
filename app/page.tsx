@@ -1,7 +1,8 @@
+// Landing page modernisée pour CHAJARATMARIAM
+// Structure: Hero → Bienfaits → Rituel → CTA → Footer
+// Design: blanc/gris avec accents dorés, typographie audacieuse, ombres subtiles
 import HeroSection from "@/components/hero-section";
 import Features from "@/components/features-1";
-import ContentSection from "@/components/content-1";
-import CallToAction from "@/components/call-to-action";
 import FooterSection from "@/components/footer";
 
 export default function Home() {
@@ -9,8 +10,6 @@ export default function Home() {
     <>
       <HeroSection />
       <Features />
-      <ContentSection />
-      <CallToAction />
       <FooterSection />
     </>
   );

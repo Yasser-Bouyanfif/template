@@ -16,24 +16,32 @@ export default function HeroSection() {
   return (
     <>
       <HeroHeader />
-      <main className="overflow-x-hidden bg-[#f9f3eb] text-[#2f2015] dark:bg-[#150d08] dark:text-[#f5ece1]">
+      <main className="overflow-x-hidden bg-white text-[#2f2015] dark:bg-[#0a0a0a] dark:text-[#f5f5f5]">
         <section
           id="rituels"
-          className="relative isolate overflow-hidden bg-gradient-to-b from-[#faf5ef] via-[#f3e8db] to-[#efe0cf] pb-24 pt-32 md:pb-40 lg:pt-48"
+          className="relative isolate overflow-hidden bg-white pb-24 pt-32 md:pb-40 lg:pt-48 dark:bg-[#0a0a0a]"
         >
-          <div className="absolute inset-x-0 top-16 -z-10 h-[480px] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.6),_transparent_65%)]" aria-hidden />
-          <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 lg:grid lg:grid-cols-[1.05fr_1fr] lg:items-center">
-            <div className="relative max-w-xl space-y-10 lg:max-w-none">
-              <h1 className="font-serif text-4xl leading-tight text-[#2f2015] md:text-5xl lg:text-6xl dark:text-[#f5ecdf]">
-                La Rose de Jéricho du Sahara : le miracle de la résurrection à portée de main
+          <div className="absolute inset-x-0 top-16 -z-10 h-[480px] bg-[radial-gradient(circle_at_top,_rgba(185,140,95,0.08),_transparent_65%)]" aria-hidden />
+          <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
+            <div className="relative max-w-xl space-y-6 lg:max-w-none">
+              <h1 className="font-serif text-4xl font-bold leading-[1.15] text-[#1a1a1a] md:text-5xl lg:text-6xl dark:text-white">
+                La Rose de Jéricho du Sahara : Le Miracle de la Résurrection à portée de main
               </h1>
-              <p className="max-w-xl text-base leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-                Venue des étendues arides du Sahara, la Rose de Jéricho se présente comme une boule de brindilles endormie qui renaît en quelques heures au contact de l&apos;eau. Chez CHAJARATMARIAM, nous célébrons ce trésor botanique pour insuffler renouveau, protection et bien-être à votre quotidien.
+              <p className="max-w-xl text-lg leading-relaxed text-[#525252] dark:text-[#a3a3a3]">
+                Découvrez la Rose de Jéricho, un trésor botanique venu des étendues arides du Sahara et du Moyen-Orient. 
+                Surnommée affectueusement <strong>&quot;Chajarat Maryam&quot;</strong> (l&apos;Arbre de Marie) ou <strong>&quot;Plante de la Résurrection&quot;</strong>, 
+                elle est bien plus qu&apos;une simple plante : c&apos;est un véritable symbole de résilience, de renouveau et un précieux allié de la médecine traditionnelle depuis des siècles.
               </p>
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#d8c6b5] to-transparent dark:via-[#3b291d]" />
+              <p className="max-w-xl text-base leading-relaxed text-[#525252] dark:text-[#a3a3a3]">
+                À première vue, elle se présente comme une boule de brindilles sèches, apparemment sans vie. Mais c&apos;est là que sa magie opère : 
+                plongez-la dans l&apos;eau, et en quelques heures, elle se déploie spectaculairement, reprenant sa forme et son vert. 
+                Une fois réhydratée, vous pouvez récupérer son eau d&apos;infusion pour bénéficier de ses multiples vertus. 
+                Retirez-la ensuite pour la faire sécher, et elle se recroquevillera, prête à renaître à nouveau !
+              </p>
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-[#b98c5f]/30 to-transparent dark:via-[#b98c5f]/20" />
             </div>
             <div className="relative isolate mx-auto w-full max-w-xl">
-              <div className="relative overflow-hidden rounded-[3rem] border border-[#e2d2c2] bg-white/70 shadow-[0_40px_120px_rgba(107,77,51,0.18)] backdrop-blur-sm dark:border-[#3e2a1b] dark:bg-[#1a100a]/80">
+              <div className="relative overflow-hidden rounded-[2rem] border border-[#e5e5e5] bg-white shadow-[0_20px_70px_rgba(0,0,0,0.08)] dark:border-[#262626] dark:bg-[#171717]">
                 <Image
                   src="/package.png"
                   alt="Packaging artisanal de la Rose de Jericho"
@@ -43,35 +51,6 @@ export default function HeroSection() {
                   className="w-full"
                 />
               </div>
-              <div className="absolute -bottom-12 -left-8 hidden w-40 -rotate-3 rounded-3xl border border-[#e8d7c7] bg-white/90 p-3 shadow-xl shadow-[#d1b498]/30 sm:block dark:border-[#3b291d] dark:bg-[#21140d]">
-                <Image
-                  src="/images/rose-dormant.svg"
-                  alt="Rose de Jericho en dormance"
-                  width={220}
-                  height={220}
-                />
-              </div>
-              <div className="absolute -top-10 -right-12 hidden w-48 rotate-6 rounded-3xl border border-[#e8d7c7] bg-white/90 p-4 shadow-xl shadow-[#d1b498]/30 sm:block dark:border-[#3b291d] dark:bg-[#21140d]">
-                <Image
-                  src="/images/rose-awakened.svg"
-                  alt="Rose de Jericho éveillée"
-                  width={260}
-                  height={260}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="mt-24">
-            <div className="relative mx-auto max-w-5xl overflow-hidden rounded-full border border-[#e5d3c0] bg-white/50 py-6 shadow-inner shadow-[#d1b498]/20 dark:border-[#3b291d] dark:bg-[#1c120b]/80">
-              <InfiniteSlider speedOnHover={16} speed={28} gap={96}>
-                {sliderHighlights.map((item) => (
-                  <div key={item} className="flex min-w-[14rem] items-center justify-center px-6">
-                    <span className="text-sm tracking-[0.3em] uppercase text-[#6f533c] dark:text-[#f0dfcd]">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </InfiniteSlider>
             </div>
           </div>
         </section>

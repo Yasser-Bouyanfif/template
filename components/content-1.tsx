@@ -4,48 +4,45 @@ const timeline = [
   {
     title: "Réhydratation",
     description:
-      "Plongez la plante ou quelques brins dans un bol d&apos;eau froide ou tiède et regardez-la s&apos;ouvrir en quelques heures.",
+      "Plongez la plante (ou quelques brins) dans un bol d'eau froide ou tiède. Laissez-la s'ouvrir.",
   },
   {
-    title: "Infusion bienfaisante",
+    title: "Utilisation",
     description:
-      "Récupérez l&apos;eau réhydratée et savourez-la chaude ou froide, nature ou avec une touche de miel selon vos envies.",
+      "Récupérez l'eau infusée et buvez-la (chaude ou froide). Vous pouvez sucrer avec du miel si vous le souhaitez.",
   },
   {
-    title: "Sécher & recommencer",
+    title: "Réutilisation",
     description:
-      "Retirez la Rose de Jéricho, laissez-la sécher pendant environ 15 jours et répétez le rituel aussi souvent que souhaité.",
+      "Retirez la plante de l'eau une fois ouverte et laissez-la sécher complètement (environ 15 jours) pour la réutiliser plusieurs fois.",
   },
 ];
 
 export default function ContentSection() {
   return (
-    <section id="rituel" className="bg-[#fbf6f0] py-20 text-[#2f2015] dark:bg-[#130b06] dark:text-[#f5ecdf]">
+    <section id="rituel" className="bg-white py-24 text-[#1a1a1a] dark:bg-[#0a0a0a] dark:text-[#f5f5f5]">
       <div className="mx-auto max-w-6xl space-y-12 px-6 md:space-y-16">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className="space-y-6">
-            <h2 className="font-serif text-4xl font-semibold text-[#3c281b] lg:text-5xl dark:text-[#f6ecde]">
-              Présentation & rituel de la Rose de Jéricho
+            <h2 className="font-serif text-4xl font-bold text-[#1a1a1a] lg:text-5xl dark:text-white">
+              Mode d&apos;Utilisation Recommandé
             </h2>
-            <p className="text-lg leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/80">
-              Surnommée <strong>Chajarat Maryam</strong>, la Rose de Jéricho est un talisman vivant des déserts du Sahara et du Moyen-Orient. Elle se recroqueville en boule sèche pour préserver son énergie puis se déploie majestueusement au contact de l&apos;eau, prête à offrir son eau d&apos;infusion chargée d&apos;histoires et de bienfaits.
-            </p>
-            <p className="text-base leading-relaxed text-[#5a3f2c] dark:text-[#f0dfcd]/75">
-              Cette plante de résilience renaît à l&apos;infini : laissez-la s&apos;ouvrir, récoltez son eau, puis séchez-la pour recommencer le rituel quand vous le souhaitez. Un geste simple pour reconnecter avec votre vitalité et perpétuer un savoir-faire ancestral.
+            <p className="text-lg leading-relaxed text-[#525252] dark:text-[#a3a3a3]">
+              La Rose de Jéricho s&apos;utilise principalement en infusion. Suivez ces trois étapes simples pour profiter pleinement de ses bienfaits et la réutiliser à l&apos;infini.
             </p>
             <div className="grid gap-6 sm:grid-cols-2">
               {timeline.map((item) => (
-                <div key={item.title} className="rounded-3xl border border-[#e6d6c6] bg-white/80 p-6 shadow-sm shadow-[#d4bfa7]/25 dark:border-[#352216] dark:bg-[#1d130c]/80">
-                  <h3 className="font-medium uppercase tracking-[0.25em] text-[#6f533c] dark:text-[#f5e5d4]">
+                <div key={item.title} className="rounded-2xl border border-[#e5e5e5] bg-[#fafafa] p-6 shadow-sm hover:shadow-md transition-shadow dark:border-[#262626] dark:bg-[#171717]">
+                  <h3 className="font-semibold uppercase tracking-wider text-sm text-[#1a1a1a] dark:text-white">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm text-[#5a3f2c] dark:text-[#f0dfcd]/80">{item.description}</p>
+                  <p className="mt-3 text-sm text-[#525252] dark:text-[#a3a3a3]">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
           <div className="relative flex flex-col gap-6">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-[#e4d2c0] bg-white/80 p-6 shadow-[0_30px_80px_rgba(153,118,82,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
+            <div className="relative overflow-hidden rounded-[2rem] border border-[#e5e5e5] bg-white p-6 shadow-lg dark:border-[#262626] dark:bg-[#171717]">
               <Image
                 src="/rose.png"
                 alt="Rose de Jericho ouverte"
@@ -53,11 +50,11 @@ export default function ContentSection() {
                 height={540}
                 className="w-full"
               />
-              <div className="absolute bottom-6 left-6 rounded-full bg-[#b98c5f] px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-white shadow-lg">
+              <div className="absolute bottom-6 left-6 rounded-full bg-gradient-to-r from-[#b98c5f] to-[#a6784d] px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-xl">
                 Renaissance
               </div>
             </div>
-            <div className="ml-auto w-3/4 overflow-hidden rounded-[2rem] border border-[#e6d6c6] bg-white/80 p-4 shadow-[0_20px_60px_rgba(140,104,70,0.18)] dark:border-[#3a271a] dark:bg-[#1d120b]/90">
+            <div className="ml-auto w-3/4 overflow-hidden rounded-[2rem] border border-[#e5e5e5] bg-white p-4 shadow-md dark:border-[#262626] dark:bg-[#171717]">
               <Image
                 src="/images/rose-dormant.svg"
                 alt="Rose de Jericho dormante"
