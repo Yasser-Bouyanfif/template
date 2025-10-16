@@ -29,24 +29,15 @@ export const HeroHeader = () => {
             {isClerkConfigured ? (
               <>
                 <SignedOut>
-                  <>
-                    <Link
-                      href="/account"
+                  <SignInButton mode="modal" afterSignInUrl="/account">
+                    <button
+                      type="button"
                       aria-label="Se connecter"
                       className="flex size-10 items-center justify-center rounded-full border border-transparent bg-white/70 text-[#1a1a1a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#e5e5e5] hover:bg-white dark:bg-[#171717] dark:text-white dark:hover:border-[#262626]"
                     >
                       <LogIn className="size-5" />
-                    </Link>
-                    <SignInButton mode="modal" afterSignInUrl="/account">
-                      <button
-                        type="button"
-                        aria-label="Ouvrir la bulle de connexion Clerk"
-                        className="flex size-10 items-center justify-center rounded-full border border-[#e5e5e5]/60 bg-white/80 text-sm font-medium text-[#1a1a1a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#d4d4d4] hover:bg-white dark:border-[#262626]/60 dark:bg-[#171717] dark:text-white"
-                      >
-                        Clerk
-                      </button>
-                    </SignInButton>
-                  </>
+                    </button>
+                  </SignInButton>
                 </SignedOut>
                 <SignedIn>
                   <UserButton appearance={{ elements: { avatarBox: "size-10", userButtonAvatarBox: "size-10" } }} afterSignOutUrl="/" />
