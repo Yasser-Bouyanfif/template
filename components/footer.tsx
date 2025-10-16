@@ -17,7 +17,7 @@ export default function FooterSection() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#050c1f] text-[#d1d5db]">
+    <footer className="bg-white text-slate-700">
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div className="space-y-6">
@@ -26,24 +26,24 @@ export default function FooterSection() {
                 <Bolt className="h-6 w-6" strokeWidth={1.8} />
               </div>
               <div className="space-y-1">
-                <p className="text-sm font-medium text-[#38bdf8]">ELEC&apos;CONNECT</p>
-                <p className="text-lg font-semibold text-white">Solutions de recharge électrique</p>
+                <p className="text-sm font-medium text-[#0f172a]">ELEC&apos;CONNECT</p>
+                <p className="text-lg font-semibold text-[#0b1120]">Solutions de recharge électrique</p>
               </div>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-[#9ca3af]">
+            <p className="max-w-md text-sm leading-relaxed text-slate-500">
               Votre partenaire de confiance pour l&apos;installation professionnelle de bornes de recharge électrique. Nous
               contribuons à un avenir plus durable grâce à la mobilité électrique.
             </p>
           </div>
 
           <div className="space-y-6">
-            <p className="text-lg font-semibold text-white">Liens utiles</p>
+            <p className="text-lg font-semibold text-[#0b1120]">Liens utiles</p>
             <ul className="space-y-3 text-sm">
               {usefulLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="transition-colors hover:text-white"
+                    className="transition-colors hover:text-[#0f172a]"
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noreferrer" : undefined}
                   >
@@ -55,27 +55,27 @@ export default function FooterSection() {
           </div>
 
           <div className="space-y-6">
-            <p className="text-lg font-semibold text-white">Contact</p>
+            <p className="text-lg font-semibold text-[#0b1120]">Contact</p>
             <ul className="space-y-3 text-sm">
               {contacts.map((contact) => (
                 <li key={contact.label}>
-                  <Link href={contact.href} className="transition-colors hover:text-white">
+                  <Link href={contact.href} className="transition-colors hover:text-[#0f172a]">
                     {contact.label}
                   </Link>
                 </li>
               ))}
-              <li className="text-sm text-[#9ca3af]">83000 Toulon, France</li>
+              <li className="text-sm text-slate-500">83000 Toulon, France</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-[#9ca3af] md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-slate-200 pt-8 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
           <span>
             {currentYear} ELEC&apos;CONNECT. Tous droits réservés.
           </span>
           <span>
             Propulsé par {" "}
-            <Link href="https://yasserr.dev" className="font-medium text-white transition-colors hover:text-[#38bdf8]">
+            <Link href="https://yasserr.dev" className="font-medium text-[#0b1120] transition-colors hover:text-[#0f172a]">
               CodeVerse
             </Link>
           </span>
