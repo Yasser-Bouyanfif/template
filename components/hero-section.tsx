@@ -5,6 +5,7 @@ import Link from "next/link";
 import { HeroHeader } from "@/components/hero8-header";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { Crown, Gem, Rocket } from "lucide-react";
 
 const sliderHighlights = [
   "Symbole de résilience",
@@ -16,6 +17,30 @@ const sliderHighlights = [
 ];
 
 export default function HeroSection() {
+  const highlightBenefits = [
+    {
+      title: "Livraison le lendemain (-24h)",
+      description:
+        "Commandez avant 17h et recevez votre Rose de Jéricho dès le lendemain, prête pour votre rituel.",
+      icon: Rocket,
+      accent: "from-[#f1e3d3]/80 via-transparent to-transparent",
+    },
+    {
+      title: "Importée directement du Sahara",
+      description:
+        "Récoltée de manière responsable auprès d'artisans sahariens, chaque plante garde son histoire authentique.",
+      icon: Gem,
+      accent: "from-[#eddcc6]/70 via-transparent to-transparent",
+    },
+    {
+      title: "Prix imbattable",
+      description:
+        "Profitez d'un tarif juste et durable pour vivre le miracle de la renaissance aussi souvent que vous le souhaitez.",
+      icon: Crown,
+      accent: "from-[#f6e8d6]/80 via-transparent to-transparent",
+    },
+  ];
+
   return (
     <>
       <HeroHeader />
@@ -57,19 +82,35 @@ export default function HeroSection() {
                     <Link href="#bienfaits">Explorer les bienfaits</Link>
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-6 pt-6 text-sm text-[#5a4834] dark:text-[#cbb392] md:grid-cols-3">
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">48h</p>
-                    <p className="mt-1 leading-snug">Rituel de renaissance garanti</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">∞</p>
-                    <p className="mt-1 leading-snug">Réutilisable à l&apos;infini avec soin</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">100%</p>
-                    <p className="mt-1 leading-snug">Issue de cueillette responsable</p>
-                  </div>
+                <div className="grid gap-5 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {highlightBenefits.map(({ title, description, icon: Icon, accent }) => (
+                    <div
+                      key={title}
+                      className="group relative overflow-hidden rounded-3xl border border-[#e8dcc7] bg-white/90 p-6 text-[#382819] shadow-[0_24px_60px_rgba(75,45,19,0.12)] transition duration-300 hover:-translate-y-1 dark:border-[#2c1b11] dark:bg-[#120b06]/85 dark:text-[#f5e2c7]"
+                    >
+                      <div
+                        className="pointer-events-none absolute inset-0 bg-white/40 opacity-0 transition duration-300 group-hover:opacity-100 dark:bg-[#1b120b]/60"
+                        aria-hidden
+                      />
+                      <div
+                        className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${accent} opacity-0 transition duration-300 group-hover:opacity-90`}
+                        aria-hidden
+                      />
+                      <div className="relative flex h-full flex-col gap-4">
+                        <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-[#f3e7d8] text-[#8b5e32] ring-1 ring-inset ring-[#d7c4ac]/70 transition duration-300 group-hover:ring-[#c29a67] dark:bg-[#1f120a] dark:text-[#eacb9c] dark:ring-[#3a2615]/70 dark:group-hover:ring-[#d4a574]">
+                          <Icon className="size-6" />
+                        </span>
+                        <div className="space-y-3">
+                          <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
+                          <p className="text-sm leading-relaxed text-[#5a4834] dark:text-[#e2cda8]">{description}</p>
+                        </div>
+                        <div className="mt-auto flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#b08a5e] dark:text-[#d4a574]">
+                          <span className="size-1.5 rounded-full bg-current" aria-hidden />
+                          Avantage signature
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="relative lg:col-span-6">
