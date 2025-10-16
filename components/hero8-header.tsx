@@ -62,7 +62,7 @@ export const HeroHeader = () => {
       <nav className="fixed z-20 w-full border-b border-[#e5e5e5]/60 bg-white/80 backdrop-blur-2xl transition-colors dark:border-[#262626]/60 dark:bg-[#0a0a0a]/80">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link href="/" aria-label="Accueil" className="flex items-center space-x-3">
-            <Logo className="text-sm" />
+            <Logo showTagline className="text-sm" />
           </Link>
 
           <div className="flex items-center gap-3">
