@@ -5,6 +5,7 @@ import Link from "next/link";
 import { HeroHeader } from "@/components/hero8-header";
 import { Button } from "@/components/ui/button";
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
+import { BadgeCheck, Sparkles, Truck } from "lucide-react";
 
 const sliderHighlights = [
   "Symbole de résilience",
@@ -13,6 +14,33 @@ const sliderHighlights = [
   "Origines sahariennes",
   "Réutilisable à l'infini",
   "Rituel familial",
+];
+
+const heroHighlights = [
+  {
+    icon: Truck,
+    label: "Chrono -24h",
+    title: "Livraison Flash garantie",
+    description:
+      "Commandez avant 18h et recevez votre Rose de Jéricho le lendemain, prête à éveiller vos rituels.",
+    gradient: "from-[#f9c27d] via-[#f39d6e] to-[#ef6c57]",
+  },
+  {
+    icon: Sparkles,
+    label: "100% authentique",
+    title: "Cueillie dans le Sahara",
+    description:
+      "Sélectionnée auprès d'artisans nomades, chaque plante est bénie par le soleil saharien et contrôlée à la main.",
+    gradient: "from-[#f8d7ff] via-[#caa1ff] to-[#9f6bff]",
+  },
+  {
+    icon: BadgeCheck,
+    label: "Promesse prix",
+    title: "Expérience luxe accessible",
+    description:
+      "Un coffret premium, un service client dédié et le meilleur prix du marché pour un rituel d'exception.",
+    gradient: "from-[#9ef3d6] via-[#63d4c6] to-[#3cb8c4]",
+  },
 ];
 
 export default function HeroSection() {
@@ -57,19 +85,31 @@ export default function HeroSection() {
                     <Link href="#bienfaits">Explorer les bienfaits</Link>
                   </Button>
                 </div>
-                <div className="grid grid-cols-2 gap-6 pt-6 text-sm text-[#5a4834] dark:text-[#cbb392] md:grid-cols-3">
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">48h</p>
-                    <p className="mt-1 leading-snug">Rituel de renaissance garanti</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">∞</p>
-                    <p className="mt-1 leading-snug">Réutilisable à l&apos;infini avec soin</p>
-                  </div>
-                  <div className="rounded-2xl border border-[#e5d8c7] bg-white/70 p-4 shadow-sm backdrop-blur dark:border-[#2b2117] dark:bg-[#120b06]/60">
-                    <p className="text-3xl font-semibold text-[#b88a55] dark:text-[#d4a574]">100%</p>
-                    <p className="mt-1 leading-snug">Issue de cueillette responsable</p>
-                  </div>
+                <div className="grid gap-6 pt-8 text-[#2f2015] dark:text-[#f5f5f5] sm:grid-cols-2 xl:grid-cols-3">
+                  {heroHighlights.map(({ icon: Icon, label, title, description, gradient }) => (
+                    <div
+                      key={title}
+                      className={`group relative overflow-hidden rounded-[1.75rem] border border-transparent bg-gradient-to-br ${gradient} p-[1px] shadow-xl shadow-[#b88a55]/25 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl dark:shadow-[#0d0603]/40`}
+                    >
+                      <div className="relative h-full rounded-[1.65rem] bg-white/90 p-6 backdrop-blur dark:bg-[#0b0704]/90">
+                        <div className="flex items-center justify-between">
+                          <span className="rounded-full border border-white/60 bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#7b5b3a] shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-[#d4a574]">
+                            {label}
+                          </span>
+                          <span className="inline-flex size-12 items-center justify-center rounded-2xl bg-white/70 text-[#b88a55] shadow-inner shadow-white/40 transition duration-300 group-hover:scale-110 dark:bg-white/10 dark:text-[#f1d6b0]">
+                            <Icon className="size-6" strokeWidth={1.75} />
+                          </span>
+                        </div>
+                        <h3 className="mt-6 font-serif text-2xl font-semibold leading-snug text-[#1a140f] transition-colors duration-300 group-hover:text-[#5f3d23] dark:text-[#f5f1eb] dark:group-hover:text-[#f6d6a8]">
+                          {title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-[#5a4834] dark:text-[#cbb392]">
+                          {description}
+                        </p>
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white/80 via-white/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:from-[#0b0704]/95 dark:via-[#0b0704]/40" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="relative lg:col-span-6">
