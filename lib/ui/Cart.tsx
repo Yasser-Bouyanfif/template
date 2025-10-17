@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useMemo } from "react";
 import { X, ShoppingCart, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,12 +10,21 @@ import {
   CartItem,
   MAX_PER_PRODUCT,
 } from "@/app/contexts/CartContext";
-import { SERVER_URL } from "@/app/lib/constants";
-import { ensureImageUrl, getBannerImageSource } from "@/app/lib/images";
+import { getBannerImageSource } from "@/app/lib/images";
+import {
+  findVariantById,
+  formatVariantTitle,
+  getProductDetails,
+} from "@/app/lib/productCatalog";
 
 const fmt = (v: number) => v.toFixed(2) + " €";
 
 const toCartKey = (item: CartItem) => (item.documentId ?? item.id).toString();
+
+type FallbackImage = {
+  src: string;
+  alt: string;
+};
 
 function CartItemRow({
   item,
@@ -23,23 +32,36 @@ function CartItemRow({
   onRemove,
   unitPrice,
   displayTitle,
+  fallbackImage,
 }: {
   item: CartItem;
   quantity: number;
   onRemove: (id: string | number) => void;
   unitPrice: number;
   displayTitle?: string;
+  fallbackImage: FallbackImage;
 }) {
   const total = unitPrice * quantity;
-  const { src, alt, isFallback } = getBannerImageSource({
+  const { src, alt } = getBannerImageSource({
     banner: item.banner ?? null,
-    title: item.title,
+    src: fallbackImage.src,
+    alt: fallbackImage.alt,
+    title: displayTitle ?? item.title ?? fallbackImage.alt,
   });
-  const resolvedSrc = src
-    ? isFallback
-      ? src
-      : ensureImageUrl(src, SERVER_URL)
-    : "";
+
+  let resolvedSrc = (src ?? "").trim();
+  if (!resolvedSrc) {
+    resolvedSrc = fallbackImage.src;
+  } else if (
+    !resolvedSrc.startsWith("http://") &&
+    !resolvedSrc.startsWith("https://") &&
+    !resolvedSrc.startsWith("//")
+  ) {
+    resolvedSrc = resolvedSrc.startsWith("/")
+      ? resolvedSrc
+      : `/${resolvedSrc.replace(/^\/+/, "")}`;
+  }
+
   const hasImage = resolvedSrc.length > 0;
   const subtitleParts: string[] = [];
   if (typeof item.variantLabel === "string" && item.variantLabel.trim()) {
@@ -135,6 +157,9 @@ function CartEmptyState() {
 function Cart({ onClose }: { onClose?: () => void }) {
   const { cart, removeFromCart } = useContext(CartContext) as CartContextType;
 
+  const product = useMemo(() => getProductDetails(), []);
+  const fallbackImage = product.image;
+
   const { groupedItems, totalItems } = useMemo(() => {
     const groups = new Map<string, { item: CartItem; quantity: number }>();
 
@@ -155,134 +180,8 @@ function Cart({ onClose }: { onClose?: () => void }) {
 
     return { groupedItems: Array.from(groups.values()), totalItems: cart.length };
   }, [cart]);
-
-  const [pricingMap, setPricingMap] = useState<
-    Record<string, { unitPrice: number; title?: string }>
-  >({});
-  const [apiSubtotal, setApiSubtotal] = useState<number | null>(null);
-  const [loadingTotal, setLoadingTotal] = useState(false);
-
-  useEffect(() => {
-    const payload = groupedItems.reduce<
-      Array<{ id: string; documentId?: string; quantity: number }>
-    >((acc, { item, quantity }) => {
-      const safeQuantity = Number.isFinite(quantity) ? quantity : 0;
-      if (safeQuantity <= 0) {
-        return acc;
-      }
-
-      const { id } = item;
-      if (typeof id !== "string" && typeof id !== "number") {
-        return acc;
-      }
-
-      const normalizedQuantity = Math.min(safeQuantity, MAX_PER_PRODUCT);
-      if (normalizedQuantity <= 0) {
-        return acc;
-      }
-
-      const normalizedDocumentId =
-        typeof item.documentId === "string" && item.documentId.trim().length > 0
-          ? item.documentId.trim()
-          : undefined;
-
-      acc.push({
-        id: id.toString(),
-        documentId: normalizedDocumentId,
-        quantity: normalizedQuantity,
-      });
-
-      return acc;
-    }, []);
-
-    if (payload.length === 0) {
-      setPricingMap({});
-      setApiSubtotal(0);
-      setLoadingTotal(false);
-      return;
-    }
-
-    let cancelled = false;
-
-    (async () => {
-      try {
-        setLoadingTotal(true);
-        const res = await fetch("/api/cart-total", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items: payload }),
-        });
-
-        if (!res.ok) {
-          console.error("Échec du calcul du total", await res.text());
-          if (!cancelled) {
-            setPricingMap({});
-            setApiSubtotal(null);
-          }
-          return;
-        }
-
-        const data = await res.json();
-        const parsedTotal = Number(data.total);
-        const sanitizedSubtotal =
-          Number.isFinite(parsedTotal) && parsedTotal >= 0 ? parsedTotal : null;
-
-        if (!cancelled) {
-          setApiSubtotal(sanitizedSubtotal);
-
-          if (Array.isArray(data.items)) {
-            const nextPricingMap: Record<
-              string,
-              { unitPrice: number; title?: string }
-            > = {};
-
-            data.items.forEach((raw, index) => {
-              const source = payload[index];
-              if (!source) {
-                return;
-              }
-
-              const current = raw as { unitPrice?: unknown; title?: unknown };
-              const parsedUnitPrice = Number(current.unitPrice);
-              const safeUnitPrice =
-                Number.isFinite(parsedUnitPrice) && parsedUnitPrice >= 0
-                  ? parsedUnitPrice
-                  : 0;
-
-              const rawTitle = current.title;
-              const title =
-                typeof rawTitle === "string" && rawTitle.trim().length > 0
-                  ? rawTitle.trim()
-                  : undefined;
-
-              const key = (source.documentId ?? source.id).toString();
-              nextPricingMap[key] = { unitPrice: safeUnitPrice, title };
-            });
-
-            setPricingMap(nextPricingMap);
-          } else {
-            setPricingMap({});
-          }
-        }
-      } catch (error) {
-        console.error("Échec du calcul du total", error);
-        if (!cancelled) {
-          setPricingMap({});
-          setApiSubtotal(null);
-        }
-      } finally {
-        if (!cancelled) {
-          setLoadingTotal(false);
-        }
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [groupedItems]);
-
-  const computedSubtotal = useMemo(() => {
+ 
+  const subtotal = useMemo(() => {
     return groupedItems.reduce((sum, { item, quantity }) => {
       const numericQuantity = Number.isFinite(quantity) ? quantity : 0;
       const normalizedQuantity = Math.min(
@@ -294,15 +193,17 @@ function Cart({ onClose }: { onClose?: () => void }) {
         return sum;
       }
 
-      const key = toCartKey(item);
-      const pricing = pricingMap[key];
-      const unitPrice = pricing?.unitPrice ?? (Number(item.price) || 0);
+      const variant = findVariantById(item.documentId ?? item.id);
+      const unitPrice = (() => {
+        if (typeof item.price === "number" && Number.isFinite(item.price)) {
+          return Math.max(item.price, 0);
+        }
+        return variant?.price ?? 0;
+      })();
 
       return sum + unitPrice * normalizedQuantity;
     }, 0);
-  }, [groupedItems, pricingMap]);
-
-  const subtotal = apiSubtotal ?? computedSubtotal;
+  }, [groupedItems]);
   const goCheckoutDisabled = groupedItems.length === 0;
 
   return (
@@ -337,8 +238,18 @@ function Cart({ onClose }: { onClose?: () => void }) {
                   MAX_PER_PRODUCT
                 );
                 const key = toCartKey(item);
-                const pricing = pricingMap[key];
-                const unitPrice = pricing?.unitPrice ?? (Number(item.price) || 0);
+                const variant = findVariantById(item.documentId ?? item.id);
+                const unitPrice = (() => {
+                  if (typeof item.price === "number" && Number.isFinite(item.price)) {
+                    return Math.max(item.price, 0);
+                  }
+                  return variant?.price ?? 0;
+                })();
+                const rawTitle =
+                  typeof item.title === "string" && item.title.trim().length > 0
+                    ? item.title.trim()
+                    : undefined;
+                const displayTitle = rawTitle ?? (variant ? formatVariantTitle(variant) : undefined);
 
                 return (
                   <CartItemRow
@@ -347,7 +258,8 @@ function Cart({ onClose }: { onClose?: () => void }) {
                     quantity={displayQuantity}
                     onRemove={removeFromCart}
                     unitPrice={unitPrice}
-                    displayTitle={pricing?.title}
+                    displayTitle={displayTitle}
+                    fallbackImage={fallbackImage}
                   />
                 );
               })}
@@ -363,9 +275,7 @@ function Cart({ onClose }: { onClose?: () => void }) {
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <span className="text-gray-600">Sous-total</span>
-            <span className="text-lg font-bold text-gray-900">
-              {loadingTotal ? "…" : fmt(subtotal)}
-            </span>
+            <span className="text-lg font-bold text-gray-900">{fmt(subtotal)}</span>
           </div>
 
           <div className="text-xs text-gray-500 text-center">
