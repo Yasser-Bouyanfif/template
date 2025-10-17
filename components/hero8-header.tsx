@@ -90,7 +90,11 @@ export const HeroHeader = () => {
             {isClerkConfigured ? (
               <>
                 <SignedOut>
-                  <SignInButton mode="modal" redirectUrl="/orders">
+                  <SignInButton
+                    mode="modal"
+                    forceRedirectUrl="/orders"
+                    fallbackRedirectUrl="/orders"
+                  >
                     <button
                       type="button"
                       aria-label="Se connecter"
