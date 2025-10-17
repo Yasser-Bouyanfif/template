@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 import { ThemeProvider } from "@/components/theme-provider";
+import { HeroHeader } from "@/components/hero8-header";
+import FooterSection from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "CHAJARATMARIAM — Rose de Jericho contemporaine",
@@ -23,7 +25,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Providers>{children}</Providers>
+          <Providers>
+            <HeroHeader />
+            <div className="flex min-h-screen flex-col">
+              <main className="flex-1 pt-24">{children}</main>
+              <FooterSection />
+            </div>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

@@ -1,14 +1,18 @@
 "use client";
 
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import {
   CartContext,
   CartContextType,
   CartItem,
   MAX_PER_PRODUCT,
 } from "../contexts/CartContext";
-import { SERVER_URL } from "../lib/constants";
-import { ensureImageUrl, getBannerImageSource } from "../lib/images";
+import { getBannerImageSource } from "../lib/images";
+import {
+  findVariantById,
+  formatVariantTitle,
+  getProductDetails,
+} from "../lib/productCatalog";
 import Link from "next/link";
 import Image from "next/image";
 import { Minus, Plus, Trash2, ArrowLeft } from "lucide-react";
@@ -17,13 +21,7 @@ import { useRouter } from "next/navigation";
 const toCartKey = (item: CartItem) =>
   (item.documentId ?? item.id).toString();
 
-type PricingMap = Record<string, { unitPrice: number; title?: string }>;
-
-type CartTotalItem = {
-  id: string;
-  documentId?: string;
-  quantity: number;
-};
+const product = getProductDetails();
 
 function CartPage() {
   const router = useRouter();
@@ -51,134 +49,31 @@ function CartPage() {
     return Array.from(map.values());
   }, [cart]);
 
-  const [subtotal, setSubtotal] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [pricingMap, setPricingMap] = useState<PricingMap>({});
-  const [loadingTotal, setLoadingTotal] = useState(false);
+  const subtotal = useMemo(() => {
+    return groups.reduce((acc, { item, quantity }) => {
+      const normalizedQuantity = Number.isFinite(quantity)
+        ? Math.min(Math.max(Math.floor(quantity), 0), MAX_PER_PRODUCT)
+        : 0;
 
-  useEffect(() => {
-    const payload = groups.reduce<CartTotalItem[]>((acc, { item, quantity }) => {
-      const safeQuantity = Number.isFinite(quantity) ? quantity : 0;
-      if (safeQuantity <= 0) {
-        return acc;
-      }
-
-      if (typeof item.id !== "string" && typeof item.id !== "number") {
-        return acc;
-      }
-
-      const normalizedQuantity = Math.min(safeQuantity, MAX_PER_PRODUCT);
       if (normalizedQuantity <= 0) {
         return acc;
       }
 
-      const normalizedDocumentId =
-        typeof item.documentId === "string" && item.documentId.trim().length > 0
-          ? item.documentId.trim()
-          : undefined;
+      const variant = findVariantById(item.documentId ?? item.id);
+      const unitPrice =
+        typeof item.price === "number" && Number.isFinite(item.price)
+          ? Math.max(item.price, 0)
+          : variant?.price ?? 0;
 
-      acc.push({
-        id: item.id.toString(),
-        documentId: normalizedDocumentId,
-        quantity: normalizedQuantity,
-      });
+      return acc + unitPrice * normalizedQuantity;
+    }, 0);
+  }, [groups]);
 
-      return acc;
-    }, []);
+  useEffect(() => {
+    syncCartTotals({ subtotal, total: subtotal });
+  }, [subtotal, syncCartTotals]);
 
-    if (payload.length === 0) {
-      setSubtotal(0);
-      setTotal(0);
-      setPricingMap({});
-      setLoadingTotal(false);
-      syncCartTotals({ subtotal: 0, total: 0 });
-      return;
-    }
-
-    let cancelled = false;
-
-    (async () => {
-      try {
-        setLoadingTotal(true);
-        const res = await fetch("/api/cart-total", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items: payload }),
-        });
-
-        if (!res.ok) {
-          console.error("Échec du calcul du total", await res.text());
-          if (!cancelled) {
-            setSubtotal(0);
-            setTotal(0);
-            setPricingMap({});
-            syncCartTotals({ subtotal: 0, total: 0 });
-          }
-          return;
-        }
-
-        const data = await res.json();
-        const parsedTotal = Number(data.total);
-        const sanitizedSubtotal = Number.isFinite(parsedTotal)
-          ? parsedTotal
-          : 0;
-
-        if (cancelled) {
-          return;
-        }
-
-        setSubtotal(sanitizedSubtotal);
-        setTotal(sanitizedSubtotal);
-        syncCartTotals({ subtotal: sanitizedSubtotal, total: sanitizedSubtotal });
-
-        if (Array.isArray(data.items)) {
-          const nextPricingMap: PricingMap = {};
-
-          data.items.forEach(
-            (current: { unitPrice?: unknown; title?: unknown }, index: number) => {
-              const source = payload[index];
-              if (!source) {
-                return;
-              }
-
-              const parsedUnitPrice = Number(current.unitPrice);
-              const safeUnitPrice =
-                Number.isFinite(parsedUnitPrice) && parsedUnitPrice >= 0
-                  ? parsedUnitPrice
-                  : 0;
-
-              const rawTitle = current.title;
-              const title =
-                typeof rawTitle === "string" && rawTitle.trim().length > 0
-                  ? rawTitle.trim()
-                  : undefined;
-
-              const key = (source.documentId ?? source.id).toString();
-              nextPricingMap[key] = { unitPrice: safeUnitPrice, title };
-            }
-          );
-
-          setPricingMap(nextPricingMap);
-        }
-      } catch (error) {
-        console.error("Échec du calcul du total", error);
-        if (!cancelled) {
-          setSubtotal(0);
-          setTotal(0);
-          setPricingMap({});
-          syncCartTotals({ subtotal: 0, total: 0 });
-        }
-      } finally {
-        if (!cancelled) {
-          setLoadingTotal(false);
-        }
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [groups, syncCartTotals]);
+  const total = subtotal;
 
   const hasItems = groups.length > 0;
 
@@ -217,37 +112,45 @@ function CartPage() {
                 <ul className="divide-y divide-gray-100">
                   {groups.map(({ item, quantity }) => {
                     const numericQuantity = Number.isFinite(quantity) ? quantity : 0;
-                    const displayQuantity = Math.min(
-                      numericQuantity,
-                      MAX_PER_PRODUCT
+                    const displayQuantity = Math.max(
+                      Math.min(numericQuantity, MAX_PER_PRODUCT),
+                      0,
                     );
                     const canIncrease = displayQuantity < MAX_PER_PRODUCT;
                     const key = toCartKey(item);
-                    const pricing = pricingMap[key];
-                    const unitPrice = pricing?.unitPrice ?? (Number(item.price) || 0);
+                    const variant = findVariantById(item.documentId ?? item.id);
+                    const unitPrice =
+                      typeof item.price === "number" && Number.isFinite(item.price)
+                        ? Math.max(item.price, 0)
+                        : variant?.price ?? 0;
                     const lineTotal = (unitPrice * displayQuantity).toFixed(2);
-                    const { src: rawImageSrc, alt, isFallback } = getBannerImageSource({
-                      banner: item.banner ?? null,
-                      title: item.title,
-                    });
-                    const imageSrc = rawImageSrc
-                      ? isFallback
-                        ? rawImageSrc
-                        : ensureImageUrl(rawImageSrc, SERVER_URL)
-                      : "";
-                    const hasImage = imageSrc.length > 0;
-                    const variantLabel = item.variantLabel;
+                    const title =
+                      item.title ??
+                      (variant ? formatVariantTitle(variant) : product.name);
+                    const variantLabel =
+                      item.variantLabel ?? variant?.label ?? undefined;
                     const weightInfo =
                       typeof item.weightInGrams === "number" && item.weightInGrams > 0
                         ? `${item.weightInGrams} g`
-                        : null;
+                        : variant?.grams
+                          ? `${variant.grams} g`
+                          : null;
+                    const { src: rawImageSrc, alt } = getBannerImageSource({
+                      banner: item.banner ?? null,
+                      src: product.image.src,
+                      alt: product.image.alt,
+                      title,
+                    });
+                    const imageSrc = rawImageSrc?.trim() || product.image.src;
+                    const imageAlt = alt?.trim() || product.image.alt;
+                    const hasImage = imageSrc.length > 0;
 
                     return (
                       <li key={key} className="p-4 sm:p-5 flex items-center gap-4">
                         {hasImage ? (
                           <Image
                             src={imageSrc}
-                            alt={alt}
+                            alt={imageAlt}
                             width={96}
                             height={96}
                             className="h-20 w-20 sm:h-24 sm:w-24 rounded-md object-cover bg-gray-50 border"
@@ -262,7 +165,7 @@ function CartPage() {
                           <div className="flex items-start justify-between gap-3">
                             <div className="min-w-0">
                               <h3 className="text-sm sm:text-base font-medium text-slate-900 line-clamp-1">
-                                {pricing?.title ?? item.title}
+                                {title}
                               </h3>
                               {(variantLabel || weightInfo) && (
                                 <p className="mt-0.5 text-xs text-slate-500">
@@ -271,12 +174,9 @@ function CartPage() {
                                     .join(" • ")}
                                 </p>
                               )}
-                              {(pricing?.unitPrice !== undefined ||
-                                item.price !== undefined) && (
-                                <p className="mt-0.5 text-xs text-slate-600">
-                                  {unitPrice.toFixed(2)} € TTC
-                                </p>
-                              )}
+                              <p className="mt-0.5 text-xs text-slate-600">
+                                {unitPrice.toFixed(2)} € TTC
+                              </p>
                             </div>
                             <button
                               type="button"
@@ -338,7 +238,7 @@ function CartPage() {
                 <dl className="mt-4 space-y-2 text-sm text-slate-700">
                   <div className="flex justify-between">
                     <dt>Sous-total</dt>
-                    <dd>{loadingTotal ? "…" : `${subtotal.toFixed(2)} €`}</dd>
+                    <dd>{`${subtotal.toFixed(2)} €`}</dd>
                   </div>
                   <div className="flex justify-between text-slate-500">
                     <dt>Livraison standard</dt>
@@ -346,7 +246,7 @@ function CartPage() {
                   </div>
                   <div className="border-t border-gray-100 pt-2 flex justify-between text-base font-semibold text-slate-900">
                     <dt>Total</dt>
-                    <dd>{loadingTotal ? "…" : `${total.toFixed(2)} €`}</dd>
+                    <dd>{`${total.toFixed(2)} €`}</dd>
                   </div>
                 </dl>
 
