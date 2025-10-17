@@ -6,9 +6,12 @@ import {
   checkoutSessionSchema,
   type CheckoutSessionPayload,
 } from "@/app/lib/validation/checkout";
-import productApis from "@/app/strapi/productApis";
+import {
+  findVariantById,
+  formatVariantTitle,
+} from "@/app/lib/productCatalog";
 
-const DEFAULT_PRODUCT_NAME = "Produit ElecConnect";
+const DEFAULT_PRODUCT_NAME = "Produit CHAJARATMARIAM";
 const MAX_PRICE_IN_CENTS = 50_000_000;
 const EXPRESS_SHIPPING_PRICE_IN_CENTS = 1290;
 const EXPRESS_SHIPPING_LABEL = "Livraison express";
@@ -37,16 +40,6 @@ class CheckoutValidationError extends Error {
   }
 }
 
-type StrapiProduct = {
-  id?: string | number;
-  title?: unknown;
-  price?: unknown;
-  attributes?: {
-    title?: unknown;
-    price?: unknown;
-  };
-};
-
 const parsePrice = (value: unknown): number | null => {
   if (typeof value === "number" && Number.isFinite(value) && value > 0) {
     return value;
@@ -62,69 +55,31 @@ const parsePrice = (value: unknown): number | null => {
   return null;
 };
 
-const selectProductFromResponse = (response: unknown): StrapiProduct | null => {
-  if (!response || typeof response !== "object") {
-    return null;
-  }
-
-  if ("data" in response) {
-    const payload = (response as { data?: unknown }).data;
-    if (Array.isArray(payload)) {
-      return (payload[0] ?? null) as StrapiProduct | null;
-    }
-    if (payload && typeof payload === "object") {
-      return payload as StrapiProduct;
-    }
-  }
-
-  return response as StrapiProduct;
-};
-
-const resolveProductTitle = (product: StrapiProduct): string => {
-  const fromAttributes = product.attributes?.title;
-  if (typeof fromAttributes === "string" && fromAttributes.trim().length > 0) {
-    return fromAttributes.trim();
-  }
-
-  if (typeof product.title === "string" && product.title.trim().length > 0) {
-    return product.title.trim();
-  }
-
-  return DEFAULT_PRODUCT_NAME;
-};
-
 const toCheckoutLineItem = async (
-  item: CheckoutSessionPayload["items"][number]
+  item: CheckoutSessionPayload["items"][number],
 ): Promise<Stripe.Checkout.SessionCreateParams.LineItem> => {
   const productId =
     typeof item.id === "number" ? String(item.id) : item.id.trim();
   if (!productId) {
     throw new CheckoutValidationError(
-      "Un identifiant de produit fourni est invalide."
+      "Un identifiant de produit fourni est invalide.",
     );
   }
 
-  const response = await productApis.getProductById({
-    id: productId,
-    documentId: item.documentId,
-  });
-  const product = selectProductFromResponse(response?.data ?? null);
+  const variant =
+    findVariantById(item.documentId) ?? findVariantById(productId);
 
-  if (!product) {
+  if (!variant) {
     throw new CheckoutValidationError(
-      "Un produit de la commande est introuvable."
+      "Un produit de la commande est introuvable.",
     );
   }
 
-  const rawPrice =
-    product.attributes?.price !== undefined
-      ? product.attributes.price
-      : product.price;
-  const price = parsePrice(rawPrice);
+  const price = parsePrice(variant.price);
 
   if (price === null) {
     throw new CheckoutValidationError(
-      "Le prix d'un produit de la commande est invalide."
+      "Le prix d'un produit de la commande est invalide.",
     );
   }
 
@@ -132,20 +87,22 @@ const toCheckoutLineItem = async (
 
   if (!Number.isFinite(unitAmount) || unitAmount <= 0) {
     throw new CheckoutValidationError(
-      "Le prix d'un produit de la commande est invalide."
+      "Le prix d'un produit de la commande est invalide.",
     );
   }
 
   if (unitAmount > MAX_PRICE_IN_CENTS) {
     throw new CheckoutValidationError(
-      "Le prix d'un produit dépasse la limite autorisée."
+      "Le prix d'un produit dépasse la limite autorisée.",
     );
   }
 
   return {
     price_data: {
       currency: "eur",
-      product_data: { name: resolveProductTitle(product) },
+      product_data: {
+        name: formatVariantTitle(variant) || DEFAULT_PRODUCT_NAME,
+      },
       unit_amount: unitAmount,
     },
     quantity: item.quantity,
@@ -153,15 +110,15 @@ const toCheckoutLineItem = async (
 };
 
 const buildLineItems = async (
-  payload: CheckoutSessionPayload
+  payload: CheckoutSessionPayload,
 ): Promise<Stripe.Checkout.SessionCreateParams.LineItem[]> => {
   const productLineItems = await Promise.all(
-    payload.items.map((item) => toCheckoutLineItem(item))
+    payload.items.map((item) => toCheckoutLineItem(item)),
   );
 
   if (!productLineItems.length) {
     throw new CheckoutValidationError(
-      "Aucun article valide n'a été trouvé dans la commande."
+      "Aucun article valide n'a été trouvé dans la commande.",
     );
   }
 
@@ -189,7 +146,7 @@ export async function POST(request: Request) {
     if (!jsonBody || typeof jsonBody !== "object") {
       return NextResponse.json(
         { error: "Le corps de la requête est invalide." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -200,21 +157,24 @@ export async function POST(request: Request) {
         {
           error:
             firstIssue?.message ??
-            "Les données de la commande sont invalides.",
+            "Les informations fournies pour la commande sont invalides.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
+    const payload = parsedBody.data;
+
     const stripe = getStripeClient();
-    const line_items = await buildLineItems(parsedBody.data);
+
+    const lineItems = await buildLineItems(payload);
 
     const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      payment_method_types: ["card"],
-      line_items,
       success_url: `${LOCAL_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${LOCAL_URL}/cart`,
+      mode: "payment",
+      line_items: lineItems,
+      payment_method_types: ["card"],
     });
 
     return NextResponse.json({ url: session.url });
@@ -222,22 +182,15 @@ export async function POST(request: Request) {
     console.error("Erreur lors de la création de la session de paiement", error);
 
     if (error instanceof CheckoutValidationError) {
-      return NextResponse.json(
-        { error: error.message },
-        { status: 400 }
-      );
-    }
-
-    if (error instanceof Stripe.errors.StripeError) {
-      return NextResponse.json(
-        { error: "Échec de la création de la session de paiement." },
-        { status: 502 }
-      );
+      return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
     return NextResponse.json(
-      { error: "Erreur interne du serveur." },
-      { status: 500 }
+      {
+        error:
+          "Une erreur est survenue lors de la création de la session de paiement.",
+      },
+      { status: 500 },
     );
   }
 }

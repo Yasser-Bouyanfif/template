@@ -454,7 +454,7 @@ export default function OrdersPage() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
-                href="/shop"
+                href="/product"
                 className="group inline-flex items-center justify-center px-6 py-3.5 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <ShoppingBag className="h-5 w-5 mr-2 -ml-1" />

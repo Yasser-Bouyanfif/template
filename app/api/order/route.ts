@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import Stripe from "stripe";
 import orderApis from "@/app/strapi/orderApis";
-import productApis from "@/app/strapi/productApis";
+import { findVariantById } from "@/app/lib/productCatalog";
 import { STRIPE_SECRET_KEY } from "@/app/lib/serverEnv";
 
 type CartItemPayload = {
@@ -106,47 +106,18 @@ async function buildOrderLines(
       const fallbackDocumentId =
         typeof key === "string" && key.trim().length > 0 ? key.trim() : undefined;
 
-      const response = await productApis.getProductById({
-        id,
-        documentId: normalizedDocumentId ?? fallbackDocumentId,
-      });
-      const productData = (response?.data?.data?.[0] ?? response?.data?.data) as
-        | { documentId?: string; id?: string; price?: number }
-        | undefined;
+      const variant =
+        findVariantById(normalizedDocumentId) ??
+        findVariantById(fallbackDocumentId) ??
+        findVariantById(requestId);
 
-      const unitPrice = Number(productData?.price ?? 0) || 0;
-      const resolvedDocumentId =
-        productData?.documentId ??
-        (typeof productData?.id === "string" ? productData.id : undefined);
-
-      const strapiProductId =
-        typeof productData?.id !== "undefined"
-          ? toStringId(productData.id)
-          : undefined;
-
-      const payloadDocumentId =
-        typeof productData?.documentId === "string"
-          ? productData.documentId
-          : undefined;
-
-      const requestedDocumentId = normalizedDocumentId ?? fallbackDocumentId;
-
-      const matchesIdentifier = Boolean(
-        productData &&
-          ((strapiProductId && strapiProductId === requestId) ||
-            (payloadDocumentId &&
-              requestedDocumentId &&
-              payloadDocumentId === requestedDocumentId))
-      );
-
-      if (!productData || !matchesIdentifier) {
-        console.warn(
-          `Product lookup mismatch for cart item ${requestId}: ${JSON.stringify(
-            productData
-          )}`
-        );
+      if (!variant) {
+        console.warn(`Product lookup mismatch for cart item ${requestId}`);
         continue;
       }
+
+      const unitPrice = Number(variant.price) || 0;
+      const resolvedDocumentId = variant.documentId;
 
       if (!resolvedDocumentId) {
         console.warn(`Missing documentId for product ${requestId}`);

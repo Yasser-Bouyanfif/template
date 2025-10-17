@@ -77,7 +77,7 @@ export default function HeroSection() {
                 </p>
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <Button asChild size="lg" className="rounded-full bg-[#c29a67] px-7 text-base font-semibold text-white shadow-lg shadow-[#c29a67]/40 transition hover:-translate-y-0.5 hover:bg-[#a67e49] dark:bg-[#d4a574] dark:text-[#2b1a0d] dark:hover:bg-[#c08d4a]">
-                    <Link href="/shop">Découvrir la collection</Link>
+                    <Link href="/product">Découvrir la collection</Link>
                   </Button>
                   <Button
                     variant="ghost"

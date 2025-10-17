@@ -41,6 +41,13 @@ function CartItemRow({
       : ensureImageUrl(src, SERVER_URL)
     : "";
   const hasImage = resolvedSrc.length > 0;
+  const subtitleParts: string[] = [];
+  if (typeof item.variantLabel === "string" && item.variantLabel.trim()) {
+    subtitleParts.push(item.variantLabel.trim());
+  }
+  if (typeof item.weightInGrams === "number" && item.weightInGrams > 0) {
+    subtitleParts.push(`${item.weightInGrams} g`);
+  }
 
   return (
     <motion.li
@@ -67,9 +74,16 @@ function CartItemRow({
 
       <div className="flex-1 min-w-0">
         <div className="flex justify-between items-start gap-2">
-          <h3 className="font-medium text-gray-900 line-clamp-2 leading-tight">
-            {displayTitle ?? item.title}
-          </h3>
+          <div className="min-w-0">
+            <h3 className="font-medium text-gray-900 line-clamp-2 leading-tight">
+              {displayTitle ?? item.title}
+            </h3>
+            {subtitleParts.length > 0 && (
+              <p className="mt-1 text-xs text-gray-500">
+                {subtitleParts.join(" • ")}
+              </p>
+            )}
+          </div>
           <button
             onClick={() =>
               onRemove(

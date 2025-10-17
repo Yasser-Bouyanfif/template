@@ -23,6 +23,8 @@ export type CartItem = {
   price?: number;
   quantity?: number;
   banner?: CartItemBanner;
+  variantLabel?: string;
+  weightInGrams?: number;
 };
 
 export type ShippingMethod = "standard" | "express";
@@ -70,7 +72,6 @@ const getCartKey = (item: Pick<CartItem, "id" | "documentId">) =>
   (item.documentId ?? item.id).toString();
 
 const CART_TOTALS_STORAGE_KEY = "cartTotals" as const;
-export const CART_PROMOTION_STORAGE_KEY = "cartPromotion" as const;
 
 const cartItemMatchesIdentifier = (
   item: CartItem,
@@ -451,7 +452,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setBillingAddress(createEmptyAddress());
     setUseSameAddressForBillingState(true);
     localStorage.removeItem("checkoutAddresses");
-    localStorage.removeItem(CART_PROMOTION_STORAGE_KEY);
   }, [clearCartTotals]);
 
   const updateCartItemQuantity = useCallback(
