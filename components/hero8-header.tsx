@@ -90,7 +90,7 @@ export const HeroHeader = () => {
             {isClerkConfigured ? (
               <>
                 <SignedOut>
-                  <SignInButton mode="modal" afterSignInUrl="/account">
+                  <SignInButton mode="modal" redirectUrl="/orders">
                     <button
                       type="button"
                       aria-label="Se connecter"
@@ -105,18 +105,9 @@ export const HeroHeader = () => {
                 </SignedIn>
               </>
             ) : (
-              <>
-                <Link
-                  href="/account"
-                  aria-label="Se connecter"
-                  className="flex size-10 items-center justify-center rounded-full border border-transparent bg-white/70 text-[#1a1a1a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#e5e5e5] hover:bg-white dark:bg-[#171717] dark:text-white dark:hover:border-[#262626]"
-                >
-                  <LogIn className="size-5" />
-                </Link>
-                <div className="flex size-10 items-center justify-center rounded-full border border-[#e5e5e5]/60 bg-white/80 text-xs font-medium uppercase tracking-[0.2em] text-[#1a1a1a] shadow-sm dark:border-[#262626]/60 dark:bg-[#171717] dark:text-white">
-                  Guest
-                </div>
-              </>
+              <div className="flex size-10 items-center justify-center rounded-full border border-[#e5e5e5]/60 bg-white/80 text-xs font-medium uppercase tracking-[0.2em] text-[#1a1a1a] shadow-sm dark:border-[#262626]/60 dark:bg-[#171717] dark:text-white">
+                Guest
+              </div>
             )}
           </div>
         </div>

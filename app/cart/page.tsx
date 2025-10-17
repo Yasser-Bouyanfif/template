@@ -79,7 +79,7 @@ function CartPage() {
 
   return (
     <section className="bg-gray-50">
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 pt-6 pb-8 sm:px-6 sm:pt-8 sm:pb-12 lg:px-8">
         <div className="mb-6 flex items-center justify-between">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">Mon panier</h1>
