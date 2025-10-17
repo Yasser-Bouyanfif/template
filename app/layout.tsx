@@ -28,7 +28,7 @@ export default function RootLayout({
           <Providers>
             <HeroHeader />
             <div className="flex min-h-screen flex-col">
-              <main className="flex-1 pt-24">{children}</main>
+              <main className="flex-1 pt-20">{children}</main>
               <FooterSection />
             </div>
           </Providers>

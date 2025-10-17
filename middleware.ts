@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server'
 // Configuration pour forcer l'encodage UTF-8
 
 const isPublicRoute = createRouteMatcher([
-  '/account(.*)',
   '/',
   '/cart(.*)',
   '/success(.*)',
@@ -15,6 +14,8 @@ const isPublicRoute = createRouteMatcher([
   '/legal-notice(.*)',
   '/privacy-policy(.*)',
   '/terms(.*)',
+  '/sign-in(.*)',
+  '/sign-up(.*)',
 ])
 
 export default clerkMiddleware(async (auth, req) => {
@@ -22,7 +23,7 @@ export default clerkMiddleware(async (auth, req) => {
 
   
   if (!isPublicRoute(req)) {
-    const signInAbs = new URL("/account", req.nextUrl.origin).toString();
+    const signInAbs = new URL("/sign-in", req.nextUrl.origin).toString();
     await auth.protect({ unauthenticatedUrl: signInAbs });
   }
   

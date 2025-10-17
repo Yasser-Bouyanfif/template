@@ -60,7 +60,7 @@ export const HeroHeader = () => {
   return (
     <header>
       <nav className="fixed z-20 w-full border-b border-[#e5e5e5]/60 bg-white/80 backdrop-blur-2xl transition-colors dark:border-[#262626]/60 dark:bg-[#0a0a0a]/80">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
           <Link href="/" aria-label="Accueil" className="flex items-center space-x-3">
             <Logo showTagline className="text-sm" />
           </Link>
@@ -90,7 +90,11 @@ export const HeroHeader = () => {
             {isClerkConfigured ? (
               <>
                 <SignedOut>
-                  <SignInButton mode="modal" afterSignInUrl="/account">
+                  <SignInButton
+                    mode="modal"
+                    forceRedirectUrl="/orders"
+                    fallbackRedirectUrl="/orders"
+                  >
                     <button
                       type="button"
                       aria-label="Se connecter"
@@ -105,18 +109,9 @@ export const HeroHeader = () => {
                 </SignedIn>
               </>
             ) : (
-              <>
-                <Link
-                  href="/account"
-                  aria-label="Se connecter"
-                  className="flex size-10 items-center justify-center rounded-full border border-transparent bg-white/70 text-[#1a1a1a] shadow-sm transition hover:-translate-y-0.5 hover:border-[#e5e5e5] hover:bg-white dark:bg-[#171717] dark:text-white dark:hover:border-[#262626]"
-                >
-                  <LogIn className="size-5" />
-                </Link>
-                <div className="flex size-10 items-center justify-center rounded-full border border-[#e5e5e5]/60 bg-white/80 text-xs font-medium uppercase tracking-[0.2em] text-[#1a1a1a] shadow-sm dark:border-[#262626]/60 dark:bg-[#171717] dark:text-white">
-                  Guest
-                </div>
-              </>
+              <div className="flex size-10 items-center justify-center rounded-full border border-[#e5e5e5]/60 bg-white/80 text-xs font-medium uppercase tracking-[0.2em] text-[#1a1a1a] shadow-sm dark:border-[#262626]/60 dark:bg-[#171717] dark:text-white">
+                Guest
+              </div>
             )}
           </div>
         </div>
